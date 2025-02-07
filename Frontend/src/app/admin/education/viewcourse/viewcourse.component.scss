@@ -1,0 +1,201 @@
+// Variables for styling
+$background-color: #f4f4f4;
+$primary-text-color: #333;
+$header-bg-color: #222;
+$header-text-color: #fff;
+$row-hover-bg: #efefef;
+$btn-color: #3498db;
+$btn-hover-color: #2980b9;
+$border-color: #ddd;
+$cell-padding: 12px;
+$border-radius: 5px;
+$font-family: 'Arial', sans-serif;
+$button-padding: 8px 16px;
+$button-margin: 5px;
+$button-full-width: 100%;  // Full width for mobile buttons
+
+// Global styling for the container
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+
+  h2 {
+    text-align: center;
+    color: $primary-text-color;
+    margin-bottom: 20px;
+  }
+}
+
+// Styling for the responsive table
+.responsive-table {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+
+  .form-button1 {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    
+    .btn-primary {
+      padding: 12px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-weight: bold;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+
+  .table-header {
+    display: flex;
+    background-color: $header-bg-color;
+    color: $header-text-color;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: $cell-padding;
+    font-weight: bold;
+
+    .col {
+      flex: 1;
+      padding: 10px;
+      text-align: left;
+    }
+  }
+
+  .table-row {
+    display: flex;
+    border-bottom: 1px solid $border-color;
+    padding: $cell-padding;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $row-hover-bg;
+    }
+
+    .col {
+      flex: 1;
+      padding: 10px;
+      text-align: left;
+
+      &[data-label] {
+        font-weight: normal;
+      }
+
+      .btn {
+        padding: $button-padding;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin: $button-margin;
+        transition: background-color 0.3s, color 0.3s;
+
+        &.edit-btn {
+          background-color: #4CAF50;
+          color: #fff;
+
+          &:hover {
+            background-color: darken(#4CAF50, 10%);
+          }
+        }
+
+        &.delete-btn {
+          background-color: #f44336;
+          color: #fff;
+
+          &:hover {
+            background-color: darken(#f44336, 10%);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive design for smaller screens
+@media screen and (max-width: 600px) {
+  .table-header, .table-row {
+    display: block;
+    width: 100%;
+  }
+
+  .table-header {
+    text-align: left;
+    padding: 10px;
+  }
+
+  .table-row {
+    padding: 10px;
+    border-bottom: 1px solid $border-color;
+
+    .col {
+      display: block;
+      width: 100%;
+      padding: 10px 0;
+      text-align: left;
+      font-weight: normal;
+    }
+
+    .col[data-label]:before {
+      content: attr(data-label);
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .col-4 {
+      display: block;
+      width: 100%;
+      margin-top: 10px; // Adds space between last column (Actions) and others
+
+      .btn {
+        width: $button-full-width;
+        margin: 5px 0;
+        padding: 12px 0;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+// Styling for the dropdown
+.form-button1 select {
+  padding: 12px 20px;         // Padding to match button padding
+  font-size: 16px;            // Consistent font size with buttons
+  border: 1px solid $border-color;  // Border to match table row borders
+  border-radius: $border-radius;    // Rounded corners to match buttons
+  background-color: #fff;         // White background to match the layout
+  color: $primary-text-color;     // Text color from your primary color
+  cursor: pointer;               // Pointer cursor for better UX
+  transition: background-color 0.3s, border-color 0.3s; // Smooth transitions
+
+  &:hover {
+    background-color: #f1f1f1;  // Light gray background on hover
+    border-color: darken($border-color, 10%); // Darken border color on hover
+  }
+
+  &:focus {
+    outline: none;  // Remove default outline when focused
+    border-color: $btn-color; // Highlight border color on focus
+  }
+}
+
+// Responsive styling for the dropdown
+@media screen and (max-width: 600px) {
+  .form-button1 select {
+    width: 100%;    // Make the dropdown full width on smaller screens
+    padding: 12px;  // Adjust padding for smaller screens
+  }
+}

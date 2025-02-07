@@ -1,0 +1,162 @@
+$primary-color: #4CAF50; // Green color for checkboxes and labels
+$secondary-color: #f1f1f1; // Light gray for the background
+$hover-color: #388e3c; // Darker green for hover effects
+$font-family: 'Arial', sans-serif;
+
+.checkbox-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: $secondary-color;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkbox-container label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  display: block;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.col-md-1,
+.col-md-6 {
+  padding: 5px 10px;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  
+  &:checked {
+    background-color: $primary-color;
+    border-color: $primary-color;
+  }
+  
+  &:checked::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border-radius: 2px;
+  }
+
+  &:hover {
+    border-color: $hover-color;
+  }
+}
+
+label {
+  font-size: 16px;
+  font-weight: 400;
+  color: #555;
+  transition: color 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+// Button container styling
+.button-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.btn-submit {
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  
+  &:hover {
+    background-color: $hover-color;
+    transform: scale(1.05);
+  }
+  
+  &:focus {
+    outline: none;
+  }
+}
+
+// Responsive layout
+@media (min-width: 768px) {
+  .col-md-1 {
+    width: 8%;
+  }
+
+  .col-md-6 {
+    width: 45%;
+  }
+}
+
+@media (max-width: 767px) {
+  .col-md-1,
+  .col-md-6 {
+    width: 100%;
+    text-align: center;
+  }
+
+  input[type="checkbox"] {
+    width: 35px;
+    height: 35px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+
+  .btn-submit {
+    width: 100%;
+  }
+}
+
+#content {
+	position: relative;
+	width: calc(100% - 220px);
+	left: 220px;
+	transition: .3s ease;
+}
+#sidebar.hide ~ #content {
+	width: calc(100% - 60px);
+	left: 60px;
+}
+@media screen and (max-width: 768px) {
+    #content {
+		width: calc(100% - 60px);
+		left: 55px;
+	}
+
+}
+@media screen and (max-width: 576px) {
+    #content {
+		width: calc(100% - 60px);
+		left: 55px;
+	}
+
+}

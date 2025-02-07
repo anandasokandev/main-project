@@ -1,0 +1,36 @@
+<div class="form-body">
+    <div class="row">
+        <div class="form-holder">
+            <div class="form-content">
+                <div class="form-items">
+                    <h3>Register Job Category Details</h3>
+                    <div class="form-button1">
+                        <button class="btn btn-primary" routerLink="/admin/viewjobcategory">View Job Category</button>
+                    </div>
+                    <p>--------------</p>
+                    <form class="requires-validation" [formGroup]="jobCategoryForm">
+
+                        <div class="input-group">
+                           <label>Job Category Name</label>
+                           <input class="form-control" type="text" formControlName="jobCategoryName" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Job Category Description</label>
+                            <input class="form-control" type="text" formControlName="jobCategoryDesc" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Qualification</label>
+                            <input class="form-control" type="text" formControlName="qualification" required>
+                        </div>
+
+                        <div class="form-button mt-3">
+                            <button id="submit" (click)="onSubmit()" type="submit" class="btn btn-primary">Add +</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

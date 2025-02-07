@@ -1,0 +1,28 @@
+<section id="content">
+  <form [formGroup]="courseForm" enctype="multipart/form-data">
+    <div class="checkbox-container">
+      <label for="">Select Course</label>
+      <div *ngFor="let data of coursearray" class="row">
+        <div class="col-md-1">
+          <input
+            type="checkbox"
+            (change)="onCourseChange($event, data.course_id)"
+            [value]="data.course_id"
+            [checked]="isSelected(data.course_name)"
+            style="width: 40%"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="">{{ data.course_name }}</label>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="button-container">
+        <button (click)="submitSelectedCategories()" class="btn-submit">
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</section>

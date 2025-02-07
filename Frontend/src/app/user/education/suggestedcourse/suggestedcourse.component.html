@@ -1,0 +1,28 @@
+<section id="content">
+  <section id="course-suggestions">
+    <h1>Preferred Course</h1>
+
+    <div class="course-list">
+      <div
+        *ngFor="let course of courses"
+        class="course-item"
+        [class.selected]="course === selectedCourse"
+        (click)="onSelectCourse(course)"
+      >
+        <h3>{{ course.course_name }}</h3>
+        <p>{{ course.course_description }}</p>
+      </div>
+    </div>
+    
+    <!-- Selected Course Information -->
+    <div *ngIf="selectedCourse" class="selected-course">
+      <h2>You have selected: {{ selectedCourse.course_name }}</h2>
+      <p>{{ selectedCourse.description }}</p>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="submit-container">
+      <button (click)="onSubmit()" class="btn-submit">Submit</button>
+    </div>
+  </section>
+</section>

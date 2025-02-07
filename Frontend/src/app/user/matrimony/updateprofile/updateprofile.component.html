@@ -1,0 +1,139 @@
+<body>
+    <section id="content">
+      <div class="form-container">
+        <h1>Admission Form</h1>
+        <form [formGroup]="profileForm">
+          <div class="form-group">
+            <label for="firstname">First Name :</label>
+            <input
+              type="text"
+              id="firstname"
+              value=""
+              disabled
+            />
+          </div>
+  
+          <div class="form-group">
+            <label for="lastname">Last Name :</label>
+            <input
+              type="text"
+              id="lastname"
+              value=""
+              disabled
+            />
+          </div>
+  
+          <div class="form-group">
+            <label for="email">Email :</label>
+            <input type="email" id="email" value="" disabled />
+          </div>
+  
+          <div class="form-group">
+            <label for="dob">Date of Birth :</label>
+            <input type="text" id="dob" value="" disabled />
+          </div>
+  
+          <div class="form-group">
+            <label for="mobile">Mobile :</label>
+            <input type="text" id="mobile" value="" disabled />
+          </div>
+  
+          <div class="form-group">
+            <label for="gender">Gender :</label>
+            <input
+              type="text"
+              id="mobile"
+              value=""
+              disabled
+            />
+          </div>
+  
+          <div class="form-group">
+            <label for="pincode">Pincode :</label>
+            <input
+              type="text"
+              id="pincode"
+              value=""
+              disabled
+            />
+          </div>
+  
+          <div class="form-group">
+            <label for="state">State :</label>
+            <input type="text" id="state" value="" disabled />
+          </div>
+  
+          <div class="form-group">
+            <label for="district">District :</label>
+            <input
+              type="text"
+              id="district"
+              value=""
+              disabled
+            />
+          </div>
+  
+          <div class="form-group">
+            <label for="location">Location :</label>
+            <input
+              type="text"
+              id="location"
+              value=""
+              disabled
+            />
+          </div>
+  
+          <div class="form-group">
+            <label for="disability-category">Disability Category :</label>
+            <input
+              type="text"
+              disabled
+              id="disability-category"
+              value=""
+            />
+          </div>
+  
+          <div class="form-group">
+            <label for="disability-subcategory">Disability Sub Category :</label>
+            <input
+              type="text"
+              disabled
+              id="disability-subcategory"
+              value=""
+            />
+          </div>
+  
+          <div class="form-group">
+            <label for="disability-percent">Disability Percent :</label>
+            <input
+              type="text"
+              id="disability-percent"
+              value=""
+              disabled
+            />
+          </div>
+  
+          <!-- Course Details Section -->
+          <div class="course-details">
+            <h3>Selected Course Details:</h3>
+            <p><strong>Course Name:</strong> </p>
+            <p>
+              <strong>Course Description:</strong> 
+            </p>
+            <p><strong>Course Code:</strong> </p>
+            <p><strong>Course Duration:</strong></p>
+          </div>
+  
+          <div class="form-group">
+            <input
+              type="button"
+              value="Submit"
+              (click)="onSubmit()"
+              class="submit-button"
+            />
+          </div>
+        </form>
+      </div>
+    </section>
+  </body>
+  

@@ -1,0 +1,49 @@
+
+    <div class="login-card">
+        <div class="brand">
+            <h1>Welcome back</h1>
+            <p>Enter your credentials to access your account</p>
+        </div>
+
+        <form id="loginForm" [formGroup]="loginForm">
+            <div class="form-group">
+                <label for="email">Username</label>
+                <input 
+                    type="text" 
+                    id="username" 
+                    placeholder="username"
+                    autocomplete="username"
+                    formControlName="username"
+                >
+                <div class="error" id="emailError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    formControlName="password"
+                >
+                <div class="error" id="passwordError"></div>
+            </div>
+
+            <div class="remember-forgot">
+                <div class="remember-me">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                <a   class="forgot-password">Forgot password?</a>
+            </div>
+
+            <button type="submit" (click)="onSubmit()" class="login-btn" id="loginButton">
+                Sign in
+            </button>
+        </form>
+
+        <div class="signup-link">
+            <p>Don't have an account? <a >Sign up</a></p>
+        </div>
+    </div>

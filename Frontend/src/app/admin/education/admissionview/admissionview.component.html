@@ -1,0 +1,60 @@
+<div class="progress-bar-container">
+    <div class="heading">
+        <h1>Admission</h1>
+    </div>
+    <!-- Progress Bar 1 -->
+    <div class="progress-bar-wrapper">
+        <div class="progress-bar-background"></div>
+        <div class="progress-bar" style="background: conic-gradient(#4caf50)">
+            <span>80</span>
+        </div>
+        <div class="progress-bar-label">Pending Admission Form</div>
+    </div>
+    <!-- Progress Bar 2 -->
+    <div class="progress-bar-wrapper">
+        <div class="progress-bar-background"></div>
+        <div class="progress-bar" style="background: conic-gradient(#b41212)">
+            <span></span>
+        </div>
+        <div class="progress-bar-label">Reviewed Admission Form</div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+    <!-- Left Filter Section -->
+    <div class="filter">
+        <h3>Filter by Date</h3>
+        <input type="date" id="start-date" />
+        <input type="date" id="end-date" />
+        <select>
+            <option value="">Select Category</option>
+            <option value="cat1">Category 1</option>
+            <option value="cat2">Category 2</option>
+            <option value="cat3">Category 3</option>
+        </select>
+        <button>Apply Filters</button>
+    </div>
+
+    <!-- Right Table Section -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>John Doe</td>
+                    <td>2025-01-20</td>
+                    <td>Completed</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="form-body">
+    <div class="row">
+        <div class="form-holder">
+            <div class="form-content">
+                <div class="form-items">
+                    <h3>Register Department Details</h3>
+                    <div class="form-button1">
+                        <button class="btn btn-primary" routerLink="/viewdepartment">View Department</button>
+                    </div>
+                    <p>--------------</p>
+                    <form class="requires-validation" [formGroup]="deptForm">
+
+                        <div class="input-group">
+                           <label for="name">Department Name</label>
+                           <input class="form-control" type="text" formControlName="deptName" placeholder="Example: Computer Science " required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="email">Department Description</label>
+                            <input class="form-control" type="text" formControlName="deptDesc" placeholder="Example: Focuses on the study of IT " required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="email">Disability Percent</label>
+                            <input class="form-control" type="text" formControlName="disabilitypercent" placeholder="Example: 50,60,70,80 " required>
+                        </div>
+
+                        <!-- <div class="input-group">
+                            <label for="position">Position</label>
+                            <select class="form-select" id="position" required>
+                                  <option selected disabled value="">Select a position</option>
+                                  <option value="jweb">Junior Web Developer</option>
+                                  <option value="sweb">Senior Web Developer</option>
+                                  <option value="pmanager">Project Manager</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                          <label for="password">Password</label>
+                          <input class="form-control" type="password" name="password" id="password" placeholder="Create a password" required>
+                        </div>
+
+                        <div class="input-group mt-3">
+                            <label class="gender-label">Gender: </label>
+
+                            <input type="radio" class="btn-check" name="gender" id="male" autocomplete="off" required>
+                            <label class="btn btn-sm btn-outline-secondary" for="male">Male</label>
+
+                            <input type="radio" class="btn-check" name="gender" id="female" autocomplete="off" required>
+                            <label class="btn btn-sm btn-outline-secondary" for="female">Female</label>
+
+                            <input type="radio" class="btn-check" name="gender" id="secret" autocomplete="off" required>
+                            <label class="btn btn-sm btn-outline-secondary" for="secret">Secret</label>
+                        </div> -->
+
+                        <div class="form-button mt-3">
+                            <button id="submit" (click)="onSubmit()" type="submit" class="btn btn-primary">Add +</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

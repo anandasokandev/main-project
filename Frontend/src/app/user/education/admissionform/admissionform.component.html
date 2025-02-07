@@ -1,0 +1,138 @@
+<body>
+  <section id="content">
+    <div class="form-container">
+      <h1>Admission Form</h1>
+      <form [formGroup]="admissionForm">
+        <div class="form-group">
+          <label for="firstname">First Name :</label>
+          <input
+            type="text"
+            id="firstname"
+            value="{{ user[0].first_name }}"
+            disabled
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="lastname">Last Name :</label>
+          <input
+            type="text"
+            id="lastname"
+            value="{{ user[0].last_name }}"
+            disabled
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email :</label>
+          <input type="email" id="email" value="{{ user[0].email }}" disabled />
+        </div>
+
+        <div class="form-group">
+          <label for="dob">Date of Birth :</label>
+          <input type="text" id="dob" value="{{ user[0].dob }}" disabled />
+        </div>
+
+        <div class="form-group">
+          <label for="mobile">Mobile :</label>
+          <input type="text" id="mobile" value="{{ user[0].phone }}" disabled />
+        </div>
+
+        <div class="form-group">
+          <label for="gender">Gender :</label>
+          <input
+            type="text"
+            id="mobile"
+            value="{{ user[0].gender }}"
+            disabled
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="pincode">Pincode :</label>
+          <input
+            type="text"
+            id="pincode"
+            value="{{ user[0].pincode }}"
+            disabled
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="state">State :</label>
+          <input type="text" id="state" value="{{ user[0].state }}" disabled />
+        </div>
+
+        <div class="form-group">
+          <label for="district">District :</label>
+          <input
+            type="text"
+            id="district"
+            value="{{ user[0].district }}"
+            disabled
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="location">Location :</label>
+          <input
+            type="text"
+            id="location"
+            value="{{ user[0].location }}"
+            disabled
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="disability-category">Disability Category :</label>
+          <input
+            type="text"
+            disabled
+            id="disability-category"
+            value="{{ disability[0].disability_category }}"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="disability-subcategory">Disability Sub Category :</label>
+          <input
+            type="text"
+            disabled
+            id="disability-subcategory"
+            value="{{ disability[0].sub_category_name}}"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="disability-percent">Disability Percent :</label>
+          <input
+            type="text"
+            id="disability-percent"
+            value="{{ user[0].percent }}"
+            disabled
+          />
+        </div>
+
+        <!-- Course Details Section -->
+        <div class="course-details">
+          <h3>Selected Course Details:</h3>
+          <p><strong>Course Name:</strong> {{ course[0].course_name }}</p>
+          <p>
+            <strong>Course Description:</strong> {{ course[0].description }}
+          </p>
+          <p><strong>Course Code:</strong> {{ course[0].course_code }}</p>
+          <p><strong>Course Duration:</strong> {{ course[0].duration }}</p>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="button"
+            value="Submit"
+            (click)="onSubmit()"
+            class="submit-button"
+          />
+        </div>
+      </form>
+    </div>
+  </section>
+</body>

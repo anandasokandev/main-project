@@ -1,0 +1,136 @@
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <div class="container">
+        <a href="#"><img src="https://s26.postimg.org/kd8zstg15/Top_Header.jpg" alt="img/TopHeader.jpg"
+                class="img-thumbnail"></a>
+    </div>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <h1 style="text-align: center;">Complete Profile</h1>
+            <div class="col-lg-8 col-lg-offset-2 well">
+                <div class="panel panel-info">
+                    <div class="panel-body">
+                        <form class="form-horizontal row" [formGroup]="profileForm" >
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">First Name :</label>
+                                <div class="col-sm-7">
+                                    <input type="text" formControlName="firstname" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Last Name :</label>
+                                <div class="col-sm-7">
+                                    <input type="text" formControlName="lastname" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Email :</label>
+                                <div class="col-sm-7">
+                                    <input type="email" formControlName="email" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Date of Birth :</label>
+                                <div class="col-sm-5">
+                                   <input type="date" formControlName="dateofbirth" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="mobile">Mobile :</label>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">+91</span>
+                                        <input type="text" class="form-control" formControlName="mobile" maxlength="10" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Gender :</label>
+                                <div class="col-sm-2">
+                                    <select name="gender" id="gender" class="form-control" formControlName="gender">
+                                        <option value="" selected disabled>Select</option>
+                                        <option value="MALE">MALE</option>
+                                        <option value="FEMALE">FEMALE</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Pincode :</label>
+                                <div class="col-sm-4">
+                                    <input type="text" id="pincode" value="{{pinCode}}" class="form-control" formControlName="pincode">
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="button" value="Find Pincode"  class="form-control" (click)="fetchPincode()">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">State :</label>
+                                <div class="col-sm-3">
+                                    <input type="text"  value="{{state}}" formControlName="state" class="form-control">
+                                </div>
+                                <label class="control-label col-sm-2">District :</label>
+                                <div class="col-sm-3">
+                                    <input type="text" value="{{district}}" formControlName="district" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Location :</label>
+                                <div class="col-sm-6">
+                                    <select name="Location" id="Location" class="form-control" formControlName="location">
+                                        <option value="" selected disabled>Select</option>
+                                        <option *ngFor=" let item of pincodeDetails" value="{{item.Name}}">{{item.Name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Profile Pic :</label>
+                                <div class="col-sm-6">
+                                    <input type="file" name="profile" id="profile" formControlName="profile" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Disability Type :</label>
+                                <div class="col-sm-2">
+                                    <select formControlName="disabilitytype" id="disabilitytype" class="form-control">
+                                        <option value="" selected disabled>Select</option>
+                                        <option value="Physical">Physical</option>
+                                        <option value="Mental">Mental</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-sm-2">Disability Percent :</label>
+                                <div class="col-sm-3">
+                                    <input type="text" formControlName="disabilitypercent" id="state" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-5"></label>
+                                <div class="col-sm-2">
+                                   <input type="button" class="form-control" value="Submit" style="background-color: grey; color: #fff;" (click)="onSubmit()">
+                                </div>
+                            </div> 
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

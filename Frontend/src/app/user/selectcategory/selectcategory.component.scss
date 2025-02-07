@@ -1,0 +1,63 @@
+$primary-color: #000000;
+$hover-color: #ffffff;
+$active-color: #3ee80b;
+$button-width: 320px;
+$button-padding: 15px;
+$font-family: 'Arial', sans-serif;
+$heading-font-family: 'Roboto', sans-serif;
+
+main {
+    font-family: $font-family;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: $heading-font-family; 
+    font-size: 36px;
+    color: $primary-color;
+    margin-top: 30px;
+    margin-bottom: 30px; 
+    text-align: center; 
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 60px; 
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+button {
+    width: $button-width;
+    padding: $button-padding;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    background-color: $primary-color; 
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    transition: all 0.3s ease; 
+
+    &:hover {
+        background-color: $hover-color;
+        transform: translateY(-5px); 
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+        color: #000;
+    }
+
+    &:active {
+        background-color: $active-color; 
+        transform: translateY(2px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    }
+}

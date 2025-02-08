@@ -113,5 +113,16 @@ export class DatabaseService {
     return this.http.get(`http://localhost:3000/fetchadmission?loginid=${loginid}`).toPromise();
   }
 
+  fetchAdmissionDetails(fromDate: string,toDate: string, status: string){
+    return this.http.get(`http://localhost:3000/fetchadmissiondetails?fromDate=${fromDate}&toDate=${toDate}&status=${status}`).toPromise();
+  }
+
+  fetchAdmissionOnly(){
+    return this.http.get('http://localhost:3000/fetchadmissiononly').toPromise();
+  }
+
+  fetchSpecificAdmission(admissionId: string, loginId: string){
+    return this.http.get(`http://localhost:3000/fetchspecificadmission?admission_id=${admissionId}&login_id=${loginId}`).toPromise();
+  }
 
 }

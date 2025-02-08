@@ -1,136 +1,172 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+// Colors
+$primary-color: #4caf50;
+$secondary-color: #f44336;
+$accent-color: #00bcd4;
+$background-color: #fafafa;
+$text-color: #333;
+$card-background: #ffffff;
+$button-bg: #007bff;
+$button-hover-bg: #0056b3;
+$border-radius: 8px;
+$shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+// Global Styles
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+  margin: 0;
+  padding: 0;
 }
 
-body {
-    font-family: Arial, sans-serif;
+// Container for the whole page
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+// Header Styles
+.heading {
+  text-align: center;
+  margin-bottom: 30px;
+
+  h1 {
+    font-size: 2.5rem;
+    color: $primary-color;
+  }
+}
+
+.progress-bars{
     display: flex;
-    flex-direction: column;
-    height: 100vh;
+    margin-bottom: 30px;
 }
 
 // Progress Bar Container
 .progress-bar-container {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
 }
 
-// Individual Progress Bar
 .progress-bar-wrapper {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    
-    .progress-bar {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: #ff712f;
-        border-radius: 50%;
-        clip-path: circle(50% at 50% 50%);
-    }
-
-    .progress-bar span {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 18px;
-        font-weight: bold;
-        color: white;
-    }
-
-    .progress-bar-label {
-        margin-top: 180px;
-        font-size: 14px;
-        color: white;
-        padding: 5px;
-        background-color: #333;
-        border-radius: 5px;
-    }
+  width: 48%;
+  background-color: #e0e0e0;
+  border-radius: $border-radius;
+  padding: 10px;
+  box-shadow: $shadow;
 }
 
-// Main layout styles
-.main-content {
-    display: flex;
-    flex-grow: 1;
-    padding: 20px;
-    overflow: hidden;
+.progress-bar-background {
+  width: 100%;
+  height: 20px;
+  background-color: #dcdcdc;
+  border-radius: $border-radius;
 }
 
-// Left Filter
+.progress-bar {
+  height: 100%;
+  border-radius: $border-radius;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.progress-bar-label {
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 18px;
+  color: $text-color;
+}
+
+// Form Section Styles
 .filter {
-    width: 250px;
-    margin-right: 20px;
-    margin-top: 15px;
-
-    input,
-    select,
-    button {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 10px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-    }
-
-    input[type="date"] {
-        padding: 10px;
-    }
-
-    select {
-        padding: 10px;
-    }
+  background-color: $card-background;
+  border-radius: $border-radius;
+  padding: 20px;
+  box-shadow: $shadow;
+  margin-bottom: 20px;
 }
 
-// Table Layout
+.filter h3 {
+  font-size: 1.5rem;
+  color: $primary-color;
+  margin-bottom: 10px;
+}
+
+input[type="date"],
+select {
+  padding: 10px;
+  margin-right: 15px;
+  border: 1px solid #ccc;
+  border-radius: $border-radius;
+  font-size: 1rem;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: $button-bg;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $button-hover-bg;
+  }
+}
+
+// Table Styles
 .table-container {
-    flex-grow: 1;
-    overflow-x: auto;
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 45px;
-
-        th,
-        td {
-            padding: 12px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f4f4f4;
-        }
-    }
+  background-color: $card-background;
+  border-radius: $border-radius;
+  box-shadow: $shadow;
+  padding: 20px;
+  margin-top: 20px;
 }
 
-// Responsive design
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+
+  th, td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+
+  th {
+    background-color: $primary-color;
+    color: white;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+}
+
+// Responsive Design
 @media (max-width: 768px) {
-    .main-content {
-        flex-direction: column;
-    }
+  .progress-bar-container {
+    flex-direction: column;
+    gap: 20px;
+  }
 
-    .filter {
-        width: 100%;
-        margin-bottom: 20px;
-    }
+  .progress-bar-wrapper {
+    width: 100%;
+  }
 
-    .table-container {
-        width: 100%;
-    }
-
-    .progress-bar-wrapper {
-        width: 100px;
-        height: 100px;
-    }
+  .filter {
+    padding: 15px;
+  }
 }

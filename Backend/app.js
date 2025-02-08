@@ -11,7 +11,7 @@ var userregisterRouter = require('./routes/guest/userregister');
 var fetchUsername = require('./routes/fetchUsername');
 var fetchDepartment = require('./routes/fetchDepartment');
 var createDepartment = require('./routes/createDepartment');
-var createCourse = require('./routes/createCourse');
+var createCourse = require('./routes/admin/createCourse');
 var fetchCourse = require('./routes/fetchCourse');
 var fetchCourseById = require('./routes/fetchCourseById');
 var createJobCategory = require('./routes/createJobCategory');
@@ -32,6 +32,9 @@ var fetchDisabilityByName = require('./routes/user/education/disability/fetchDis
 var submitAdmissionForm = require('./routes/user/education/admission/submitAdmissionForm');
 var fetchadmission = require('./routes/user/education/admission/fetchAdmission');
 var map = require('./routes/map');
+var fetchAdmissionDetails = require('./routes/admin/admission/fetchAdmissionDetails');
+var fetchAdmissionOnly = require('./routes/admin/admission/fetchAdmissionOnly');
+var fetchSpecificAdmission = require('./routes/admin/admission/fetchSpecificAdmission');
 
 var app = express();
 
@@ -73,6 +76,9 @@ app.use('/fetchdisabilityname',fetchDisabilityByName);
 app.use('/submitadmissionform',submitAdmissionForm);
 app.use('/fetchadmission',fetchadmission);
 app.use('/map',map);
+app.use('/fetchadmissiondetails',fetchAdmissionDetails)
+app.use('/fetchadmissiononly',fetchAdmissionOnly);
+app.use('/fetchspecificadmission',fetchSpecificAdmission);
 
 
 //catch 404 and forward to error handler

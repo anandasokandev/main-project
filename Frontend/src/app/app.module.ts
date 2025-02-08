@@ -31,6 +31,8 @@ import { SuggestedcourseComponent } from './user/education/suggestedcourse/sugge
 import { CourseselectionComponent } from './user/education/courseselection/courseselection.component';
 import { AdmissionFormComponent } from './user/education/admissionform/admissionform.component';
 import { UpdateprofileComponent } from './user/matrimony/updateprofile/updateprofile.component';
+import { ViewadmissionprofileComponent } from './admin/education/viewadmissionprofile/viewadmissionprofile.component';
+
 
 @NgModule({
   declarations: [
@@ -60,7 +62,8 @@ import { UpdateprofileComponent } from './user/matrimony/updateprofile/updatepro
     SuggestedcourseComponent,
     CourseselectionComponent,
     AdmissionFormComponent,
-    UpdateprofileComponent
+    UpdateprofileComponent,
+    ViewadmissionprofileComponent,
   ],
   imports: [
     BrowserModule,

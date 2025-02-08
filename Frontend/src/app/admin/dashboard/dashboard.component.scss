@@ -52,6 +52,7 @@ html, body {
 }
 
 body {
+  margin-top: 20px;
   font-family: 'DM Sans', sans-serif;
   overflow: hidden;
   display: flex;
@@ -79,6 +80,7 @@ button, a {
   }
   
   &-content {
+    margin-top: 55px;
     display: flex;
     height: 100%;
     overflow: hidden;

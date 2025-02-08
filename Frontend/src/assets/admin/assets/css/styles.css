@@ -45,6 +45,7 @@ body {
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
+  margin-top: 80px;
 }
 
 ul {

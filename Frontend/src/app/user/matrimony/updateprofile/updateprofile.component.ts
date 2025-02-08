@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { DatabaseService } from 'src/app/database.service';
 
 @Component({
@@ -8,8 +9,11 @@ import { DatabaseService } from 'src/app/database.service';
 })
 export class UpdateprofileComponent {
 
-  
-  constructor(private db: DatabaseService){}
+  constructor(private db: DatabaseService, private fb:FormBuilder){}
+
+  profileForm = this.fb.group({
+    
+  })
 
   onSubmit(){
 

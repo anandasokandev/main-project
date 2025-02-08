@@ -22,90 +22,127 @@ import { UserDashboardComponent } from './user/layout/user-dashboard/user-dashbo
 import { CourseselectionComponent } from './user/education/courseselection/courseselection.component';
 import { SuggestedcourseComponent } from './user/education/suggestedcourse/suggestedcourse.component';
 import { UpdateprofileComponent } from './user/matrimony/updateprofile/updateprofile.component';
+import { ViewadmissionprofileComponent } from './admin/education/viewadmissionprofile/viewadmissionprofile.component';
 const routes: Routes = [
   {
-    path:'signup',component:SignupComponent
+    path: 'signup',
+    component: SignupComponent,
   },
   {
-    path:'',component:LoginComponent
+    path: '',
+    component: LoginComponent,
   },
   {
-    path:'login',component:LoginComponent
+    path: 'login',
+    component: LoginComponent,
   },
   {
-    path:'user',component:MainDashboardComponent, children:[
-    {
-      path:'dashboard',component: UserDashboardComponent
-    },
-    {
-      path:'userprofilereg',component:ProfileComponent
-    },
-    {
-      path:'usercategory',component:SelectcategoryComponent
-    },
-    {
-      path:'education',children:[
-        {
-          path:'admission',component:AdmissionFormComponent
-        },
-        {
-          path:'disability',component:DisabilityComponent
-        },
-        {
-          path:'courseselection',component:CourseselectionComponent
-        },
-        {
-          path:'suggestedcourse',component:SuggestedcourseComponent
-        }
-      ]
-    },
-    {
-      path:'matrimony',children:[
-        {
-          path:'updateprofile',component:UpdateprofileComponent
-        }
-      ]
-    }
-    
-  ]
+    path: 'user',
+    component: MainDashboardComponent,
+    children: [
+      {
+        path: 'dashboard',
+        component: UserDashboardComponent,
+      },
+      {
+        path: 'userprofilereg',
+        component: ProfileComponent,
+      },
+      {
+        path: 'usercategory',
+        component: SelectcategoryComponent,
+      },
+      {
+        path: 'education',
+        children: [
+          {
+            path: 'admission',
+            component: AdmissionFormComponent,
+          },
+          {
+            path: 'disability',
+            component: DisabilityComponent,
+          },
+          {
+            path: 'courseselection',
+            component: CourseselectionComponent,
+          },
+          {
+            path: 'suggestedcourse',
+            component: SuggestedcourseComponent,
+          },
+        ],
+      },
+      {
+        path: 'matrimony',
+        children: [
+          {
+            path: 'updateprofile',
+            component: UpdateprofileComponent,
+          },
+        ],
+      },
+    ],
   },
   {
-    path:'admin',component:HeaderComponent,children:[
-    {
-      path:'dashboard',component:DashboardComponent
-    },
-    {
-      path:'createdepartment',component:DepartmentComponent
-    },
-    {
-      path:'viewdepartment',component:ViewdepartmentComponent
-    },
-    {
-      path:'createcourse',component:CourseComponent
-    },
-    {
-      path:'viewcourse',component:ViewcourseComponent
-    },
-    {
-      path:'admission',component:AdmissionviewComponent
-    },
-    {
-      path:'jobcategory',component:JobcategoryComponent
-    },
-    {
-      path:'viewjobcategory',component:ViewjobcategoryComponent
-    },
-    {
-      path:'job',component:JobComponent
-    },
-    {
-      path:'viewjob',component:ViewjobComponent
-    }
-  ]}
+    path: 'admin',
+    component: HeaderComponent,
+    children: [
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+      },
+      {
+        path: 'education',
+        children: [
+          {
+            path: 'createdepartment',
+            component: DepartmentComponent,
+          },
+          {
+            path: 'viewdepartment',
+            component: ViewdepartmentComponent,
+          },
+          {
+            path: 'createcourse',
+            component: CourseComponent,
+          },
+          {
+            path: 'viewcourse',
+            component: ViewcourseComponent,
+          },
+          {
+            path: 'admission',
+            component: AdmissionviewComponent,
+          },
+          {
+            path: 'viewadmissionprofile',
+            component: ViewadmissionprofileComponent,
+          },
+        ],
+      },
+      {
+        path: 'jobcategory',
+        component: JobcategoryComponent,
+      },
+      {
+        path: 'viewjobcategory',
+        component: ViewjobcategoryComponent,
+      },
+      {
+        path: 'job',
+        component: JobComponent,
+      },
+      {
+        path: 'viewjob',
+        component: ViewjobComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

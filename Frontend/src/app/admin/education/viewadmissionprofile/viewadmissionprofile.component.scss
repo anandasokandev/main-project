@@ -1,0 +1,80 @@
+// SCSS Variables
+$background-color-light: #f2f6fc;
+$text-color: #69707a;
+$primary-color: #0061f2;
+$card-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+$border-radius: 0.35rem;
+$border-color: #c5ccd6;
+$font-size-small: 0.875rem;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$padding-sm: 0.875rem 1.125rem;
+$transition-duration: 0.15s;
+
+body {
+  margin-top: 60px;
+  background-color: $background-color-light;
+  color: $text-color;
+}
+
+.img-account-profile {
+  height: 10rem;
+}
+
+.rounded-circle {
+  border-radius: 50% !important;
+}
+
+.card {
+  box-shadow: $card-shadow;
+
+  .card-header {
+    font-weight: $font-weight-medium;
+    padding: 1rem 1.35rem;
+    margin-bottom: 0;
+    background-color: rgba(33, 40, 50, 0.03);
+    border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+
+    &:first-child {
+      border-radius: $border-radius $border-radius 0 0;
+    }
+  }
+}
+
+.form-control, .dataTable-input {
+  display: block;
+  width: 100%;
+  padding: $padding-sm;
+  font-size: $font-size-small;
+  font-weight: $font-weight-normal;
+  line-height: 1;
+  color: $text-color;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid $border-color;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: $border-radius;
+  transition: border-color $transition-duration ease-in-out, box-shadow $transition-duration ease-in-out;
+}
+
+.nav-borders {
+  .nav-link {
+    color: $text-color;
+    border-bottom-width: 0.125rem;
+    border-bottom-style: solid;
+    border-bottom-color: transparent;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+    &.active {
+      color: $primary-color;
+      border-bottom-color: $primary-color;
+    }
+  }
+}

@@ -1,60 +1,93 @@
-<div class="progress-bar-container">
+<div class="admission-container">
     <div class="heading">
-        <h1>Admission</h1>
+      <h1>Admission</h1>
     </div>
-    <!-- Progress Bar 1 -->
-    <div class="progress-bar-wrapper">
-        <div class="progress-bar-background"></div>
-        <div class="progress-bar" style="background: conic-gradient(#4caf50)">
-            <span>80</span>
+  
+    <!-- Progress Bars -->
+    <div class="progress-bars">
+      <div class="progress-bar-wrapper">
+        <div
+          class="progress-bar"
+          [style.background]="getProgressBarStyle(pendingFormCount, totalForms)"
+        >
+          <span>{{ pendingFormCount }}</span>
         </div>
-        <div class="progress-bar-label">Pending Admission Form</div>
-    </div>
-    <!-- Progress Bar 2 -->
-    <div class="progress-bar-wrapper">
-        <div class="progress-bar-background"></div>
-        <div class="progress-bar" style="background: conic-gradient(#b41212)">
-            <span></span>
+        <div class="progress-bar-label">Pending Admission Forms</div>
+      </div>
+  
+      <div class="progress-bar-wrapper">
+        <div
+          class="progress-bar"
+          [style.background]="getProgressBarStyle(reviewedFormCount, totalForms)"
+        >
+          <span>{{ reviewedFormCount }}</span>
         </div>
-        <div class="progress-bar-label">Reviewed Admission Form</div>
+        <div class="progress-bar-label">Reviewed Admission Forms</div>
+      </div>
     </div>
-</div>
-
-<!-- Main Content -->
-<div class="main-content">
-    <!-- Left Filter Section -->
-    <div class="filter">
-        <h3>Filter by Date</h3>
-        <input type="date" id="start-date" />
-        <input type="date" id="end-date" />
-        <select>
-            <option value="">Select Category</option>
-            <option value="cat1">Category 1</option>
-            <option value="cat2">Category 2</option>
-            <option value="cat3">Category 3</option>
-        </select>
-        <button>Apply Filters</button>
-    </div>
-
-    <!-- Right Table Section -->
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>John Doe</td>
-                    <td>2025-01-20</td>
-                    <td>Completed</td>
-                </tr>
-            </tbody>
+  
+    <!-- Filter and Table Section -->
+    <div class="main-content">
+      <!-- Left Filter Section -->
+      <form [formGroup]="admissionForm" (ngSubmit)="onSubmit()">
+        <div class="filter">
+          <h3>Filter by Date</h3>
+          <div class="form-fields">
+            <input
+              type="date"
+              formControlName="fromDate"
+              id="start-date"
+              required
+              
+            />
+            <input
+              type="date"
+              formControlName="toDate"
+              id="end-date"
+              required
+              
+            />
+            <select formControlName="status" required>
+              <option value="">Select Category</option>
+              <option value="Submitted">Pending</option>
+              <option value="Reviewed">Reviewed</option>
+              <option value="Approved">Approved</option>
+            </select>
+          </div>
+          <button type="submit" [disabled]="admissionForm.invalid">
+            Apply Filters
+          </button>
+        </div>
+      </form>
+  
+      <!-- Table Section -->
+      <div class="table-container" *ngIf="isDataLoaded">
+        <div style="text-align: center;" *ngIf="admissionDetails.length === 0">
+          <p>No results found.</p>
+        </div>
+        <table *ngIf="admissionDetails.length > 0">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Photo</th>
+              <th>Name</th>
+              <th>Submission Date</th>
+              <th>Status</th>
+              <th>View More</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of admissionDetails; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td><img [src]="item.profile_pic" alt="Profile Photo" class="profile-img" /></td>
+              <td>{{ item.first_name }} {{ item.last_name }}</td>
+              <td>{{ item.submission_date | date: 'short' }}</td>
+              <td>{{ item.form_status }}</td>
+              <td><button class="view-btn" (click)="navigateToStudentProfile(item.admission_id,item.login_id)">View More</button></td>
+            </tr>
+          </tbody>
         </table>
+      </div>
     </div>
-</div>
+  </div>
+  

@@ -34,13 +34,6 @@
           </span>
         </li>
       </a>
-      <li>
-        <i class="bx bxs-dollar-circle"></i>
-        <span class="text">
-          <h3>N$2543.00</h3>
-          <p>Total Sales</p>
-        </span>
-      </li>
     </ul>
   </main>
   <main *ngIf="userState === 'Career'">
@@ -104,7 +97,17 @@
     </div>
 
     <ul class="box-info">
-      <a routerLink="/user/matrimony/updateprofile">
+      <a *ngIf="profile" routerLink="/user/matrimony/createprofile">
+        <li>
+          <i class="bx bxs-calendar-check"></i>
+          <span class="text">
+            <h3>Create</h3>
+            <p>Profile</p>
+          </span>
+        </li>
+      </a>
+
+      <a *ngIf="profileLoad" routerLink="/user/matrimony/editprofile">
         <li>
           <i class="bx bxs-calendar-check"></i>
           <span class="text">
@@ -113,6 +116,7 @@
           </span>
         </li>
       </a>
+      
       <a routerLink="/user/matrimony/findmatch">
         <li>
           <i class="bx bxs-group"></i>

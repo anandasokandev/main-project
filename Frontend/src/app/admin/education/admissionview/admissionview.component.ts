@@ -30,7 +30,8 @@ export class AdmissionviewComponent implements OnInit {
   ngOnInit(): void {
     // Fetch the pending and reviewed form counts when the component initializes
     this.db.fetchAdmissionOnly().then((data: any) => {
-      this.pendingFormCount = data
+      this.pendingFormCount = data.count
+      
       // this.reviewedFormCount = data.reviewedForms || 0;
       this.totalForms = this.pendingFormCount + this.reviewedFormCount;
     });
@@ -55,6 +56,10 @@ export class AdmissionviewComponent implements OnInit {
     // Fetch admission details based on filters
     this.db.fetchAdmissionDetails(fromDate, toDate, status).then((data: any) => {
       this.admissionDetails = data;
+      
+      if(data.message === 'Failed' ){
+        alert('No data found');
+      }
       this.isDataLoaded = true;
       // Set flag to show the table only after data is loaded
     }).catch((error) => {

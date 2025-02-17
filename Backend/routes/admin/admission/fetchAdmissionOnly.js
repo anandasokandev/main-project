@@ -19,7 +19,7 @@ router.get('/', (req, res, next) => {
         }
 
         if(result.length === 0 ){
-            return res.json({message: 'Failed'})
+            return res.json({message: 'Failed', count: result.length})
         }
         
         // If no error, send the result as a JSON response

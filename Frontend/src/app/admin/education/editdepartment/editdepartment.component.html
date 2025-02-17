@@ -3,23 +3,20 @@
         <div class="form-holder">
             <div class="form-content">
                 <div class="form-items">
-                    <h3>Register Department Details</h3>
-                    <div class="form-button1">
-                        <button class="btn btn-primary" routerLink="/viewdepartment">View Department</button>
-                    </div>
+                    <h3>Edit Department Details</h3>
                     <p>--------------</p>
-                    <form class="requires-validation" >
+                    <form class="requires-validation" [formGroup]="deptForm">
 
 
 
                         <div class="input-group">
                            <label for="name">Department Name</label>
-                           <input class="form-control" type="text" formControlName="courseName" placeholder="Example: Computer Science " required>
+                    <input class="form-control" type="text" ngModel="{{dept[0].dept_name}}" formControlName="dept_name" placeholder="Example: Computer Science " required>
                         </div>
 
                         <div class="input-group">
                             <label for="email">Department Description</label>
-                            <input class="form-control" type="text" formControlName="courseDesc" placeholder="Example: Focuses on the study of IT " required>
+                            <input class="form-control" type="text" ngModel="{{dept[0].dept_description}}" formControlName="dept_desc" placeholder="Example: Focuses on the study of IT " required>
                         </div>
 
                         <div class="form-button mt-3">

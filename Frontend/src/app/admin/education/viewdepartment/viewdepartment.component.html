@@ -2,21 +2,31 @@
   <h2>View Department</h2>
   <ul class="responsive-table">
     <div class="form-button1">
-      <button class="btn btn-primary" routerLink="/createdepartment">Add Department</button>
+      <button
+        class="btn btn-primary"
+        routerLink="/admin/education/createdepartment"
+      >
+        Add Department
+      </button>
     </div>
     <li class="table-header">
       <div class="col col-1">Id</div>
       <div class="col col-2">Department Name</div>
       <div class="col col-3">Description</div>
-      <div class="col col-4">Actions</div> 
+      <div class="col col-4">Edit</div>
+      <div class="col col-5">Delete</div>
     </li>
     <li class="table-row" *ngFor="let item of dept; let i = index">
-      <div class="col col-1" >{{i + 1}}</div>
-      <div class="col col-2" >{{item.dept_name}}</div>
-      <div class="col col-3" >{{item.dept_description}}</div>
-      <div class="col col-4" >
-        <button class="btn edit-btn">Edit</button>
-        <button class="btn delete-btn">Delete</button>
+      <div class="col col-1">{{ i + 1 }}</div>
+      <div class="col col-2">{{ item.dept_name }}</div>
+      <div class="col col-3">{{ item.dept_description }}</div>
+      <div class="col col-4">
+        <button (click)="editDepartment(item.dept_id)" class="btn edit-btn">
+          Edit
+        </button>
+      </div>
+      <div class="col col-4">
+        <button (click)="deleteDepartment(item.dept_id)" class="btn delete-btn">Delete</button>
       </div>
     </li>
   </ul>

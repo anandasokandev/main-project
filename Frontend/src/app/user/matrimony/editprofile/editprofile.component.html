@@ -1,0 +1,227 @@
+<div class="form-body">
+    <div class="row">
+      <div class="form-holder">
+        <div class="form-content">
+          <div class="form-items" style="margin-top: 90px">
+            <h3>Create Profile</h3>
+            <p>--------------</p>
+            <form [formGroup]="matrimonyForm">
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="position">First Name</label>
+                  <input class="form-control" type="text" value="{{ user[0].first_name }}" disabled />
+                </div>
+  
+                <div class="input-group">
+                  <label for="name">Last Name</label>
+                  <input class="form-control" type="text" value="{{ user[0].last_name }}" disabled />
+                </div>
+              </div>
+  
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="position">Gender</label>
+                  <select class="form-select" id="position" style="color: black">
+                    <option value="Male" selected>{{ user[0].gender }}</option>
+                  </select>
+                </div>
+  
+                <div class="input-group">
+                  <label for="name">Date of Birth</label>
+                  <input class="form-control" type="text" value="{{ user[0].dob | date : 'dd-MM-yyyy' }}" disabled />
+                </div>
+              </div>
+  
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="position">State</label>
+                  <input class="form-control" type="text" value="{{ user[0].state }}" disabled />
+                </div>
+  
+                <div class="input-group">
+                  <label for="name">District</label>
+                  <input class="form-control" type="text" value="{{ user[0].district }}" disabled />
+                </div>
+              </div>
+  
+              <!-- Remaining form fields -->
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="position">Location</label>
+                  <input class="form-control" type="text" value="{{ user[0].location }}" disabled />
+                </div>
+  
+                <div class="input-group">
+                  <label for="name">Pincode</label>
+                  <input class="form-control" type="text" value="{{ user[0].pincode }}" disabled />
+                </div>
+              </div>
+  
+              <p>Basic Details</p>
+  
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="position">Marital Status</label>
+                  <select class="form-select" formControlName="maritalstatus" id="maritalStatus" style="color: black">
+                    <option selected disabled value="">Select Marital Status</option>
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Divorced">Divorced</option>
+                    <option value="Widowed">Widowed</option>
+                  </select>
+                </div>
+  
+                <div class="input-group">
+                  <label for="name">Religion</label>
+                  <select class="form-select" formControlName="religion" id="religion" style="color: black">
+                    <option selected disabled value="">Select Religion</option>
+                    <option value="Hindu">Hindu</option>
+                    <option value="Muslim">Muslim</option>
+                    <option value="Christian">Christian</option>
+                    <option value="Sikh">Sikh</option>
+                    <option value="Buddhist">Buddhist</option>
+                    <option value="Jain">Jain</option>
+                    <option value="Zoroastrian">Zoroastrian (Parsis)</option>
+                    <option value="Jewish">Jewish</option>
+                    <option value="Bahá'í">Bahá'í</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+  
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="position">Caste</label>
+                  <select class="form-select" formControlName="caste" id="caste" style="color: black">
+                    <option selected disabled value="">Select Caste</option>
+                    <option value="General">General</option>
+                    <option value="OBC">OBC (Other Backward Class)</option>
+                    <option value="SC">SC (Scheduled Caste)</option>
+                    <option value="ST">ST (Scheduled Tribe)</option>
+                    <option value="EWS">EWS (Economically Weaker Sections)</option>
+                    <option value="Vokkaliga">Vokkaliga</option>
+                    <option value="Brahmin">Brahmin</option>
+                    <option value="Kshatriya">Kshatriya</option>
+                    <option value="Vaishya">Vaishya</option>
+                    <option value="Jat">Jat</option>
+                    <option value="Maratha">Maratha</option>
+                    <option value="Ezhava">Ezhava</option>
+                    <option value="Nair">Nair</option>
+                    <option value="Mali">Mali</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+  
+                <div class="input-group">
+                  <label for="name">Mother Tongue</label>
+                  <select class="form-select" formControlName="mothertoungue" id="motherTongue" style="color: black">
+                    <option selected disabled value="">Select Mother Tongue</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="Bengali">Bengali</option>
+                    <option value="Telugu">Telugu</option>
+                    <option value="Marathi">Marathi</option>
+                    <option value="Tamil">Tamil</option>
+                    <option value="Urdu">Urdu</option>
+                    <option value="Gujarati">Gujarati</option>
+                    <option value="Malayalam">Malayalam</option>
+                    <option value="Kannada">Kannada</option>
+                    <option value="Punjabi">Punjabi</option>
+                    <option value="Odia">Odia</option>
+                    <option value="Assamese">Assamese</option>
+                    <option value="Maithili">Maithili</option>
+                    <option value="Sanskrit">Sanskrit</option>
+                    <option value="Kashmiri">Kashmiri</option>
+                    <option value="Sindhi">Sindhi</option>
+                    <option value="Dogri">Dogri</option>
+                    <option value="Nepali">Nepali</option>
+                    <option value="Bhojpuri">Bhojpuri</option>
+                    <option value="Santali">Santali</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+  
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="position">Height ( in cm )</label>
+                  <input class="form-control" type="text" formControlName="height" />
+                </div>
+  
+                <div class="input-group">
+                  <label for="name">Weight ( in Kg ) </label>
+                  <input class="form-control" type="text" formControlName="weight" />
+                </div>
+              </div>
+  
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="position">Body Type</label>
+                  <select class="form-select" formControlName="bodytype" id="position" style="color: black">
+                    <option selected disabled value="">Select</option>
+                    <option value="Athlete">Athlete</option>
+                    <option value="Average">Average</option>
+                    <option value="Heavy">Heavy</option>
+                    <option value="Slim">Slim</option>
+                  </select>
+                </div>
+  
+                <div class="input-group">
+                  <label for="name">Highest Education</label>
+                  <select class="form-select" formControlName="highesteducation" id="highestEducation"
+                    style="color: black">
+                    <option selected disabled value="">Select</option>
+                    <option value="High School">High School</option>
+                    <option value="Bachelor's Degree">Bachelor's Degree</option>
+                    <option value="Master's Degree">Master's Degree</option>
+                    <option value="PhD">PhD</option>
+                  </select>
+                </div>
+              </div>
+  
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="position">Occupation</label>
+                  <select class="form-select" formControlName="occupation" id="occupation" style="color: black">
+                    <option selected disabled value="">Select Occupation</option>
+                    <option value="Salaried">Salaried</option>
+                    <option value="Non-salaried">Non-salaried</option>
+                    <option value="Business">Business</option>
+                    <option value="Self-employed">Self-employed</option>
+                    <option value="Professional">Professional</option>
+                    <option value="Student">Student</option>
+                    <option value="Home-maker">Home-maker</option>
+                    <option value="Retired">Retired</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+  
+                <div class="input-group">
+                  <label for="name">Income</label>
+                  <input class="form-control" type="text" formControlName="salary" />
+                </div>
+              </div>
+  
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="position">Complexion</label>
+                  <select class="form-select" formControlName="complexion" id="position" style="color: black">
+                    <option selected disabled value="">Select</option>
+                    <option value="Dark">Dark</option>
+                    <option value="Fair">Fair</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Very Fair">Very Fair</option>
+                  </select>
+                </div>
+              </div>
+  
+              <div class="form-button mt-3">
+                <button id="submit" type="submit" (click)="createProfile()" class="btn btn-primary">
+                  Add +
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

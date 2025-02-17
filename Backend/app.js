@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
+global.__basedir = path.resolve(path.dirname(''));
 
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/guest/login');
@@ -35,8 +36,19 @@ var map = require('./routes/map');
 var fetchAdmissionDetails = require('./routes/admin/admission/fetchAdmissionDetails');
 var fetchAdmissionOnly = require('./routes/admin/admission/fetchAdmissionOnly');
 var fetchSpecificAdmission = require('./routes/admin/admission/fetchSpecificAdmission');
+var admitStudent = require('./routes/admin/admission/admitStudent');
+var fetchStudentByCourse = require('./routes/admin/admission/fetchStudentDetailsByCourse');
+var fetchDepartmentById = require('./routes/fetchDepartmentById');
+var updateDepartment = require('./routes/updateDepartment');
+var deleteDepartment = require('./routes/deleteDepartment');
+var upload = require('./routes/upload');
+const { glob } = require('fs');
+var createProfile = require('./routes/user/matrimony/createProfile');
+var profileExists = require('./routes/user/matrimony/fetchMatrimonyProfileExists');
+var uploadImages = require('./routes/user/matrimony/uploadImages');
 
 var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -79,7 +91,15 @@ app.use('/map',map);
 app.use('/fetchadmissiondetails',fetchAdmissionDetails)
 app.use('/fetchadmissiononly',fetchAdmissionOnly);
 app.use('/fetchspecificadmission',fetchSpecificAdmission);
-
+app.use('/admitstudent',admitStudent);
+app.use('/fetchstudentbycourse',fetchStudentByCourse);
+app.use('/fetchdeptbyid',fetchDepartmentById);
+app.use('/updatedept',updateDepartment);
+app.use('/deletedept',deleteDepartment);
+app.use('/upload',upload);
+app.use('/createprofile',createProfile);
+app.use('/fetchmatrimonyprofile',profileExists);
+app.use('/uploads',uploadImages);
 
 //catch 404 and forward to error handler
 app.use(function(req, res, next) {

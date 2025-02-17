@@ -6,41 +6,50 @@ import { DatabaseService } from 'src/app/database.service';
 @Component({
   selector: 'app-viewcourse',
   templateUrl: './viewcourse.component.html',
-  styleUrls: ['./viewcourse.component.scss']
+  styleUrls: ['./viewcourse.component.scss'],
 })
 export class ViewcourseComponent {
+  constructor(
+    private db: DatabaseService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
 
-  constructor(private db: DatabaseService , private fb: FormBuilder, private router: Router){}
 
-  public course:any[]=[];
-  public dept:any[]=[];
+  public course: any[] = [];
+  public dept: any[] = [];
+  loadResult: boolean = false;
 
   viewByDepartment = () => {
-    const department_id=this.departmentForm.value.department;
-    console.log(department_id)
-    this.db.fetchCourseById({department_id}).then((data:any)=>{
-    this.course=data;
-    console.log(this.course);
-  });
-  }
+    const department_id = this.departmentForm.value.department;
+    console.log(department_id);
+    this.db.fetchCourseById({ department_id }).then((data: any) => {
+      this.course = data;
+      console.log(this.course);
+      this.loadResult = true;
+      if (data.affectedRows === 0) {
+        alert('No Courses Found');
+      }
+    });
+  };
 
   ngOnInit(): void {
     this.fetchDept();
   }
 
   departmentForm = this.fb.group({
-    department:['']
-  })
+    department: [''],
+  });
 
-  fetchCourse=()=>{
-    this.db.fetchCourse().then((data)=>{
+  fetchCourse = () => {
+    this.db.fetchCourse().then((data) => {
       this.course = data;
-    })
-  }
+    });
+  };
 
-  fetchDept = () =>{
-    this.db.fetchDepartment().then((data)=>{
+  fetchDept = () => {
+    this.db.fetchDepartment().then((data) => {
       this.dept = data;
-    })
-  }
+    });
+  };
 }

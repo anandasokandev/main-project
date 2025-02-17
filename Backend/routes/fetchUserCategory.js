@@ -5,6 +5,7 @@ const db = require('../database/db');
 router.use(express.json());
 
 router.get('/', (req, res, next) => {
+
     let login_id = req.query.loginid; 
 
     if (!login_id) {
@@ -20,7 +21,7 @@ router.get('/', (req, res, next) => {
 
         // If no results are found or user_category is null
         if (result.length === 0 || result[0].user_category === 'null') {
-            return res.status(400).send({ 'message': 'User category is null or user not found' });
+            return res.json({ message: 'User category is null or user not found' });
         }
 
         // Send the user category as a response

@@ -8,9 +8,10 @@ import { DatabaseService } from 'src/app/database.service';
   styleUrls: ['./viewadmissionprofile.component.scss'],
 })
 export class ViewadmissionprofileComponent {
-  admission_id: string = '';
-  login_id: string = '';
+  admissionid: string = '';
+  loginid: string = '';
   userDetails:any[]=[];
+  ststusDetails: string = ''
 
   constructor(
     private route: ActivatedRoute,
@@ -21,14 +22,30 @@ export class ViewadmissionprofileComponent {
   ngOnInit(): void {
     // Retrieve the loginId from the query parameters
     this.route.queryParams.subscribe((params) => {
-      this.admission_id = params['admission_id'];
-      this.login_id = params['login_id'];
+      this.admissionid = params['admission_id'];
+      this.loginid = params['login_id'];
     });
 
-    this.db.fetchSpecificAdmission(this.admission_id, this.login_id).then((data:any)=>{
+    this.db.fetchSpecificAdmission(this.admissionid, this.loginid).then((data:any)=>{
       this.userDetails = data;
       console.log(this.userDetails);
       
+    })
+  }
+
+
+  admitStudent(){
+
+    const payload = {
+      login_id : this.loginid,
+      admission_id: this.admissionid
+    }
+    this.db.admitStudent(payload).then((data:any)=>{
+      if(data.message === 'Admission status updated successfully')
+      {
+        alert('Student admitted successfully');
+        this.router.navigate(['/admin/dashboard'])
+      }
     })
   }
 }

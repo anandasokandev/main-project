@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpEvent,  HttpRequest } from '@angular/common/http'
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -38,7 +39,7 @@ export class DatabaseService {
   }
 
   checkUsername(data:any){
-    return this.http.post('http://localhost:3000/fetchusername',data).toPromise();
+    return this.http.get(`http://localhost:3000/fetchusername?username=${data}`).toPromise();
   }
 
   fetchPincode(pincode:any) {
@@ -123,6 +124,45 @@ export class DatabaseService {
 
   fetchSpecificAdmission(admissionId: string, loginId: string){
     return this.http.get(`http://localhost:3000/fetchspecificadmission?admission_id=${admissionId}&login_id=${loginId}`).toPromise();
+  }
+
+  admitStudent(data: any){
+    return this.http.put('http://localhost:3000/admitstudent',data).toPromise();
+  }
+
+  fetchStudentByCourse(course_id: string){
+    return this.http.get(`http://localhost:3000/fetchstudentbycourse?course_id=${course_id}`).toPromise();
+  }
+
+  fetchDepartmentById(dept_id: string){
+    return this.http.get(`http://localhost:3000/fetchdeptbyid?dept_id=${dept_id}`).toPromise();
+  }
+
+  updateDepartment(data:any){
+    return this.http.put('http://localhost:3000/updatedept',data).toPromise();
+  }
+
+  deleteDepartment(dept_id: any){
+    return this.http.delete(`http://localhost:3000/deletedept?dept_id=${dept_id}`).toPromise();
+  }
+
+  upload(file : File): Observable<HttpEvent<any>>{
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    const req = new HttpRequest('POST', `http://localhost:3000/upload`,
+      formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+    return this.http.request(req);
+  }
+
+  createMatrimonyProfile(data: any){
+    return this.http.post('http://localhost:3000/createprofile',data).toPromise();
+  }
+
+  fetchMatrimonyProfile(loginid: any){
+    return this.http.get(`http://localhost:3000/fetchmatrimonyprofile?loginid=${loginid}`).toPromise();
   }
 
 }

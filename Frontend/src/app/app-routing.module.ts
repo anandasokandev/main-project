@@ -17,28 +17,40 @@ import { ViewjobComponent } from './admin/career/viewjob/viewjob.component';
 import { SelectcategoryComponent } from './user/selectcategory/selectcategory.component';
 import { DisabilityComponent } from './user/disability/disability.component';
 import { AdmissionFormComponent } from './user/education/admissionform/admissionform.component';
-import { MainDashboardComponent } from './user/layout/main-dashboard/main-dashboard.component';
 import { UserDashboardComponent } from './user/layout/user-dashboard/user-dashboard.component';
 import { CourseselectionComponent } from './user/education/courseselection/courseselection.component';
 import { SuggestedcourseComponent } from './user/education/suggestedcourse/suggestedcourse.component';
-import { UpdateprofileComponent } from './user/matrimony/updateprofile/updateprofile.component';
 import { ViewadmissionprofileComponent } from './admin/education/viewadmissionprofile/viewadmissionprofile.component';
+import { ViewadmitteddetailsComponent } from './admin/education/viewadmitteddetails/viewadmitteddetails.component';
+import { EditdepartmentComponent } from './admin/education/editdepartment/editdepartment.component';
+import { CreateprofilematrimonyComponent } from './user/matrimony/createprofilematrimony/createprofilematrimony.component';
+import { LandingpageComponent } from './guest/landingpage/landingpage.component';
+import { NavbarComponent } from './user/layout/navbar/navbar.component';
+import { UploadimagesComponent } from './user/matrimony/uploadimages/uploadimages.component';
+import { EditprofileComponent } from './user/matrimony/editprofile/editprofile.component';
+import { ViewmatrimonyprofileComponent } from './admin/matrimony/viewmatrimonyprofile/viewmatrimonyprofile.component';
 const routes: Routes = [
-  {
-    path: 'signup',
-    component: SignupComponent,
-  },
   {
     path: '',
     component: LoginComponent,
   },
+
   {
-    path: 'login',
-    component: LoginComponent,
+    path: 'guest',
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent,
+      },
+      {
+        path: 'signup',
+        component: SignupComponent,
+      },
+    ],
   },
   {
     path: 'user',
-    component: MainDashboardComponent,
+    component: NavbarComponent,
     children: [
       {
         path: 'dashboard',
@@ -77,8 +89,16 @@ const routes: Routes = [
         path: 'matrimony',
         children: [
           {
-            path: 'updateprofile',
-            component: UpdateprofileComponent,
+            path: 'createprofile',
+            component: CreateprofilematrimonyComponent,
+          },
+          {
+            path: 'uploadimages',
+            component: UploadimagesComponent,
+          },
+          {
+            path: 'editprofile',
+            component: EditprofileComponent,
           },
         ],
       },
@@ -91,6 +111,15 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
+      },
+      {
+        path: 'matrimony',
+        children: [
+          {
+            path: 'viewmatrimonyprofiles',
+            component: ViewmatrimonyprofileComponent,
+          },
+        ],
       },
       {
         path: 'education',
@@ -118,6 +147,14 @@ const routes: Routes = [
           {
             path: 'viewadmissionprofile',
             component: ViewadmissionprofileComponent,
+          },
+          {
+            path: 'viewadmitteddetails',
+            component: ViewadmitteddetailsComponent,
+          },
+          {
+            path: 'editdepartment',
+            component: EditdepartmentComponent,
           },
         ],
       },

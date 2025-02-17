@@ -5,11 +5,12 @@ const db = require('../database/db');
 // Middleware to parse JSON request bodies
 router.use(express.json());
 
-router.post('/', (req, res, next) => {
+router.get('/', (req, res, next) => {
 
     
-    const { username } = req.body.username;
+    let username  = req.query.username
 
+    
     
     if (!username) {
         return res.status(400).send({ message: 'Username is required' });
@@ -27,10 +28,10 @@ router.post('/', (req, res, next) => {
 
             
             if (result.length > 0) {
-                return res.status(409).send({ message: 'Username already exists' });  // 409 Conflict
+                return res.json({ message: 'Username already exists' }); 
             }
 
-            return res.status(200).send({ message: 'Username is available' });
+            return res.json({ message: 'Username is available' });
         });
     } catch (err) {
         console.error(err);

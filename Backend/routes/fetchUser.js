@@ -18,16 +18,22 @@ router.get('/', (req, res, next) => {
         if (err) {
             return res.status(500).send({ 'message': 'Database query failed', 'error': err });
         }
-
        
         if (result.length > 0) {
             
-            return res.status(200).json({ message: 'User found', data: result});
+            return res.json(result);
+            
         } else if(result.length == 0) {
             
             return res.send({ 'message': 'User not found' });
         }
     });
+
+    
+        
+        
+
+
 });
 
 module.exports = router;

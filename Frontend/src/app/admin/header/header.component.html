@@ -1,210 +1,202 @@
 <!DOCTYPE html>
-   <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+  <head>
+    <title>Rehabilitation</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-      <!--=============== REMIXICONS ===============-->
-      <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
-
-      <!--=============== CSS ===============-->
-      <title>Responsive dropdown menu - Bedimcode</title>
-   </head>
-   <body>
-      <!--=============== HEADER ===============-->
-      <header class="header">
-         <nav class="nav container">
-            <div class="nav__data">
-               <a routerLink='/admin/dashboard' class="nav__logo">
-                  <i class="ri-planet-line"></i> Company
-               </a>
-               
-               <div class="nav__toggle" id="nav-toggle"  (click)="toggleMenu()" >
-                  <i class="ri-menu-line nav__burger" *ngIf="!isMenuOpen"></i>
-                  <i class="ri-close-line nav__close" *ngIf="isMenuOpen"></i>
-               </div>
-
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <section class="ftco-section">
+      <nav
+        class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+        id="ftco-navbar"
+      >
+        <div class="container">
+          <a routerLink="/admin/dashboard" class="navbar-brand">Rehab</a>
+          <form class="searchform order-sm-start order-lg-last">
+            <div class="form-group d-flex">
+              <input
+                type="text"
+                class="form-control pl-3"
+                placeholder="Search"
+              />
+              <button type="submit" placeholder="" class="form-control search">
+                <span class="fa fa-search"></span>
+              </button>
             </div>
+          </form>
 
-            <!--=============== NAV MENU ===============-->
-            <div class="nav__menu" id="nav-menu"  [ngClass]="{'show-menu': isMenuOpen}">
-               <ul class="nav__list">
-                  <li><a routerLink="/admin/dashboard" class="nav__link" >Dashboard</a></li>
+          <!-- Hamburger Menu (Mobile) -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#ftco-nav"
+            aria-controls="ftco-nav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            (click)="toggleNavbar()"
+          >
+            <span class="fa fa-bars"></span> Menu
+          </button>
 
-                  <li class="dropdown__item">
-                     <div class="nav__link">
-                        Matrimony <i class="ri-arrow-down-s-line dropdown__arrow"></i>
-                     </div>
+          <!-- Menu Items -->
+          <div
+            class="collapse navbar-collapse"
+            [ngClass]="{ show: navbarOpen }"
+            id="ftco-nav"
+          >
+            <ul class="navbar-nav m-auto" style="cursor: pointer">
+              <li class="nav-item active">
+                <a routerLink="/admin/dashboard" class="nav-link">Home</a>
+              </li>
 
-                     <ul class="dropdown__menu">
-                        <li>
-                           <a href="#" class="dropdown__link">
-                              <i class="ri-pie-chart-line"></i> Overview
-                           </a>                          
-                        </li>
+              <!-- First Dropdown -->
+              <li class="nav-item dropdown" (click)="toggleNavbar()">
+                <a
+                  class="nav-link dropdown-toggle"
+                  id="dropdown01"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  (click)="toggleDropdown('dropdown1')"
+                >
+                  Controls
+                </a>
+                <div
+                  class="dropdown-menu"
+                  [ngClass]="{ show: dropdownStates['dropdown1'] }"
+                  aria-labelledby="dropdown01"
+                >
+                  <a
+                    routerLink="/admin/education/createdepartment"
+                    class="dropdown-item"
+                    (click)="toggleDropdown('dropdown4')"
+                    >Department</a
+                  >
+                  <a
+                    routerLink="/admin/education/createcourse"
+                    class="dropdown-item"
+                    (click)="toggleDropdown('dropdown4')"
+                    >Course</a
+                  >
+                  <a
+                    routerLink="/admin/education/createjobcategory"
+                    class="dropdown-item"
+                    (click)="toggleDropdown('dropdown4')"
+                    >Job Category</a
+                  >
+                  <a
+                    routerLink="/admin/education/createjob"
+                    class="dropdown-item"
+                    (click)="toggleDropdown('dropdown4')"
+                    >Job</a
+                  >
+                </div>
+              </li>
 
-                        <li>
-                           <a href="#" class="dropdown__link">
-                              <i class="ri-arrow-up-down-line"></i> Transactions
-                           </a>
-                        </li>
+              <!-- Second Dropdown -->
+              <li class="nav-item dropdown" (click)="toggleNavbar()">
+                <a
+                  class="nav-link dropdown-toggle"
+                  id="dropdown02"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  (click)="toggleDropdown('dropdown2')"
+                >
+                  Education
+                </a>
+                <div
+                  class="dropdown-menu"
+                  [ngClass]="{ show: dropdownStates['dropdown2'] }"
+                  aria-labelledby="dropdown02"
+                >
+                  <a
+                    routerLink="/admin/education/admission"
+                    class="dropdown-item"
+                    (click)="toggleDropdown('dropdown4')"
+                    >Admission Details</a
+                  >
+                  <a
+                    routerLink="/admin/education/viewadmitteddetails"
+                    class="dropdown-item"
+                    (click)="toggleDropdown('dropdown4')"
+                    >View Admitted Students</a
+                  >
+                  <a
+                    routerLink="/admin/settings/security"
+                    class="dropdown-item"
+                    (click)="toggleDropdown('dropdown4')"
+                    >Security</a
+                  >
+                </div>
+              </li>
 
-                        <!--=============== DROPDOWN SUBMENU ===============-->
-                        <li class="dropdown__subitem">
-                           <div class="dropdown__link">
-                              <i class="ri-bar-chart-line"></i> Reports <i class="ri-add-line dropdown__add"></i>
-                           </div>
+              <li class="nav-item dropdown" (click)="toggleNavbar()">
+                <a
+                  class="nav-link dropdown-toggle"
+                  id="dropdown02"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  (click)="toggleDropdown('dropdown3')"
+                >
+                  Matrimony
+                </a>
+                <div
+                  class="dropdown-menu"
+                  [ngClass]="{ show: dropdownStates['dropdown3'] }"
+                  aria-labelledby="dropdown02"
+                >
+                  <a
+                    routerLink="/admin/matrimony/viewmatrimonyprofiles"
+                    class="dropdown-item"
+                    (click)="toggleDropdown('dropdown4')"
+                    >Profiles</a
+                  >
+                  <a
+                    routerLink="/admin/education/viewadmitteddetails"
+                    class="dropdown-item"
+                    (click)="toggleDropdown('dropdown4')"
+                    ></a
+                  >
+                  <a
+                    routerLink="/admin/settings/security"
+                    class="dropdown-item"
+                    (click)="toggleDropdown('dropdown4')"
+                    >Security</a
+                  >
+                </div>
+              </li>
 
-                           <ul class="dropdown__submenu">
-                              <li>
-                                 <a href="#" class="dropdown__sublink">
-                                    <i class="ri-file-list-line"></i> Documents
-                                 </a>
-                              </li>
-      
-                              <li>
-                                 <a href="#" class="dropdown__sublink">
-                                    <i class="ri-cash-line"></i> Payments
-                                 </a>
-                              </li>
-      
-                              <li>
-                                 <a href="#" class="dropdown__sublink">
-                                    <i class="ri-refund-2-line"></i> Refunds
-                                 </a>
-                              </li>
-                           </ul>
-                        </li>
-                     </ul>
-                  </li>
+              <li class="nav-item"><a class="nav-link">Work</a></li>
+              <li class="nav-item"><a class="nav-link">Blog</a></li>
+              <li class="nav-item"><a class="nav-link">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
-                  <!--=============== DROPDOWN 1 ===============-->
-                  <li class="dropdown__item">
-                     <div class="nav__link">
-                        Education <i class="ri-arrow-down-s-line dropdown__arrow"></i>
-                     </div>
-
-                     <ul class="dropdown__menu">
-                        <li>
-                           <a routerLink="/admin/education/admission" class="dropdown__link">
-                              <i class="ri-pie-chart-line"></i>Admission
-                           </a>                          
-                        </li>
-
-                        <li>
-                           <a href="#" class="dropdown__link">
-                              <i class="ri-arrow-up-down-line"></i>
-                           </a>
-                        </li>
-
-                        <!--=============== DROPDOWN SUBMENU ===============-->
-                        <li class="dropdown__subitem">
-                           <div class="dropdown__link">
-                              <i class="ri-bar-chart-line"></i> Controls <i class="ri-add-line dropdown__add"></i>
-                           </div>
-
-                           <ul class="dropdown__submenu">
-                              <li>
-                                 <a routerLink="/admin/createdepartment" class="dropdown__sublink">
-                                    <i class="ri-file-list-line"></i> Department
-                                 </a>
-                              </li>
-      
-                              <li>
-                                 <a routerLink="/admin/createcourse" class="dropdown__sublink">
-                                    <i class="ri-cash-line"></i> Course
-                                 </a>
-                              </li>
-      
-                              <li>
-                                 <a href="#" class="dropdown__sublink">
-                                    <i class="ri-refund-2-line"></i> 
-                                 </a>
-                              </li>
-                           </ul>
-                        </li>
-                     </ul>
-                  </li>
-                  
-                  <li class="dropdown__item">
-                     <div class="nav__link">
-                        Careers <i class="ri-arrow-down-s-line dropdown__arrow"></i>
-                     </div>
-
-                     <ul class="dropdown__menu">
-                        <li>
-                           <a href="#" class="dropdown__link">
-                              <i class="ri-pie-chart-line"></i> Overview
-                           </a>                          
-                        </li>
-
-                        <li>
-                           <a href="#" class="dropdown__link">
-                              <i class="ri-arrow-up-down-line"></i> Transactions
-                           </a>
-                        </li>
-
-                        <!--=============== DROPDOWN SUBMENU ===============-->
-                        <li class="dropdown__subitem">
-                           <div class="dropdown__link">
-                              <i class="ri-bar-chart-line"></i> Reports <i class="ri-add-line dropdown__add"></i>
-                           </div>
-
-                           <ul class="dropdown__submenu">
-                              <li>
-                                 <a href="#" class="dropdown__sublink">
-                                    <i class="ri-file-list-line"></i> Documents
-                                 </a>
-                              </li>
-      
-                              <li>
-                                 <a href="#" class="dropdown__sublink">
-                                    <i class="ri-cash-line"></i> Payments
-                                 </a>
-                              </li>
-      
-                              <li>
-                                 <a href="#" class="dropdown__sublink">
-                                    <i class="ri-refund-2-line"></i> Refunds
-                                 </a>
-                              </li>
-                           </ul>
-                        </li>
-                     </ul>
-                  </li>
-
-                  <!--=============== DROPDOWN 2 ===============-->
-                  <li class="dropdown__item">
-                     <div class="nav__link">
-                        Users <i class="ri-arrow-down-s-line dropdown__arrow"></i>
-                     </div>
-
-                     <ul class="dropdown__menu">
-                        <li>
-                           <a href="#" class="dropdown__link">
-                              <i class="ri-user-line"></i> Profiles
-                           </a>                          
-                        </li>
-
-                        <li>
-                           <a href="#" class="dropdown__link">
-                              <i class="ri-lock-line"></i> Accounts
-                           </a>
-                        </li>
-
-                        <li>
-                           <a href="#" class="dropdown__link">
-                              <i class="ri-message-3-line"></i> Messages
-                           </a>
-                        </li>
-                     </ul>
-                  </li>
-
-                  <li><a href="#" class="nav__link">Signout</a></li>
-               </ul>
-            </div>
-         </nav>
-      </header>
       <router-outlet></router-outlet>
-   </body>
+    </section>
+
+    <script src="../../../assets/admin/assets/header/js/main.js"></script>
+    <script src="../../../assets/admin/assets/header/js/bootstrap.min.js"></script>
+    <script src="../../../assets/admin/assets/header/js/jquery.min.js"></script>
+    <script src="../../../assets/admin/assets/header/js/popper.js"></script>
+  </body>
 </html>

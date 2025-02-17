@@ -51,7 +51,7 @@
               <option value="">Select Category</option>
               <option value="Submitted">Pending</option>
               <option value="Reviewed">Reviewed</option>
-              <option value="Approved">Approved</option>
+              <option value="Admitted">Admitted</option>
             </select>
           </div>
           <button type="submit" [disabled]="admissionForm.invalid">
@@ -79,7 +79,7 @@
           <tbody>
             <tr *ngFor="let item of admissionDetails; let i = index">
               <td>{{ i + 1 }}</td>
-              <td><img [src]="item.profile_pic" alt="Profile Photo" class="profile-img" /></td>
+              <td><img src="item.profile_pic" alt="Profile Photo" class="profile-img" /></td>
               <td>{{ item.first_name }} {{ item.last_name }}</td>
               <td>{{ item.submission_date | date: 'short' }}</td>
               <td>{{ item.form_status }}</td>

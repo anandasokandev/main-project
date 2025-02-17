@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { DatabaseService } from 'src/app/database.service';
 
 @Component({
@@ -9,7 +10,12 @@ import { DatabaseService } from 'src/app/database.service';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent {
- 
+
+  selectedFiles?: FileList
+  currentFile?: any;
+  message = '';
+  filesInfos?: Observable<any>;
+
   pincodeDetails: any[] = [];
   errorMessage: string = '';
   location: any[] = [];
@@ -17,8 +23,11 @@ export class ProfileComponent {
   district: string = '';
   pinCode: string = '';
   userProfileStatus: any[] = [];
+  public disabilityCategory: any[] = [];
+  public subDisabilityCategory:any []=[];
+  login_id = localStorage.getItem('loginid');
 
-  // Injecting necessary services
+  
   constructor(
     private db: DatabaseService,
     private router: Router,
@@ -37,11 +46,38 @@ export class ProfileComponent {
     state: [''],
     district: [''],
     location: [''],
-    disabilitytype: [''],
-    disabilitypercent: [''],
+    disabilitycategory: [''],
+    disabilitysubcategory: [''],
+    percent: [''],
     profile: [''],
     loginid: localStorage.getItem('loginid'),
   });
+
+  selectFile(event:any):void{
+    this.selectedFiles = event.target.files;
+    console.log(this.selectedFiles);
+    
+  }
+
+  ngOnInit(): void {
+    this.db.fetchDisabilityCategory().then((data: any) => {
+      this.disabilityCategory = data;
+    });
+
+    
+  }
+
+  fetchSubCategory(){
+    const subcategory_id = this.profileForm.value.disabilitycategory;
+    console.log(subcategory_id);
+    this.db.fetchDisabilitySubCategoryById(subcategory_id).then((data: any) => {
+      this.subDisabilityCategory = data;
+      console.log(this.subDisabilityCategory);
+      if (data.affectedRows === 0) {
+        alert('No sub category Found');
+      }
+    });
+  }
 
   // Method to fetch pincode details
   fetchPincode() {
@@ -55,46 +91,69 @@ export class ProfileComponent {
     this.state = '';
     this.district = '';
 
-    
-    this.db.fetchPincode(this.pinCode).then((data: any) => {
-      if (data && data[0].Status === 'Success') {
-        this.pincodeDetails = data[0].PostOffice;  // Get post office details
+    this.db
+      .fetchPincode(this.pinCode)
+      .then((data: any) => {
+        if (data && data[0].Status === 'Success') {
+          this.pincodeDetails = data[0].PostOffice; // Get post office details
 
-        // Extract first post office data for state and district
-        const office = this.pincodeDetails[0];
-        this.state = office.Circle;  // Assign state (from Circle)
-        this.district = office.District || 'Not Available';  // Assign district
+          // Extract first post office data for state and district
+          const office = this.pincodeDetails[0];
+          this.state = office.Circle; // Assign state (from Circle)
+          this.district = office.District || 'Not Available'; // Assign district
 
-        this.profileForm.patchValue({
-          state: this.state,
-          district: this.district
-        });
+          this.profileForm.patchValue({
+            state: this.state,
+            district: this.district,
+          });
 
-        // Populate the location dropdown (PostOffice names)
-        this.location = this.pincodeDetails.map((postOffice: any) => postOffice.Name);
-        console.log(this.location); // Check the populated location names
-      } else {
-        this.errorMessage = 'No details found for the entered pincode.';
-      }
-    }).catch((error) => {
-      console.error('Error fetching pincode details:', error);
-      this.errorMessage = 'Error fetching pincode details.';
-    });
+          // Populate the location dropdown (PostOffice names)
+          this.location = this.pincodeDetails.map(
+            (postOffice: any) => postOffice.Name
+          );
+          console.log(this.location); // Check the populated location names
+        } else {
+          this.errorMessage = 'No details found for the entered pincode.';
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching pincode details:', error);
+        this.errorMessage = 'Error fetching pincode details.';
+      });
   }
 
+
   // Method to handle form submission
-  onSubmit() {
+  createProfile() {
     console.log('Form submitted:', this.profileForm.value);
-
-    this.db.createUserProfile(this.profileForm.value).then((data: any)=>{
+    if(this.selectedFiles) {
+      console.log(this.selectedFiles.item(0));
+      const file: File | null = this.selectedFiles.item(0);
+      if(file) {
+        this.currentFile = file;
+        this.db.upload(this.currentFile).subscribe((event: any)=>{
+          this.message = event.body.message;
+        })
+      }
       
-
-      if(data && data.message === 'Success'){
+    }
+    this.profileForm.value.profile=this.currentFile.name;
+    this.db.createUserProfile(this.profileForm.value).then((data: any) => {
+      if (data && data.message === 'Success') {
         alert('User Profile Created Successfully');
-        this.router.navigate(['/user/dashboard']);
-      }else{
+        this.db.fetchUserCategory(this.login_id).then((data: any)=>{
+          console.log(data.user_category);
+          
+          if(data.user_category === null){
+            this.router.navigate(['/user/usercategory'])
+          }else{
+            this.router.navigate(['/user/dashboard']);
+          }
+        })
+        
+      } else {
         alert('User profile creation failed');
       }
-    })
+    });
   }
 }

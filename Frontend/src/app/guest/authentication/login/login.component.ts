@@ -6,10 +6,9 @@ import { DatabaseService } from 'src/app/database.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-
   public loginResponse: any = null;
   public fetchUserDetails: any = null;
   public login_id: any = '';
@@ -23,7 +22,7 @@ export class LoginComponent {
 
   loginForm = this.fb.group({
     username: ['', Validators.required],
-    password: ['', [Validators.required]]
+    password: ['', [Validators.required]],
   });
 
   // The async onSubmit method to handle form submission
@@ -36,43 +35,46 @@ export class LoginComponent {
     console.log(this.loginForm.value);
 
     try {
-      // First, handle login request
       this.loginResponse = await this.db.login(this.loginForm.value);
 
       if (this.loginResponse && this.loginResponse.length > 0) {
         this.login_id = this.loginResponse[0].login_id;
 
-        
-
         // Fetch user details and category asynchronously
         this.fetchUserDetails = await this.db.fetchUser(this.login_id);
         this.fetchUserCat = await this.db.fetchUserCategory(this.login_id);
 
-        localStorage.setItem("loginid", this.loginResponse[0].login_id);
-        localStorage.setItem("username", this.loginResponse[0].username);
+        localStorage.setItem('loginid', this.loginResponse[0].login_id);
+        localStorage.setItem('username', this.loginResponse[0].username);
+        localStorage.setItem('role',this.loginResponse[0].role)
 
-        if (this.loginResponse[0].role === 'user' && this.loginResponse[0].status === 'approved') {
-          if (this.fetchUserDetails.message === 'User found') {
-            if(this.fetchUserCat.user_category === null){
+        if (
+          this.loginResponse[0].role === 'user' &&
+          this.loginResponse[0].status === 'approved'
+        ) {
+          if (this.fetchUserDetails.length > 0) {
+            if (
+              this.fetchUserCat.user_category ===
+              null
+            ) {
               this.router.navigate(['/user/usercategory']);
-            }
-            else{
+            } else {
               this.router.navigate(['/user/dashboard']);
             }
           } else {
             this.router.navigate(['/user/userprofilereg']);
           }
-        } else if(this.loginResponse[0].role === 'user' && this.loginResponse[0].status === 'pending'){
+        } else if (
+          this.loginResponse[0].role === 'user' &&
+          this.loginResponse[0].status === 'pending'
+        ) {
           alert('User profile not approved');
-        }
-        else {
+        } else {
           this.router.navigate(['/admin/dashboard']);
         }
-
       } else {
         alert('Invalid credentials, please try again.');
       }
-
     } catch (error) {
       console.error('Error during login process:', error);
       alert('An error occurred while logging in, please try again later.');

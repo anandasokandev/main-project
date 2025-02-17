@@ -7,6 +7,7 @@ router.use(express.json());
 router.get('/', (req, res, next) => {
     
     let id = req.query.id;
+console.log(id);
 
     if (!id) {
         return res.status(400).json({ message: 'ID is required' });
@@ -21,6 +22,7 @@ router.get('/', (req, res, next) => {
         }
         
         return res.json(result);
+        
     });
 });
 

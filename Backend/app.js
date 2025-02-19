@@ -46,6 +46,8 @@ const { glob } = require('fs');
 var createProfile = require('./routes/user/matrimony/createProfile');
 var profileExists = require('./routes/user/matrimony/fetchMatrimonyProfileExists');
 var uploadImages = require('./routes/user/matrimony/uploadImages');
+var fetchMatrimonyProfile = require('./routes/admin/matrimony/fetchMatrimonyProfile');
+var findPartner = require('./routes/user/matrimony/findMatchingPartner');
 
 var app = express();
 
@@ -100,6 +102,8 @@ app.use('/upload',upload);
 app.use('/createprofile',createProfile);
 app.use('/fetchmatrimonyprofile',profileExists);
 app.use('/uploads',uploadImages);
+app.use('/fetchmatrimonyprofileall',fetchMatrimonyProfile)
+app.use('/findpartner',findPartner);
 
 //catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -10,7 +10,7 @@ router.get('/',(req, res, next)=>{
     console.log(course_id);
     
 
-    const fetchCourseById = 'SELECT * FROM tblcourse WHERE course_id = ?';
+    const fetchCourseById = 'SELECT * FROM tblcourse c INNER JOIN tbldepartment d ON d.dept_id = c.department_id WHERE c.course_id = ?';
 
     db.query(fetchCourseById,[course_id],(err, result)=>{
         if(err) throw err;

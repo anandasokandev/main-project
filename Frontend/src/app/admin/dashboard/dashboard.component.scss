@@ -51,7 +51,6 @@ html, body {
   margin: 0;
   
 }
-
 body {
   font-family: 'DM Sans', sans-serif;
   overflow: hidden;
@@ -284,6 +283,7 @@ button, a {
   }
   
   &-header {
+    margin-top: 65px;
     display: flex;
     justify-content: space-between;
     align-items: center;

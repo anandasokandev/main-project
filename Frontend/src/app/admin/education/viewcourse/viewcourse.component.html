@@ -24,8 +24,8 @@
         <div class="col col-4">{{ item.course_name }}</div>
         <div class="col col-4">{{ item.duration }}</div>
         <div class="col col-5">
-          <button class="btn edit-btn">Edit</button>
-          <button class="btn delete-btn">Delete</button>
+          <button (click)="editCourse(item.course_id)" class="btn edit-btn">Edit</button>
+          <button (click)="deleteCourse(item.course_id)" class="btn delete-btn">Delete</button>
         </div>
       </li>
     </ul>

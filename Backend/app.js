@@ -48,6 +48,44 @@ var profileExists = require('./routes/user/matrimony/fetchMatrimonyProfileExists
 var uploadImages = require('./routes/user/matrimony/uploadImages');
 var fetchMatrimonyProfile = require('./routes/admin/matrimony/fetchMatrimonyProfile');
 var findPartner = require('./routes/user/matrimony/findMatchingPartner');
+var fetchMatrimonyById = require('./routes/admin/matrimony/fetchMatrimonyById');
+var fetchImages = require('./routes/admin/matrimony/fetchImages');
+var createFamilyDetails = require('./routes/user/matrimony/createFamilyDetails');
+var fetchFamilyDetails = require('./routes/user/matrimony/fetchFamilyDetails');
+var createBio = require('./routes/user/matrimony/createbio');
+var fetchBio = require('./routes/user/matrimony/FetchBio');
+var fetchPreference = require('./routes/user/matrimony/fetchPreference');
+var createPreference = require('./routes/user/matrimony/createPreference');
+var sendInterest = require('./routes/user/matrimony/sendInterest');
+var fetchInterest = require('./routes/user/matrimony/fetchInterest');
+var fetchInterestByUser = require('./routes/user/matrimony/fetchInterestByUser');
+var fetchUserByInterest = require('./routes/user/matrimony/fetchUserByInterest');
+var deleteInterest = require('./routes/user/matrimony/deleteInterest');
+var editMatrimonyProfile = require('./routes/user/matrimony/editMatrimonyProfile');
+var fetchReceivedInterest = require('./routes/user/matrimony/fetchReceivedInterestByUser');
+var fetchMutualInterest = require('./routes/user/matrimony/fetchMutualInterest');
+var updateJobCategory = require('./routes/admin/career/updateJobCategory');
+var fetchJobCategoryById = require('./routes/admin/career/fetchJobCategoryById');
+var deleteJobCategory = require('./routes/admin/career/deleteJobCategory');
+var deleteCourse = require('./routes/admin/education/deleteCourse');
+var editCourse = require('./routes/admin/education/editCourse');
+var fetchJobByJobId = require('./routes/admin/career/fetchJobByJobId');
+var updateJob = require('./routes/admin/career/editJob');
+var deleteJob = require('./routes/admin/career/deleteJob');
+var disablematrimonyprofile = require('./routes/admin/matrimony/disableMatrimonyProfile');
+var matrimonyDisable = require('./routes/admin/matrimony/matrimonyDisable');
+var fetchUserByInterestPending = require('./routes/user/matrimony/fetchUserByInterestPending');
+var fetchUserByInterestAccepted = require('./routes/user/matrimony/fetchUserByInterestAccepted');
+var fetchUserByInterestDeclined = require('./routes/user/matrimony/fetchUserByInterestDeclined');
+var fetchSendInterestAll = require('./routes/user/matrimony/fetchSendInterestAll');
+var fetchSendInterestPending = require('./routes/user/matrimony/fetchSendInterestPending');
+var fetchSendInterestAccepted = require('./routes/user/matrimony/fetchSendInterestAccepted');
+var fetchSendInterestDeclined = require('./routes/user/matrimony/fetchSendInterestDeclined');
+var acceptInterest = require('./routes/user/matrimony/updateInterestToAccept');
+var declineInterest = require('./routes/user/matrimony/updateInterestToDeclined');
+var fetchAcceptedInterest = require('./routes/admin/matrimony/fetchAcceptedInterest');
+var fetchDeclinedInterest = require('./routes/admin/matrimony/fetchDeclinedInterest');
+var fetchPendingInterest = require('./routes/admin/matrimony/fetchPendingInterest');
 
 var app = express();
 
@@ -104,6 +142,44 @@ app.use('/fetchmatrimonyprofile',profileExists);
 app.use('/uploads',uploadImages);
 app.use('/fetchmatrimonyprofileall',fetchMatrimonyProfile)
 app.use('/findpartner',findPartner);
+app.use('/fetchmatrimonybyid',fetchMatrimonyById);
+app.use('/fetchimages',fetchImages)
+app.use('/createfamilydetails',createFamilyDetails)
+app.use('/fetchfamilydetails',fetchFamilyDetails)
+app.use('/createbiodetails',createBio);
+app.use('/fetchbiodetails',fetchBio);
+app.use('/fetchpreference',fetchPreference);
+app.use('/createpreference',createPreference);
+app.use('/sendinterest',sendInterest);
+app.use('/fetchinterest',fetchInterest);
+app.use('/fetchinterestbyuser',fetchInterestByUser)
+app.use('/fetchuserbyinterest',fetchUserByInterest);
+app.use('/deleteinterest',deleteInterest);
+app.use('/editmatrimonyprofile',editMatrimonyProfile);
+app.use('/fetchreceivedinterest',fetchReceivedInterest);
+app.use('/fetchmutualinterest',fetchMutualInterest);
+app.use('/updatejobcategory',updateJobCategory)
+app.use('/fetchjobcategorybyid',fetchJobCategoryById);
+app.use('/deletejobcategory',deleteJobCategory);
+app.use('/deletecourse',deleteCourse);
+app.use('/editcourse',editCourse);
+app.use('/fetchjobbyjobid',fetchJobByJobId);
+app.use('/updatejob',updateJob);
+app.use('/deletejob',deleteJob);
+app.use('/disablematrimony',disablematrimonyprofile);
+app.use('/matrimonydisable',matrimonyDisable)
+app.use('/fetchreceivedpendinginterest',fetchUserByInterestPending);
+app.use('/fetchreceivedacceptedinterest',fetchUserByInterestAccepted);
+app.use('/fetchreceiveddeclinedinterest',fetchUserByInterestDeclined);
+app.use('/fetchsendinterestall',fetchSendInterestAll);
+app.use('/fetchsendinterestpending',fetchSendInterestPending);
+app.use('/fetchsendinterestaccepted',fetchSendInterestAccepted);
+app.use('/fetchsendinterestdeclined',fetchSendInterestDeclined);
+app.use('/declineinterest',declineInterest),
+app.use('/acceptinterest',acceptInterest);
+app.use('/fetchpendinginterest',fetchPendingInterest);
+app.use('/fetchacceptedinterest',fetchAcceptedInterest)
+app.use('/fetchdeclinedinterest',fetchDeclinedInterest);
 
 //catch 404 and forward to error handler
 app.use(function(req, res, next) {

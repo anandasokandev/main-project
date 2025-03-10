@@ -1,6 +1,5 @@
 .form-body {
-
-    margin-top: 295px;
+    margin-top: 415px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -164,12 +163,18 @@
   
     /* Responsive Styles */
     @media (max-width: 768px) {
+
+      
       .form-body {
         padding: 10px;
       }
   
       .form-items h3 {
         font-size: 1.5rem;
+      }
+
+      .form-holder{
+        margin-top: -90%;
       }
   
       .form-items p {
@@ -197,6 +202,7 @@
     }
   
     @media (max-width: 480px) {
+
       .form-items h3 {
         font-size: 1.4rem;
       }
@@ -205,6 +211,11 @@
         font-size: 0.85rem;
       }
   
+      .form-holder{
+        margin-top: -90%;
+      }
+  
+      
       .input-group {
         label {
           font-size: 0.9rem;

@@ -14,6 +14,10 @@ export class SelectcategoryComponent {
 
   constructor(private db: DatabaseService, private router: Router) {}
 
+  ngOnInit(): void {
+    
+  }
+
   // async function to handle the category update
   async selectCategory(data: any) {
     try {

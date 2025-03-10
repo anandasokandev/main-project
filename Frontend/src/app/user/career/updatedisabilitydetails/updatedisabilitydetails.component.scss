@@ -1,0 +1,63 @@
+#content {
+	position: relative;
+	width: calc(100% - 220px);
+	left: 220px;
+	transition: .3s ease;
+}
+#sidebar.hide ~ #content {
+	width: calc(100% - 60px);
+	left: 60px;
+}
+@media screen and (max-width: 768px) {
+    #content {
+		width: calc(100% - 60px);
+		left: 55px;
+	}
+
+}
+@media screen and (max-width: 576px) {
+    #content {
+		width: calc(100% - 60px);
+		left: 55px;
+	}
+
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+
+    form {
+        max-width: 700px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        background-color: #f9f9f9;
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0a0b0a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+
+        }
+    }
+}

@@ -42,42 +42,35 @@
         <h1>Dashboard</h1>
         <ul class="breadcrumb">
           <li>
-            <a href="#">Dashboard</a>
+            <a routerLink="/user/dashboard">Dashboard</a>
           </li>
           <li><i class="bx bx-chevron-right"></i></li>
           <li>
-            <a class="active" href="#">Home</a>
+            <a class="active" routerLink="/user/dashboard">Home</a>
           </li>
         </ul>
       </div>
     </div>
 
     <ul class="box-info">
-      <a routerLink="/user/career">
+      <a routerLink="/user/career/updatedisability">
         <li>
           <i class="bx bxs-calendar-check"></i>
           <span class="text">
-            <h3>Disability</h3>
+            <h3>Change Disability</h3>
             <p>Category</p>
           </span>
         </li>
       </a>
-      <a routerLink="/user/career">
+      <a routerLink="/user/career/findjob">
         <li>
           <i class="bx bxs-group"></i>
           <span class="text">
             <h3>Find Your</h3>
-            <p>Course</p>
+            <p>Job</p>
           </span>
         </li>
       </a>
-      <li>
-        <i class="bx bxs-dollar-circle"></i>
-        <span class="text">
-          <h3>N$2543.00</h3>
-          <p>Total Sales</p>
-        </span>
-      </li>
     </ul>
   </main>
   <main *ngIf="userState === 'Matrimony'">
@@ -86,11 +79,11 @@
         <h1>Dashboard</h1>
         <ul class="breadcrumb">
           <li>
-            <a href="#">Dashboard</a>
+            <a href="/user/dashboard">Dashboard</a>
           </li>
           <li><i class="bx bx-chevron-right"></i></li>
           <li>
-            <a class="active" href="#">Home</a>
+            <a class="active" href="/user/dashboard">Home</a>
           </li>
         </ul>
       </div>
@@ -107,17 +100,17 @@
         </li>
       </a>
 
-      <a *ngIf="profileLoad" routerLink="/user/matrimony/editprofile">
+      <a *ngIf="!profile" routerLink="/user/matrimony/editprofile">
         <li>
           <i class="bx bxs-calendar-check"></i>
           <span class="text">
-            <h3>Update</h3>
+            <h3>Update Matrimony</h3>
             <p>Profile</p>
           </span>
         </li>
       </a>
       
-      <a routerLink="/user/matrimony/findmatch">
+      <a routerLink="/user/matrimony/findpartner">
         <li>
           <i class="bx bxs-group"></i>
           <span class="text">
@@ -126,6 +119,17 @@
           </span>
         </li>
       </a>
+
+      <a routerLink="/user/matrimony/interest">
+        <li>
+          <i class="bx bxs-group"></i>
+          <span class="text">
+            <h3>My Interest</h3>
+            <p>View</p>
+          </span>
+        </li>
+      </a>
+
     </ul>
   </main>
 </section>

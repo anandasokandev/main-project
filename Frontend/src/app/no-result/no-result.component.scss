@@ -1,0 +1,34 @@
+.no-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center; // Center the content
+    justify-content: center; // Center the content vertically
+    height: 100vh; // Full height of the viewport
+    background-color: #ffffff; // Light background color
+    padding: 20px; // Padding around the content
+    text-align: center; // Center text
+  
+    h2 {
+      color: #333; // Dark gray for the heading
+      margin-bottom: 10px; // Space below the heading
+    }
+  
+    p {
+      color: #666; // Medium gray for the paragraph text
+      margin-bottom: 20px; // Space below the paragraph
+    }
+  
+    button {
+      padding: 10px 15px;
+      background-color: #007bff; // Bootstrap primary color
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  
+      &:hover {
+        background-color: #0056b3; // Darker shade on hover
+      }
+    }
+  }

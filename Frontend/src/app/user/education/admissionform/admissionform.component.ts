@@ -49,7 +49,7 @@ export class AdmissionFormComponent {
     console.log(this.login_id);
     
     this.db.fetchUser(this.login_id).then((data: any)=>{
-      this.user = data.data;
+      this.user = data;
       console.log(this.user);
     })
 

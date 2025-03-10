@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="sidebar">
+        <h4>Received</h4>
+        <ul>
+            <li routerLink="/user/matrimony/interest/received/received_all">All</li>
+            <li routerLink="/user/matrimony/interest/received/pending">Pending</li>
+            <li routerLink="/user/matrimony/interest/received/accepted">Accepted/Replied</li>
+            <li routerLink="/user/matrimony/interest/received/declined">Declined</li>
+        </ul>
+    
+        <h4>Sent</h4>
+        <ul>
+            <li routerLink="/user/matrimony/interest/send/received_all">All</li>
+            <li routerLink="/user/matrimony/interest/send/pending">Pending</li>
+            <li routerLink="/user/matrimony/interest/send/accepted">Accepted/Replied</li>
+            <li routerLink="/user/matrimony/interest/send/declined">Declined</li>
+        </ul>
+    
+        <!-- <h4>Request</h4>
+        <ul>
+            <li>Requests received</li>
+            <li>Requests sent</li>
+        </ul> -->
+    </div>    
+    <div class="main-content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

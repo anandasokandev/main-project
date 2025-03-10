@@ -1,0 +1,67 @@
+<div class="matrimony-profile-container">
+    <!-- Flexbox container for the layout -->
+    <div class="profile-content">
+      <!-- Left: Image Carousel -->
+      <div class="image-section">
+        <div class="carousel">
+          <div class="carousel-inner">
+            <img [src]="'http://localhost:3000/images/' + images[currentIndex]" alt="Profile Image {{ currentIndex + 1 }}"
+              class="carousel-image" />
+          </div>
+          <button class="carousel-button prev" (click)="prev()">&#10094;</button>
+          <button class="carousel-button next" (click)="next()">&#10095;</button>
+          <div class="carousel-dots">
+            <span *ngFor="let image of images; let i = index" [class.active]="i === currentIndex" (click)="goToImage(i)"
+              class="dot">
+            </span>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Right: Profile Information -->
+      <div class="info-section">
+        <div class="profile-header">
+          <h1>{{ user[0].first_name }} {{ user[0].last_name }}</h1>
+          <p>{{ user[0].age }} years old, {{ user[0].district }}</p>
+          <p class="bio">{{user[0].bio}}</p>
+        </div>
+  
+        <div class="profile-details">
+          <h2>About Me</h2>
+          <p>{{user[0].about_me}}</p>
+  
+          <h2>Family Details</h2>
+          <p><strong>Father's Occupation:</strong> {{ user[0].father_occupation }}</p>
+          <p><strong>Mother's Occupation:</strong> {{ user[0].mother_occupation }}</p>
+          <p><strong>Siblings:</strong> {{ user[0].brother }} brother And {{user[0].sister}} sister </p>
+  
+          <div *ngIf="preference">
+            <h2>Partner Preferences</h2>
+            <p><strong>Age Range:</strong> {{ userPreference[0].age_from}} to {{ userPreference[0].age_to}}</p>
+            <p><strong>Height:</strong> {{ userPreference[0].height_from}} to {{ userPreference[0].height_to}} </p>
+            <p><strong>Religion:</strong> {{ userPreference[0].religion}} </p>
+            <p><strong>Language:</strong> {{ userPreference[0].caste}}  </p>
+          </div>
+  
+          <div>
+            <h2>Personal Details</h2>
+            <p><strong>Age: </strong> {{ user[0].age }}</p>
+            <p><strong>Height: </strong> {{ user[0].height }} </p>
+            <p><strong>Religion: </strong> {{ user[0].religion }} </p>
+            <p><strong>Caste: </strong> {{ user[0].caste }}</p>
+            <p><strong>Mother Toungue: </strong> {{ user[0].mother_toungue }} </p>
+            <p><strong>District: </strong> {{ user[0].district }} </p>
+            <p><strong>Complexion: </strong> {{ user[0].complexion }}</p>
+          </div>
+  
+          <h2>Education</h2>
+          <p>{{ user[0].education }}</p>
+  
+          <h2>Occupation</h2>
+          <p>{{ user[0].occupation }}</p>
+  
+          <button class="contact-btn" (click)="disableProfile(user[0].login_id)">Disable Profile</button>
+        </div>
+      </div>
+    </div>
+  </div>

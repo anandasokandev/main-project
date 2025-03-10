@@ -1,0 +1,30 @@
+<div class="container">
+    <!-- Job Category Dropdown -->
+    <div class="select-container">
+      <label for="category">Select Job Category</label>
+      <select [(ngModel)]="jobCategorySelected" id="category" (change)="getSelectedCategoryDetails()">
+        <option value="">-- Please select --</option>
+        <option *ngFor="let category of jobCategory" [value]="category.jobcat_id">
+          {{ category.jobcat_name }}
+        </option>
+      </select>
+    </div>
+  
+    <!-- Display Category Details when a job category is selected -->
+    <div *ngIf="jobCategorySelected">
+      <div class="category-details">
+        <h3>You have selected category "{{jobCategoryDetails[0].jobcat_name}}"</h3>
+        <p><strong>Job Category:</strong> {{jobCategoryDetails[0].jobcat_name}} </p>
+        <p><strong>Description:</strong> {{jobCategoryDetails[0].description}} </p>
+        <p><strong>Qualification:</strong> {{jobCategoryDetails[0].qualification}} </p>
+      </div>
+      
+      <button class="continue-button" (click)="findMatchingJob()" >Continue</button>
+
+    </div>
+
+    <div *ngIf="loadJob">
+        <router-outlet></router-outlet>
+    </div>
+  </div>
+  

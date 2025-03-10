@@ -24,7 +24,7 @@ router.post("/", upload.array("images", 5), (req, res) => {
   const loginId = req.body.loginId;
 
   const imageUrls = req.files.map(
-    (file) => `http://localhost:3000/uploads/${file.filename}`
+    (file) => file.filename
   );
 
   const insertPromises = imageUrls.map((url) => {

@@ -1,37 +1,74 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
-  // Track the state of each dropdown
-  dropdownStates: { [key: string]: boolean } = {
-    dropdown1: false, // Controls dropdown state
-    dropdown2: false, // Another dropdown
-    dropdown3: false,
-    dropdown4: false // Settings dropdown state
-  };
+export class HeaderComponent implements OnInit {
 
-  navbarOpen = false
+  public login_id: any = ''
 
-  toggleNavbar() {
-    this.navbarOpen = !this.navbarOpen;
+  constructor(private router: Router) { }
+
+  ngOnInit(): void {
+    this.login_id = localStorage.getItem('loginid');
+    if(!this.login_id){
+      alert('Login to continue');
+      this.router.navigate(['/guest/login'])
+    }
   }
 
-  // General toggle for individual dropdowns
-  toggleDropdown(dropdown: string) {
-    // Close all dropdowns first
-    for (const key in this.dropdownStates) {
-      if (this.dropdownStates.hasOwnProperty(key)) {
-        this.dropdownStates[key] = false;
-        this.dropdownStates['dropdown3']=!this.dropdownStates['dropdown3'];
-      }
-    }
+  // Scroll Event Listener to toggle 'scrolled' class
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(event: Event): void {
+    const selectBody = document.querySelector('body');
+    const selectHeader = document.querySelector('#header');
 
-    // Toggle the clicked dropdown
-    this.dropdownStates[dropdown] = !this.dropdownStates[dropdown];
-    
+    if (!selectHeader || !selectBody) return;
+
+    if (!selectHeader.classList.contains('scroll-up-sticky') && !selectHeader.classList.contains('sticky-top') && !selectHeader.classList.contains('fixed-top')) return;
+
+    window.scrollY > 100 ? selectBody.classList.add('scrolled') : selectBody.classList.remove('scrolled');
+  }
+
+  // Mobile Navigation Toggle
+  toggleMobileNav() {
+    const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+    const body = document.querySelector('body');
+
+    if (mobileNavToggleBtn && body) {
+      body.classList.toggle('mobile-nav-active');
+      mobileNavToggleBtn.classList.toggle('bi-list');
+      mobileNavToggleBtn.classList.toggle('bi-x');
+    }
+  }
+
+  // Toggle Dropdown on Click
+  toggleDropdown(event: Event) {
+    const target = event.target as HTMLElement;
+    const parent = target?.parentElement;
+
+    if (parent) {
+      parent.classList.toggle('active');
+      const dropdown = parent.nextElementSibling;
+      if (dropdown) {
+        dropdown.classList.toggle('dropdown-active');
+      }
+      event.stopImmediatePropagation();
+    }
+  }
+
+  // Close Mobile Nav on clicking links
+  closeMobileNavOnLinkClick() {
+    const body = document.querySelector('body');
+    const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+
+    if (body && mobileNavToggleBtn) {
+      body.classList.remove('mobile-nav-active');
+      mobileNavToggleBtn.classList.remove('bi-x');
+      mobileNavToggleBtn.classList.add('bi-list');
+    }
   }
 }

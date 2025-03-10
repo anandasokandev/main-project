@@ -30,6 +30,7 @@ export class CreateprofilematrimonyComponent {
     salary: [''],
     complexion: [''],
     religion: [''],
+    age:'',
     loginid: [localStorage.getItem('loginid')],
   });
 
@@ -37,14 +38,9 @@ export class CreateprofilematrimonyComponent {
     const loginid = localStorage.getItem('loginid');
 
     this.db.fetchMatrimonyProfile(loginid).then((data: any) => {
-      if (data.message === 'Profile Found') {
-        if (data.data[0].photo_id === null) {
-          alert('Upload Photos');
-          this.router.navigate(['/user/matrimony/uploadimages']);
-        } else {
-          alert('Profile already exists');
-          this.router.navigate(['/user/dashboard']);
-        }
+      console.log(data.message);
+      if(data.message === 'Profile Found'){
+        this.router.navigate(['/user/matrimony/uploadimages'])
       }
     });
 

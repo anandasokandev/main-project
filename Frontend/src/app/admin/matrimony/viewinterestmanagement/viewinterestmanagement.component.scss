@@ -1,0 +1,71 @@
+// Container styles for the layout
+.container {
+    display: flex;
+    height: 100vh; 
+    margin-top: 150px; // Adds a top margin to the layout
+  }
+  
+  // Sidebar styling
+  .sidebar {
+    width: 250px; // Adjusted to match with margin-left in the main content
+    padding: 20px;
+    background-color: #ffffff; // White background
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1); // Optional: adds shadow for separation
+  }
+  
+  // Sidebar heading (h4)
+  h4 {
+    margin: 10px 0;
+    color: #333; // Dark gray color for headings
+  }
+  
+  // Sidebar list styling
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  // Sidebar list items (li)
+  li {
+    margin: 5px 0;
+    cursor: pointer;
+    padding: 8px;
+    transition: background-color 0.3s ease; // Adds smooth transition on hover
+  
+    &:hover {
+      background-color: #f0f0f0; // Slight hover effect
+    }
+  }
+  
+  // Active list item
+  .active {
+    color: green;
+    font-weight: bold; // Make active item bold to stand out
+  }
+  
+  // Main content area
+  .main-content {
+    padding: 20px;
+    flex-grow: 1; // Takes up the remaining space in the container
+    background-color: #ffffff; // Light background for main content
+    color: #000000; // Dark text color
+  }
+  
+  // Responsive for smaller screens
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column; // Stack sidebar and content vertically
+    }
+  
+    .sidebar {
+      width: 100%; // Sidebar takes full width on small screens
+      height: auto; // Height adjusts according to content
+      position: relative; // Remove fixed positioning
+    }
+  
+    .main-content {
+      margin-left: 0; // Remove left margin for small screens
+    }
+  }
+  

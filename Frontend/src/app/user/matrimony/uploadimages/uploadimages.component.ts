@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';  // Import HttpClient for making requests
+import { DatabaseService } from 'src/app/database.service';
 
 @Component({
   selector: 'app-uploadimages',
@@ -10,7 +11,20 @@ import { HttpClient } from '@angular/common/http';  // Import HttpClient for mak
 export class UploadimagesComponent {
   selectedFiles: any[] = [];
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private db: DatabaseService) {}
+
+  ngOnInit(): void {
+    const loginId = localStorage.getItem('loginid');
+
+    this.db.fetchImages(loginId).then((data: any)=>{
+
+      console.log(data);
+      
+      if(data.length > 0){
+        this.router.navigate(['/user/matrimony/familydetails'])
+      }
+    })
+  }
 
   // Handle file selection
   onFileSelected(event: any): void {
@@ -60,8 +74,19 @@ export class UploadimagesComponent {
   // Handle form submission (e.g., uploading images)
   onSubmit(): void {
 
-    const formData = new FormData();
     const loginId = localStorage.getItem('loginid');
+
+    this.db.fetchImages(loginId).then((data: any)=>{
+
+      console.log(data);
+      
+      if(data.length > 0){
+        this.router.navigate(['/user/matrimony/familydetails'])
+      }
+    })
+
+    const formData = new FormData();
+    
 
     // Append selected files to formData
     for (let i = 0; i < this.selectedFiles.length; i++) {
@@ -80,7 +105,7 @@ export class UploadimagesComponent {
       (response) => {
         console.log('Upload successful', response);
         alert('Image Uploaded Successfully')
-        this.router.navigate(['/user/dashboard']);
+        this.router.navigate(['/user/matrimony/familydetails']);
       },
       (error) => {
         console.error('Upload failed', error);

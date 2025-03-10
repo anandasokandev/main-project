@@ -2,10 +2,7 @@
   <h2>View Department</h2>
   <ul class="responsive-table">
     <div class="form-button1">
-      <button
-        class="btn btn-primary"
-        routerLink="/admin/education/createdepartment"
-      >
+      <button class="btn btn-primary" (click)="openModal('add')">
         Add Department
       </button>
     </div>
@@ -21,13 +18,47 @@
       <div class="col col-2">{{ item.dept_name }}</div>
       <div class="col col-3">{{ item.dept_description }}</div>
       <div class="col col-4">
-        <button (click)="editDepartment(item.dept_id)" class="btn edit-btn">
+        <button (click)="openModal('edit', item)"  class="btn edit-btn">
           Edit
         </button>
       </div>
-      <div class="col col-4">
+      <div class="col col-5">
         <button (click)="deleteDepartment(item.dept_id)" class="btn delete-btn">Delete</button>
       </div>
     </li>
   </ul>
 </div>
+
+<!-- Modal for Adding/Editing Department -->
+<div *ngIf="isModalOpen" class="modal-backdrop" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <span class="close-icon" (click)="closeModal()">×</span>
+    <h4 class="modal-title">{{ isEditing ? 'Edit Department' : 'Add New Department' }}</h4>
+    <div class="input-group">
+      <label for="deptName">Department Name</label>
+      <input type="text" id="deptName" [(ngModel)]="deptForm.deptName" placeholder="Enter department name" />
+
+      <label for="deptDescription">Department Description</label>
+      <input type="text" id="deptDescription" [(ngModel)]="deptForm.deptDescription" placeholder="Enter department description" />
+    </div>
+
+    <!-- Button to Submit Department -->
+    <div class="modal-actions">
+      <button class="submit-button" (click)="submitDepartment()">{{ isEditing ? 'Update' : 'Submit' }}</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for Deleting Department (Confirmation) -->
+<div *ngIf="isDeleteModalOpen" class="modal-backdrop" (click)="closeDeleteModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <span class="close-icon" (click)="closeDeleteModal()">×</span>
+    <h4 class="modal-title">Are you sure you want to delete this department?</h4>
+
+    <div class="modal-actions">
+      <button class="btn btn-danger" (click)="confirmDelete()">Delete</button>
+      <button class="btn btn-secondary" (click)="closeDeleteModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+

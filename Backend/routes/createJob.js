@@ -4,24 +4,33 @@ const db = require('../database/db');
 
 router.use(express.json());
 
-router.post('/',(req, res, next)=>{
+router.post('/', (req, res, next) => {
+    
+    // Destructuring request body
+    const { jobcategory, jobname, jobDescription } = req.body;
 
-    let jobcat_id = req.body.jobcat_id;
-    let job_name = req.body.job_name;
-    let description = req.body.description;
-    let disability_percent = req.body.disability_percent;
+    // Basic input validation
+    if (!jobcategory || !jobname || !jobDescription) {
+        return res.status(400).send({ 'message': 'Missing required fields' });
+    }
 
-    const insertJobQuery = 'INSERT INTO tbljob (jobcat_id, job_name, description, disability_percent) values (?,?,?,?)';
+    // SQL query to insert a new job
+    const insertJobQuery = 'INSERT INTO tbljob (jobcat_id, job_name, description) VALUES (?, ?, ?)';
 
-    db.query(insertJobQuery, [jobcat_id, job_name, description, disability_percent],(err, result)=>{
+    // Execute the query
+    db.query(insertJobQuery, [jobcategory, jobname, jobDescription], (err, result) => {
+        if (err) {
+            console.error('Database Error:', err); // Log error for server-side debugging
+            return res.status(500).send({ 'message': 'Database Error', error: err });
+        }
 
+        // Check if the insertion was successful
+        if (result.affectedRows > 0) {
+            return res.json({ 'message': 'Job created successfully' });
+        }
 
-        if(err) return res.status(500).send({'message': 'Database Error', error: err});
-
-        if(result.affectedRows>0) return res.status(201).send({'message': 'Job Created Successfully'});
-
-        return res.status(400).send({ 'message': 'Job creation failed' });
-    })
-})
+        return res.json({ 'message': 'Job creation failed' });
+    });
+});
 
 module.exports = router;

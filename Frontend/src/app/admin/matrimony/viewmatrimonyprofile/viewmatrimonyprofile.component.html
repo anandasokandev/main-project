@@ -1,1 +1,66 @@
-<p>viewmatrimonyprofile works!</p>
+<div class="container">
+  <!-- Sidebar with filters -->
+  <div class="sidebar">
+    <h2>Filter Profiles</h2>
+    
+    <div class="filter">
+      <label for="age">Age Range</label>
+      <input 
+        type="range" 
+        (change)="fetchProfile()" 
+        [(ngModel)]="age" 
+        name="age" 
+        min="18" 
+        max="60" 
+        step="1" 
+        aria-label="Select age range"
+      >
+      <label for="age">Age: {{age}}</label>
+    </div>
+
+    <div class="filter">
+      <label for="gender">Gender</label>
+      <select (change)="fetchProfile()" [(ngModel)]="gender" name="gender" aria-label="Select gender">
+        <option value="" disabled selected>Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <div class="filter">
+      <label for="religion">Religion</label>
+      <select (change)="fetchProfile()" [(ngModel)]="religion" name="religion" aria-label="Select religion">
+        <option value="" disabled selected>Select Religion</option>
+        <option value="hindu">Hindu</option>
+        <option value="muslim">Muslim</option>
+        <option value="christian">Christian</option>
+        <option value="sikh">Sikh</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <div class="filter">
+      <label for="location">Location</label>
+      <select (change)="fetchProfile()" [(ngModel)]="location" name="location" aria-label="Select location">
+        <option value="" disabled selected>Select Location</option>
+        <option value="india">India</option>
+        <option value="usa">USA</option>
+        <option value="uk">UK</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Profile grid section -->
+  <div class="profile-grid">
+    <div *ngFor="let profile of user" class="profile-card" (click)="viewProfile(profile.login_id)">
+      <img src="http://localhost:3000/images/{{profile.profile_pic}}" alt="Profile Picture of {{profile.first_name}} {{profile.last_name}}">
+      <h3>{{ profile.first_name }} {{ profile.last_name }}, {{ profile.age }}</h3>
+      <p>{{ profile.religion }}, {{ profile.caste }}, {{ profile.location }}</p>
+    </div>
+  </div>
+
+  <div *ngIf="user.length === 0">
+    <app-no-result></app-no-result>
+  </div>
+</div>

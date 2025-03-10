@@ -8,18 +8,12 @@ router.use(express.json());
 router.put('/', (req, res, next) => {
 
     const dept_id = req.body.dept_id;
-    const dept_name = req.body.dept_name;
-    const dept_desc = req.body.dept_desc;
+    const dept_name = req.body.deptName;
+    const dept_desc = req.body.deptDescription;
 
-    console.log(dept_desc);
-    console.log(dept_id);
-    console.log(dept_name);
     
-    
-    
-
     // Validate the input fields
-    if (!dept_id || !dept_name || !dept_desc) {
+    if (!dept_id || !dept_desc || !dept_name) {
         return res.status(400).json({ message: 'Department ID, name, and description are required.' });
     }
 

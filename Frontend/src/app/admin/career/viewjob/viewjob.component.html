@@ -1,1 +1,30 @@
-<p>viewjob works!</p>
+<div class="container">
+  <h2>View Course</h2>
+  <ul class="responsive-table">
+    <div class="form-button1">
+      <button class="btn btn-primary" routerLink="/admin/career/createjob">Add Job</button>
+      <!-- Dropdown below the Add course button -->
+      <form [formGroup]="jobCategoryForm">
+        <select class="form-control" formControlName="jobcategory" (change)="viewByJobCategory()">
+          <option value="Select Department" disabled>Select Department</option>
+          <option *ngFor="let item of jobcat" value="{{item.jobcat_id}}">{{item.jobcat_name}}</option>
+        </select>
+      </form>
+    </div>
+      <li class="table-header">
+        <div class="col col-1">Id</div>
+        <div class="col col-2">Job Name</div>
+        <div class="col col-4">Job Description</div>
+        <div class="col col-5">Actions</div>
+      </li>
+      <li class="table-row" *ngFor="let item of job; let i = index">
+        <div class="col col-1" >{{i + 1}}</div>
+        <div class="col col-2" >{{item.job_name}}</div>
+        <div class="col col-3" >{{item.description}}</div>
+        <div class="col col-4" >
+          <button (click)="editJob(item.job_id)" class="btn edit-btn">Edit</button>
+          <button (click)="deleteJob(item.job_id)"  class="btn delete-btn">Delete</button>
+        </div>
+      </li>
+  </ul>
+</div>

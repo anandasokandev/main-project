@@ -72,7 +72,6 @@ export class ProfileComponent {
     console.log(subcategory_id);
     this.db.fetchDisabilitySubCategoryById(subcategory_id).then((data: any) => {
       this.subDisabilityCategory = data;
-      console.log(this.subDisabilityCategory);
       if (data.affectedRows === 0) {
         alert('No sub category Found');
       }

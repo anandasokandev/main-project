@@ -1,0 +1,55 @@
+<div class="form-body">
+    <div class="row">
+      <div class="form-holder">
+        <div class="form-content">
+          <div class="form-items" style="margin-top: 90px">
+            <h3>Create Profile</h3>
+            <p>--------------</p>
+            <form [formGroup]="familyForm">
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="position">Father Name</label>
+                  <input class="form-control" type="text" formControlName="fathername"  />
+                </div>
+  
+                <div class="input-group">
+                  <label for="FatherOccupation">Father Occupation</label>
+                  <input class="form-control" type="text" formControlName="fatheroccupation"  />
+                </div>
+              </div>
+  
+              <div class="form-row">
+                <div class="input-group">
+                    <label for="name">Mother Name</label>
+                    <input class="form-control" type="text" formControlName="mothername"  />
+                  </div>
+  
+                <div class="input-group">
+                  <label for="name">Mother Occupation</label>
+                  <input class="form-control" type="text" formControlName="motheroccupation"  />
+                </div>
+              </div>
+  
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="position">No of Sister's</label>
+                  <input class="form-control" type="text" formControlName="sister" />
+                </div>
+  
+                <div class="input-group">
+                  <label for="name">No of Brother's</label>
+                  <input class="form-control" type="text" formControlName="brother" />
+                </div>
+              </div>
+              
+              <div class="form-button mt-3">
+                <button id="submit" type="submit" (click)="createProfile()" class="btn btn-primary">
+                  Add +
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

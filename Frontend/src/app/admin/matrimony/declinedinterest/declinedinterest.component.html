@@ -1,0 +1,32 @@
+<div class="total-container" *ngIf="pendingUser.length > 0">
+    <div class="total-header">
+      <h1>Total Declined Interest: {{ number}}</h1>
+    </div>
+    <div class="container" *ngFor="let data of pendingUser">
+        <div class="profile-card">
+          <a>
+            <img src="http://localhost:3000/images/{{data.profile_pic}}" alt="Profile Picture" class="profile-image" />
+            <div class="profile-details">
+              <h2>{{data.first_name}} {{data.last_name}}</h2>
+              <p class="profile-id">{{data.profile_id}}</p>
+              <p class="profile-info">{{data.age}} | {{data.height}} | {{data.caste}} | {{data.education}} | {{data.district}}
+              </p>
+              <div class="button-wrapper">
+      
+                <button class="send-message" >View Profile</button>
+                <button class="send-message" >Send Interest</button>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+</div>
+<div class="no-results-container" *ngIf="pendingUser.length === 0">
+    <div class="no-results-message">
+      <h2>No Results Found</h2>
+      <p>Sorry, we couldn't find any matches for your search.</p>
+      <button (click)="goBack()" class="retry-button">Go Back</button>
+    </div>
+  </div>
+  
+  

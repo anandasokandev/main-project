@@ -2,7 +2,7 @@
     <h2>View Job Category</h2>
     <ul class="responsive-table">
       <div class="form-button1">
-        <button class="btn btn-primary" routerLink="/admin/jobcategory">Add Job Category</button>
+        <button class="btn btn-primary" routerLink="/admin/career/createjobcategory">Add Job Category</button>
       </div>
       <li class="table-header">
         <div class="col col-1">Id</div>
@@ -17,8 +17,8 @@
         <div class="col col-3" >{{item.qualification}}</div>
         <div class="col col-3" >{{item.description}}</div>
         <div class="col col-4" >
-          <button class="btn edit-btn">Edit</button>
-          <button class="btn delete-btn">Delete</button>
+          <button (click)="editJobcategory(item.jobcat_id)" class="btn edit-btn">Edit</button>
+          <button (click)="deleteJobCategory(item.jobcat_id)" class="btn delete-btn">Delete</button>
         </div>
       </li>
     </ul>

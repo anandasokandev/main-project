@@ -52,4 +52,20 @@ export class ViewcourseComponent {
       this.dept = data;
     });
   };
+
+  deleteCourse(course_id: string){
+    this.db.deleteCourse(course_id).then((data: any)=>{
+      if(data.message === 'Success'){
+        alert('Course deleted successfully');
+        this.router.navigate(['/admin/education/viewcourse']);
+      }
+      else{
+        alert(`${data.message}`);
+      }
+    })
+  }
+
+  editCourse(course_id: string){
+    this.router.navigate(['/admin/education/editcourse'], { queryParams: { course_id: course_id }})
+  }
 }

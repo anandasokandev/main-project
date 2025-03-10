@@ -1,0 +1,144 @@
+// Mobile Nav Styles
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background-color: #fff;
+    padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  // Mobile nav toggle button
+  .mobile-nav-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 30px;
+    color: #333;
+    z-index: 10000;
+    
+    // Toggled states
+    &.bi-list {
+      display: block;
+    }
+  
+    &.bi-x {
+      display: block;
+    }
+  
+    @media (max-width: 992px) {
+      display: block;
+    }
+  }
+  
+  // Styles for the mobile navigation menu
+  .navmenu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  
+    @media (max-width: 448px) {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      padding-top: 60px;
+      transition: transform 0.3s ease;
+  
+      &.mobile-nav-active {
+        display: block;
+        transform: translateX(0);
+      }
+  
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+  
+        li {
+          width: 100%;
+          padding: 15px 0;
+          border-bottom: 1px solid #ddd;
+  
+          a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+  
+            &:hover {
+              color: #007bff;
+            }
+          }
+  
+          // Dropdown for mobile
+          .dropdown {
+            position: relative;
+  
+            .toggle-dropdown {
+              cursor: pointer;
+              margin-left: 5px;
+              color: #fff;
+  
+              &:hover {
+                color: #007bff;
+              }
+            }
+  
+            ul {
+              position: absolute;
+              top: 100%;
+              left: 0;
+              background: rgba(0, 0, 0, 0.9);
+              width: 100%;
+              display: none;
+  
+              li {
+                padding: 10px 0;
+                a {
+                  padding-left: 20px;
+                  color: #fff;
+                  font-size: 16px;
+  
+                  &:hover {
+                    color: #007bff;
+                  }
+                }
+              }
+            }
+  
+            &.active > .toggle-dropdown {
+              color: #007bff;
+            }
+  
+            &.active > ul {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  // Styles for closing the mobile menu when clicking outside
+  .mobile-nav-active {
+    .navmenu {
+      display: block;
+    }
+  }
+  
+  // Styles for Scroll
+  body.scrolled #header {
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  

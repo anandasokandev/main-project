@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent,  HttpRequest } from '@angular/common/http'
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -8,7 +9,9 @@ import { Observable } from 'rxjs';
 })
 export class DatabaseService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
+
+  public data: any[]=[]
 
   fetchDepartment(){
     return this.http.get<any>('http://localhost:3000/fetchdepartment').toPromise();
@@ -164,5 +167,177 @@ export class DatabaseService {
   fetchMatrimonyProfile(loginid: any){
     return this.http.get(`http://localhost:3000/fetchmatrimonyprofile?loginid=${loginid}`).toPromise();
   }
+  fetchMatrimonyProfileAll(data: any){
+    return this.http.post('http://localhost:3000/fetchmatrimonyprofileall',data).toPromise();
+  }
+  
+  fetchPartner(data: any){
+    return this.http.post('http://localhost:3000/findpartner',data).toPromise();
+  }
 
+  setMatrimonyData(data: any){
+    this.data = data;
+  }
+
+  getMatrimonyData(){
+    return this.data;
+  }
+
+  fetchMatrimonyById(login_id: any){
+    return this.http.get(`http://localhost:3000/fetchmatrimonybyid?login_id=${login_id}`).toPromise();
+  }
+
+  fetchImages(login_id: any){
+    return this.http.get(`http://localhost:3000/fetchimages?login_id=${login_id}`).toPromise();
+  }
+
+  createFamilyDetails(data: any){
+    return this.http.post('http://localhost:3000/createfamilydetails',data).toPromise();
+  }
+
+  fetchFamilyDetails(login_id: any){
+    return this.http.get(`http://localhost:3000/fetchfamilydetails?login_id=${login_id}`).toPromise();
+  }
+
+  createBioDetails(data: any){
+    return this.http.post('http://localhost:3000/createbiodetails',data).toPromise();
+  }
+
+  fetchBioDetails(login_id: any){
+    return this.http.get(`http://localhost:3000/fetchbiodetails?login_id=${login_id}`).toPromise();
+  }
+
+  fetchPreference(login_id:any){
+    return this.http.get(`http://localhost:3000/fetchpreference?login_id=${login_id}`).toPromise();
+  }
+
+  createPreference(data: any){
+    return this.http.post('http://localhost:3000/createpreference',data).toPromise();
+  }
+
+  sendInterest(data: any){
+    return this.http.post('http://localhost:3000/sendinterest',data).toPromise();
+  }
+
+  fetchInterest(login_id: any,interest_loginid: any){
+    return this.http.get(`http://localhost:3000/fetchinterest?login_id=${login_id}&interest_loginid=${interest_loginid}`).toPromise();
+  }
+
+  fetchInterestByUser(login_id: any){
+    return this.http.get(`http://localhost:3000/fetchinterestbyuser?login_id=${login_id}`).toPromise();
+  }
+
+  fetchUserByInterest(login_id: any){
+    return this.http.get(`http://localhost:3000/fetchuserbyinterest?login_id=${login_id}`).toPromise();
+  }
+
+  deleteInterest({ login_id, interest_loginid }: { login_id: any, interest_loginid: any }) {
+    return this.http.delete(`http://localhost:3000/deleteinterest?login_id=${login_id}&interest_loginid=${interest_loginid}`).toPromise();
+  }
+  
+  editMatrimonyProfile(data: any){
+    return this.http.put('http://localhost:3000/editmatrimonyprofile',data).toPromise();
+  }
+
+  logout(){
+    localStorage.removeItem('loginid');
+    localStorage.clear();
+    this.router.navigate(['/guest/login']);
+  }
+
+  fetchReceivedInterest(login_id: any){
+    return this.http.get(`http://localhost:3000/fetchreceivedinterest?login_id=${login_id}`).toPromise();
+  }
+
+  fetchExpressedInterest(login_id: any){
+    return this.http.get(`http://localhost:3000/fetchexpressedinterest?login_id=${login_id}`).toPromise();
+  }
+
+  fetchMutualInterest(){
+    return this.http.get(`http://localhost:3000/fetchmutualinterest`).toPromise();
+  }
+
+  fetchJobCategoryById(jobcat_id: any){
+    return this.http.get(`http://localhost:3000/fetchjobcategorybyid?jobcat_id=${jobcat_id}`).toPromise();
+  }
+
+  updateJobCategory(data: any){
+    return this.http.put('http://localhost:3000/updatejobcategory?',data).toPromise();
+  }
+
+  deleteJobCategory(jobcat_id: any){
+    return this.http.delete(`http://localhost:3000/deletejobcategory?jobcat_id=${jobcat_id}`).toPromise();
+  }
+  
+  deleteCourse(course_id : any){
+    return this.http.delete( `http://localhost:3000/deletecourse?course_id=${course_id}`).toPromise();
+  }
+
+  editCourse(data: any){
+    return this.http.put('http://localhost:3000/editcourse',data).toPromise();
+  }
+
+  fetchJobByJobId(job_id: any){
+    return this.http.get(`http://localhost:3000/fetchjobbyjobid?job_id=${job_id}`).toPromise();
+  }
+
+  updateJob(data: any){
+    return this.http.put('http://localhost:3000/updatejob',data).toPromise();
+  }
+
+  deleteJob(job_id: string){
+    return this.http.delete(`http://localhost:3000/deletejob?job_id=${job_id}`).toPromise();
+  }
+
+  disableMatrimonyProfile(data: any){
+    return this.http.put('http://localhost:3000/matrimonydisable',data).toPromise();
+  }
+
+  fetchreceivedpendinginterest(data: any){
+    return this.http.get(`http://localhost:3000/fetchreceivedpendinginterest?login_id=${data}`).toPromise();
+  }
+
+  fetchreceivedacceptedinterest(data: any){
+    return this.http.get(`http://localhost:3000/fetchreceivedacceptedinterest?login_id=${data}`).toPromise();
+  }
+
+  fetchreceiveddeclinedinterest(data: any){
+    return this.http.get(`http://localhost:3000/fetchreceiveddeclinedinterest?login_id=${data}`).toPromise();
+  }
+
+  fetchsendinterestall(data: any){
+    return this.http.get(`http://localhost:3000/fetchsendinterestall?login_id=${data}`).toPromise();
+  }
+
+  fetchsendinterestpending(data: any){
+    return this.http.get(`http://localhost:3000/fetchsendinterestpending?login_id=${data}`).toPromise();
+  }
+
+  fetchsendinterestaccepted(data: any){
+    return this.http.get(`http://localhost:3000/fetchsendinterestaccepted?login_id=${data}`).toPromise();
+  }
+
+  fetchsendinterestdeclined(data: any){
+    return this.http.get(`http://localhost:3000/fetchsendinterestdeclined?login_id=${data}`).toPromise();
+  }
+
+  declineInterest(data: any){
+    return this.http.put('http://localhost:3000/declineinterest',data).toPromise();
+  }
+
+  acceptInterest(data: any){
+    return this.http.put('http://localhost:3000/acceptinterest',data).toPromise();
+  }
+
+  fetchDeclinedInterest(){
+    return this.http.get(`http://localhost:3000/fetchdeclinedinterest`).toPromise();
+  }
+
+  fetchAcceptedInterest(){
+    return this.http.get(`http://localhost:3000/fetchacceptedinterest`).toPromise();
+  }
+
+  fetchPendingInterest(){
+    return this.http.get(`http://localhost:3000/fetchpendinginterest`).toPromise();
+  }
 }

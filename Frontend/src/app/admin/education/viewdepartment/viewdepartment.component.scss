@@ -24,6 +24,7 @@ $button-full-width: 100%;  // Full width for mobile buttons
   border-radius: 10px;
 
   h2 {
+    margin-top: 100px;
     text-align: center;
     color: $primary-text-color;
     margin-bottom: 20px;
@@ -158,7 +159,7 @@ $button-full-width: 100%;  // Full width for mobile buttons
     .col-4 {
       display: block;
       width: 100%;
-      margin-top: 10px; // Adds space between last column (Actions) and others
+      margin-top: 10px;
 
       .btn {
         width: $button-full-width;
@@ -167,5 +168,133 @@ $button-full-width: 100%;  // Full width for mobile buttons
         font-size: 16px;
       }
     }
+  }
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+/* Modal content */
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 800px;
+  max-width: 90%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: transform 0.3s ease-out;
+  transform: translateY(-30px);
+}
+
+/* Modal content entry animation */
+.modal-backdrop .modal-content {
+  transform: translateY(0);
+}
+
+/* Close icon at the top-right */
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.3s;
+}
+
+/* Close icon hover effect */
+.close-icon:hover {
+  color: red;
+}
+
+/* Button styling */
+button {
+  padding: 12px 25px;
+  margin-top: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+/* Labels for input fields */
+label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Input fields styling */
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* Modal Title */
+.modal-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Modal Description */
+.modal-description {
+  font-size: 16px;
+  color: #777;
+  margin-bottom: 25px;
+}
+
+/* Actions container (Submit button section) */
+.modal-actions {
+  text-align: right;
+}
+
+/* Optional: Adding a subtle background animation when the modal opens */
+.modal-backdrop {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    background: rgba(0, 0, 0, 0);
+  }
+  to {
+    background: rgba(0, 0, 0, 0.5);
   }
 }

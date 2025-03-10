@@ -1,0 +1,38 @@
+<div class="form-body">
+    <div class="row">
+        <div class="form-holder">
+            <div class="form-content">
+                <div class="form-items" style="margin-top: 100px;">
+                    <h3>Edit Job Details</h3>
+                    <div class="form-button1">
+                        <button class="btn btn-primary" routerLink="/admin/career/viewjob">View Job</button>
+                    </div>
+                    <p>--------------</p>
+                    <form class="requires-validation" [formGroup]="jobForm" >
+
+                        <div class="input-group">
+                            <label for="position">Job Category</label>
+                            <select class="form-select" id="position" formControlName="jobcategory" style="color: black;" required >
+                                  <option *ngFor="let item of jobCategory" value="{{item.jobcat_id}}">{{item.jobcat_name}}</option>
+                            </select> 
+                        </div>
+
+                        <div class="input-group">
+                           <label for="name">Job Name</label>
+                           <input class="form-control" type="text" formControlName="jobname" placeholder="Example: Computer Science " required>
+                        </div>
+
+                         <div class="input-group">
+                            <label for="name">Job Description</label>
+                            <input class="form-control" type="text" formControlName="jobDescription" placeholder="Example: Computer Science " required>
+                         </div>
+
+                        <div class="form-button mt-3">
+                            <button id="submit" type="submit" (click)="updateJob()" class="btn btn-primary">Add +</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

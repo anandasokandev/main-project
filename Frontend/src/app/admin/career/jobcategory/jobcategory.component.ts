@@ -23,7 +23,6 @@ export class JobcategoryComponent {
   })
 
   onSubmit(){
-    console.log(this.jobCategoryForm.value);
     this.db.createJobCategory(this.jobCategoryForm.value).then((data: any)=>{
       if(data.message == 'Jobcategory created successfully' ){
         alert('Job Category Created Successfully');

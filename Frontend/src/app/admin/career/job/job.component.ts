@@ -17,14 +17,26 @@ export class JobComponent {
   ){}
 
   jobForm = this.fb.group({
-    jobcategory: [''],
-    jobname: [''],
-    jobDescription:[''],
-    disabilityPercent: ['']
+    jobcategory: [],
+    jobname: [],
+    jobDescription:[]
   })
 
-  createJob(){
+  ngOnInit(): void {
+    this.db.fetchJobCategory().then((data: any)=>{
+      this.jobcategory = data
+    })
+  }
 
+  createJob(){
+    this.db.createJob(this.jobForm.value).then((data: any)=>{
+      if(data.message === 'Job created successfully'){
+        alert(`${data.message}`);
+      }
+      else{
+        alert(`${data.message}`);
+      }
+    })
   }
 
 }

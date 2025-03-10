@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="sidebar">
+        <ul>
+            <li routerLink="/admin/matrimony/viewinterestmanagement/pendinginterest">Pending {{ pending }} </li>
+            <li routerLink="/admin/matrimony/viewinterestmanagement/acceptedinterest">Accepted/Replied {{ accepted }} </li>
+            <li routerLink="/admin/matrimony/viewinterestmanagement/declinedinterest">Declined {{ declined }} </li>
+        </ul>
+    </div>    
+    <div class="main-content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

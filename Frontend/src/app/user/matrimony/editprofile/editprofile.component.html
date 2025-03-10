@@ -2,10 +2,10 @@
     <div class="row">
       <div class="form-holder">
         <div class="form-content">
-          <div class="form-items" style="margin-top: 90px">
-            <h3>Create Profile</h3>
+          <div class="form-items">
+            <h3>Update Profile Details</h3>
             <p>--------------</p>
-            <form [formGroup]="matrimonyForm">
+            <form [formGroup]="matrimonyEditForm">
               <div class="form-row">
                 <div class="input-group">
                   <label for="position">First Name</label>
@@ -61,16 +61,15 @@
   
               <div class="form-row">
                 <div class="input-group">
-                  <label for="position">Marital Status</label>
-                  <select class="form-select" formControlName="maritalstatus" id="maritalStatus" style="color: black">
-                    <option selected disabled value="">Select Marital Status</option>
+                  <label for="maritalStatus">Marital Status</label>
+                  <select class="form-select" formControlName="maritalstatus" name="maritalstatus" id="maritalstatus">
                     <option value="Single">Single</option>
                     <option value="Married">Married</option>
                     <option value="Divorced">Divorced</option>
                     <option value="Widowed">Widowed</option>
                   </select>
                 </div>
-  
+                
                 <div class="input-group">
                   <label for="name">Religion</label>
                   <select class="form-select" formControlName="religion" id="religion" style="color: black">
@@ -215,7 +214,7 @@
               </div>
   
               <div class="form-button mt-3">
-                <button id="submit" type="submit" (click)="createProfile()" class="btn btn-primary">
+                <button id="submit" type="submit" (click)="editProfile()" class="btn btn-primary">
                   Add +
                 </button>
               </div>

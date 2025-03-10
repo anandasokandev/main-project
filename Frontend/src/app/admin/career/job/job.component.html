@@ -3,9 +3,9 @@
         <div class="form-holder">
             <div class="form-content">
                 <div class="form-items" style="margin-top: 100px;">
-                    <h3>Register Course Details</h3>
+                    <h3>Register Job Details</h3>
                     <div class="form-button1">
-                        <button class="btn btn-primary" routerLink="/viewcourse">View Course</button>
+                        <button class="btn btn-primary" routerLink="/admin/career/viewjob">View Job</button>
                     </div>
                     <p>--------------</p>
                     <form class="requires-validation" [formGroup]="jobForm">
@@ -13,7 +13,7 @@
                         <div class="input-group">
                             <label for="position">Job Category</label>
                             <select class="form-select" id="position" formControlName="jobcategory" style="color: black;" required >
-                                  <option selected disabled value="">Select Department</option>
+                                  <option selected disabled value="">Select Job Category</option>
                                   <option *ngFor="let item of jobcategory" value="{{item.jobcat_id}}">{{item.jobcat_name}}</option>
                             </select> 
                         </div>
@@ -27,11 +27,6 @@
                             <label for="name">Job Description</label>
                             <input class="form-control" type="text" formControlName="jobDescription" placeholder="Example: Computer Science " required>
                          </div>
-
-                        <div class="input-group">
-                            <label for="email">Disability Percent</label>
-                            <input class="form-control" type="text" formControlName="disabilityPercent" placeholder="Example: Focuses on the study of IT " required>
-                        </div>
 
                         <div class="form-button mt-3">
                             <button id="submit" type="submit" (click)="createJob()" class="btn btn-primary">Add +</button>

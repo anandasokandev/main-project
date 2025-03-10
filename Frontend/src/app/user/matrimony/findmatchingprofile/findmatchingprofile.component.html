@@ -1,0 +1,118 @@
+<div class="container">
+  <!-- Search Section -->
+  <div class="search-container">
+    <div class="set-preferences-container"> 
+      <button type="button" *ngIf="preferenceSet" routerLink="/user/matrimony/setpreference">Set Default Preferences</button> 
+        <button type="button" *ngIf="!preferenceSet" (click)="findDefaultPartner()">Find with Default Preferences</button> </div>
+    <h2>Set Your Preference</h2>
+    <form class="search-form" (ngSubmit)="onSearch()">
+      <div class="search-fields">
+        <!-- Age Range -->
+        <div class="form-field">
+          <label for="ageFrom">Age From</label>
+          <input type="number" id="ageFrom" placeholder="Enter age from" [(ngModel)]="filters.age_from" name="ageFrom">
+        </div>
+        <div class="form-field">
+          <label for="ageTo">Age To</label>
+          <input type="number" id="ageTo" placeholder="Enter age to" [(ngModel)]="filters.age_to" name="ageTo">
+        </div>
+
+        <!-- Religion -->
+        <div class="form-field">
+          <label for="MaritalStatus">Marital Status</label>
+          <select id="MaritalStatus" [(ngModel)]="filters.maritalstatus" name="MaritalStatus">
+            <option selected disabled value="">Select Marital Status</option>
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+            <option value="Divorced">Divorced</option>
+            <option value="Widowed">Widowed</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="religion">Religion</label>
+          <select id="religion" [(ngModel)]="filters.religion" name="religion">
+            <option value="">Select Religion</option>
+            <option *ngFor="let religion of religions" [value]="religion">{{ religion }}</option>
+          </select>
+        </div>
+
+        <!-- Caste -->
+        <div class="form-field">
+          <label for="caste">Caste</label>
+          <select id="caste" [(ngModel)]="filters.caste" name="caste">
+            <option value="">Select Caste</option>
+            <option *ngFor="let caste of castes" [value]="caste">{{ caste }}</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="profession">Profession</label>
+          <select id="profession" [(ngModel)]="filters.profession" name="profession">
+            <option value="">Select</option>
+            <option *ngFor="let profession of professions" [value]="profession">{{ profession }}</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="complexion">Complexion</label>
+          <select id="complexion" [(ngModel)]="filters.complexion" name="complexion">
+            <option value="">Select</option>
+            <option *ngFor="let complexion of complexions" [value]="complexion">{{ complexion }}</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="district">District</label>
+          <select id="district" [(ngModel)]="filters.district" name="district">
+            <option value="">Select</option>
+            <option *ngFor="let district of districts" [value]="district">{{ district }}</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="education">Education</label>
+          <select id="education" [(ngModel)]="filters.education" name="education">
+            <option value="">Select</option>
+            <option *ngFor="let education of educations" [value]="education">{{ education }}</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="education">Disability Category</label>
+          <select id="education" [(ngModel)]="filters.disability_id" name="education"
+            (change)="fetchSubCategory()">
+            <option value="">Select</option>
+            <option *ngFor="let disability of disabilityCategory" [value]="disability.id">{{
+              disability.disability_category }}</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="education">Disability SubCategory</label>
+          <select id="education" [(ngModel)]="filters.disabilitysub_id" name="education">
+            <option value="">Select</option>
+            <option *ngFor="let disability of subDisabilityCategory" [value]="disability.id">{{
+              disability.sub_category_name }}</option>
+          </select>
+        </div>
+
+
+        <!-- Height Range -->
+        <div class="form-field">
+          <label for="heightFrom">Height From (cm)</label>
+          <input type="number" id="heightFrom" placeholder="Enter height from" [(ngModel)]="filters.height_from"
+            name="heightFrom">
+        </div>
+        <div class="form-field">
+          <label for="heightTo">Height To (cm)</label>
+          <input type="number" id="heightTo" placeholder="Enter height to" [(ngModel)]="filters.height_to"
+            name="heightTo">
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit">Add</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<div class="container" *ngFor="let data of details">
+  <div class="profile-card">
+    <a>
+      <img src="http://localhost:3000/images/{{data.profile_pic}}" alt="Profile Picture" class="profile-image" />
+      <div class="profile-details">
+        <h2>{{data.first_name}} {{data.last_name}}</h2>
+        <p class="profile-id">{{data.profile_id}}</p>
+        <p class="profile-info">{{data.age}} | {{data.height}} | {{data.caste}} | {{data.education}} | {{data.district}}
+        </p>
+        <div class="button-wrapper">
+
+          <button class="send-message" (click)="viewProfile(data.login_id)">View Profile</button>
+          <button class="send-message" (click)="openModal(data.first_name,data.last_name,data.login_id)">Send
+            Interest</button>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div *ngIf="isModalOpen" class="modal-backdrop" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <!-- Close icon at the top-right -->
+    <span class="close-icon" (click)="closeModal()">×</span>
+
+    <h4 class="modal-title">Send Interest Message To {{ name }}</h4>
+    <p class="modal-description">Express interest by selecting a message</p>
+
+    <!-- Radio Button for Message -->
+    <div class="radio-buttons">
+      <label>
+        <input type="radio" name="interestMessage" [(ngModel)]="selectedMessage"
+          [value]="'We are interested in your profile, If you are also interested, accept our proposal'">
+        We are interested in your profile, If you are also interested, accept our proposal
+      </label>
+
+      <!-- Additional Radio Buttons for different messages -->
+      <label>
+        <input type="radio" name="interestMessage" [(ngModel)]="selectedMessage"
+          [value]="'Looking forward to your response. Please let us know your thoughts.'">
+        Looking forward to your response. Please let us know your thoughts.
+      </label>
+
+      <label>
+        <input type="radio" name="interestMessage" [(ngModel)]="selectedMessage"
+          [value]="'Me and my family liked your profile, check and please reply.'">
+        Me and my family liked your profile, check and please reply.
+      </label>
+
+      <label>
+        <input type="radio" name="interestMessage" [(ngModel)]="selectedMessage"
+          [value]="'I found that my profile matches with yours, Please reply to this interest.'">
+        I found that my profile matches with yours, Please reply to this interest.
+      </label>
+
+      <label>
+        <input type="radio" name="interestMessage" [(ngModel)]="selectedMessage"
+          [value]="'Our childrens profiles are matching , Accept our message if you want us.'">
+        Our childrens profiles are matching , Accept our message if you want us.
+      </label>
+
+      <label>
+        <input type="radio" name="interestMessage" [(ngModel)]="selectedMessage"
+          [value]="'Express interest by writing personal message.'">
+        Express interest by writing personal message.
+      </label>
+
+    </div>
+
+
+
+    <div class="modal-actions">
+      <button class="send-button" (click)="sendInterestMessage()">Send Interest</button>
+    </div>
+
+  </div>
+</div>

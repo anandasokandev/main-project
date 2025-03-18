@@ -41,12 +41,11 @@
     </div>
 
     <div class="filter">
-      <label for="location">Location</label>
-      <select (change)="fetchProfile()" [(ngModel)]="location" name="location" aria-label="Select location">
-        <option value="" disabled selected>Select Location</option>
-        <option value="india">India</option>
-        <option value="usa">USA</option>
-        <option value="uk">UK</option>
+      <label for="status">Status</label>
+      <select (change)="fetchProfile()" [(ngModel)]="status" name="status" aria-label="Select status">
+        <option value="" disabled selected>Select Status</option>
+        <option value="approved">Approved</option>
+        <option value="disabled">Disabled</option>
       </select>
     </div>
   </div>

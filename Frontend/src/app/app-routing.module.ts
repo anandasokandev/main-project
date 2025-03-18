@@ -14,7 +14,6 @@ import { ViewjobcategoryComponent } from './admin/career/viewjobcategory/viewjob
 import { JobComponent } from './admin/career/job/job.component';
 import { ViewjobComponent } from './admin/career/viewjob/viewjob.component';
 import { SelectcategoryComponent } from './user/selectcategory/selectcategory.component';
-import { DisabilityComponent } from './user/disability/disability.component';
 import { AdmissionFormComponent } from './user/education/admissionform/admissionform.component';
 import { UserDashboardComponent } from './user/layout/user-dashboard/user-dashboard.component';
 import { CourseselectionComponent } from './user/education/courseselection/courseselection.component';
@@ -54,6 +53,17 @@ import { ViewinterestmanagementComponent } from './admin/matrimony/viewinterestm
 import { AcceptedinterestComponent } from './admin/matrimony/acceptedinterest/acceptedinterest.component';
 import { PendinginterestComponent } from './admin/matrimony/pendinginterest/pendinginterest.component';
 import { DeclinedinterestComponent } from './admin/matrimony/declinedinterest/declinedinterest.component';
+import { SetjobconstraintsComponent } from './admin/career/setjobconstraints/setjobconstraints.component';
+import { UserjobstatusviewComponent } from './user/career/userjobstatusview/userjobstatusview.component';
+import { ViewEditprofileComponent } from './user/view-editprofile/view-editprofile.component';
+import { ViewdmissionstatusComponent } from './user/education/viewdmissionstatus/viewdmissionstatus.component';
+import { ViewuserprofileComponent } from './admin/matrimony/viewuserprofile/viewuserprofile.component';
+import { ViewcareeruserprofileComponent } from './admin/career/viewcareeruserprofile/viewcareeruserprofile.component';
+import { ViewCareeruserComponent } from './admin/career/view-careeruser/view-careeruser.component';
+import { ViewCareerhomeComponent } from './admin/career/view-careerhome/view-careerhome.component';
+import { ViewDisabilityComponent } from './admin/career/view-disability/view-disability.component';
+import { ViewCurrentjobComponent } from './admin/career/view-currentjob/view-currentjob.component';
+import { MatrimonyUsersComponent } from './admin/matrimony/Reports/matrimony-users/matrimony-users.component';
 
 const routes: Routes = [
   {
@@ -98,12 +108,16 @@ const routes: Routes = [
         path: 'education',
         children: [
           {
+            path: 'viewprofile',
+            component: ViewEditprofileComponent
+          },
+          {
             path: 'admission',
             component: AdmissionFormComponent,
           },
           {
-            path: 'disability',
-            component: DisabilityComponent,
+            path: 'updatedisability',
+            component: UpdatedisabilitydetailsComponent,
           },
           {
             path: 'courseselection',
@@ -113,11 +127,23 @@ const routes: Routes = [
             path: 'suggestedcourse',
             component: SuggestedcourseComponent,
           },
+          {
+            path: 'viewadmissionstatus',
+            component: ViewdmissionstatusComponent
+          },
+          {
+            path: 'viewprofile',
+            component: ViewEditprofileComponent
+          }
         ],
       },
       {
         path: 'matrimony',
         children: [
+          {
+            path: 'viewprofile',
+            component: ViewEditprofileComponent
+          },
           {
             path: 'createprofile',
             component: CreateprofilematrimonyComponent,
@@ -207,6 +233,10 @@ const routes: Routes = [
         path: 'career',
         children: [
           {
+            path: 'viewprofile',
+            component: ViewEditprofileComponent
+          },
+          {
             path: 'updatedisability',
             component: UpdatedisabilitydetailsComponent
           },
@@ -219,6 +249,10 @@ const routes: Routes = [
                 component: MatchingJobComponent
               }
             ]
+          },
+          {
+            path: 'jobstatusview',
+            component: UserjobstatusviewComponent
           }
         ]
       }
@@ -242,6 +276,19 @@ const routes: Routes = [
           {
             path:'viewindividualprofile',
             component: ViewusermatrimonyprofileComponent
+          },
+          {
+            path: 'viewuserprofile',
+            component: ViewuserprofileComponent
+          },
+          {
+            path: 'reports',
+            children: [
+              {
+                path: 'view-users',
+                component: MatrimonyUsersComponent
+              }
+            ]
           }
           ,
           {
@@ -324,12 +371,34 @@ const routes: Routes = [
             path: 'editjob',
             component: EditjobComponent,
           },
+          {
+            path: 'setjobconstraints',
+            component: SetjobconstraintsComponent
+          },
+          {
+            path: 'viewuserprofile',
+            component: ViewcareeruserprofileComponent
+          },
+          {
+            path: 'view-careeruser',
+            component: ViewCareeruserComponent,
+            children: [
+              {
+                path: 'careerhome',
+                component: ViewCareerhomeComponent
+              },
+              {
+                path: 'disability',
+                component: ViewDisabilityComponent
+              },
+              {
+                path: 'currentjob',
+                component: ViewCurrentjobComponent
+              }
+            ]
+          }
         ],
-      },
-      {
-        path: 'job',
-        component: JobComponent,
-      },
+      }
     ],
   },
 ];

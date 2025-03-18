@@ -1,71 +1,128 @@
+// Variables
+$sidebar-width: 250px;
+$sidebar-bg-color: #ffffff;
+$sidebar-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+$main-bg-color: #ffffff;
+$text-color: #000000;
+$hover-bg-color: #f0f0f0;
+$active-color: green;
+$active-font-weight: bold;
+$transition-duration: 0.3s;
+$item-padding: 20px;
+$item-bg-color: #f9f9f9;
+
 // Container styles for the layout
 .container {
-    display: flex;
-    height: 100vh; 
-    margin-top: 150px; // Adds a top margin to the layout
-  }
-  
+  display: flex;
+  height: 100vh;
+  margin-top: 150px; // Adjust this as necessary for your layout
+
   // Sidebar styling
   .sidebar {
-    width: 250px; // Adjusted to match with margin-left in the main content
+    position: fixed;
+    width: $sidebar-width;
     padding: 20px;
-    background-color: #ffffff; // White background
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1); // Optional: adds shadow for separation
-  }
-  
-  // Sidebar heading (h4)
-  h4 {
-    margin: 10px 0;
-    color: #333; // Dark gray color for headings
-  }
-  
-  // Sidebar list styling
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  // Sidebar list items (li)
-  li {
-    margin: 5px 0;
-    cursor: pointer;
-    padding: 8px;
-    transition: background-color 0.3s ease; // Adds smooth transition on hover
-  
-    &:hover {
-      background-color: #f0f0f0; // Slight hover effect
+    background-color: $sidebar-bg-color;
+    box-shadow: $sidebar-shadow;
+
+    // Sidebar heading (h4)
+    h4 {
+      margin: 10px 0;
+      color: #333;
+    }
+
+    // Sidebar list styling
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+
+      // Sidebar list items (li)
+      li {
+        margin: 5px 0;
+        cursor: pointer;
+        padding: 8px;
+        transition: background-color $transition-duration ease;
+
+        &:hover {
+          background-color: $hover-bg-color;
+        }
+
+        &.active {
+          color: $active-color;
+          font-weight: $active-font-weight;
+        }
+      }
     }
   }
-  
-  // Active list item
-  .active {
-    color: green;
-    font-weight: bold; // Make active item bold to stand out
-  }
-  
+
   // Main content area
   .main-content {
     padding: 20px;
-    flex-grow: 1; // Takes up the remaining space in the container
-    background-color: #ffffff; // Light background for main content
-    color: #000000; // Dark text color
-  }
-  
-  // Responsive for smaller screens
-  @media (max-width: 768px) {
-    .container {
-      flex-direction: column; // Stack sidebar and content vertically
+    flex-grow: 1;
+    background-color: $main-bg-color;
+    color: $text-color;
+    margin-left: $sidebar-width; // Prevent overlap with the sidebar
+
+    // Flex container for two items in a row
+    .results-container {
+      display: flex;
+      flex-wrap: wrap; // Allows wrapping on smaller screens
+      gap: 20px; // Space between the items
+      justify-content: space-between;
+
+      // Individual result item
+      .item {
+        background-color: $item-bg-color;
+        padding: $item-padding;
+        flex: 1 1 calc(50% - 20px); // Adjust for two items in a row, taking space minus gap
+        box-sizing: border-box;
+        margin-bottom: 20px; // Space below each item
+
+        // Optional: Add a hover effect to the items
+        &:hover {
+          background-color: lighten($item-bg-color, 10%);
+        }
+
+        // You can style individual items further
+        h5 {
+          color: #333;
+          font-size: 18px;
+        }
+
+        p {
+          color: #666;
+        }
+      }
     }
-  
+  }
+}
+
+// Responsive for smaller screens
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+
     .sidebar {
-      width: 100%; // Sidebar takes full width on small screens
-      height: auto; // Height adjusts according to content
-      position: relative; // Remove fixed positioning
+      width: 100%;
+      height: auto;
+      position: relative;
+      margin-top: 0;
+      padding: 10px;
     }
-  
+
     .main-content {
-      margin-left: 0; // Remove left margin for small screens
+      margin-left: 0;
+      padding-left: 10px;
     }
   }
-  
+
+  .main-content .results-container {
+    flex-direction: column; // Stack items vertically on small screens
+    gap: 10px;
+  }
+
+  .main-content .results-container .item {
+    flex: 1 1 100%; // Full width for each item on small screens
+  }
+}

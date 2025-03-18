@@ -1,0 +1,78 @@
+<div class="container">
+    <h1>Matrimony Users</h1>
+    <h3 *ngIf="number">No of users: {{users.length}} </h3>
+    <div class="button-group filters-button-group">
+        <select id="filters" class="button" [(ngModel)]="filter.gender" (click)="fetchUser()">
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <select id="filters" class="button" [(ngModel)]="filter.marital_status" (click)="fetchUser()">
+            <option value="">Select Marital Status</option>
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+            <option value="Divorced">Divorced</option>
+            <option value="Widowed">Widowed</option>
+        </select>
+        <select id="filters" class="button" [(ngModel)]="filter.status" (click)="fetchUser()">
+            <option value="">Status</option>
+            <option value="">Approved</option>
+            <option value="disabled">Disabled</option>
+        </select>
+        <select id="filters" class="button" [(ngModel)]="filter.religion" (click)="fetchUser()">
+            <option value="">Religion</option>
+            <option value="Hindu">Hindu</option>
+            <option value="Muslim">Muslim</option>
+            <option value="Christian">Christian</option>
+            <option value="Sikh">Sikh</option>
+            <option value="Buddhist">Buddhist</option>
+            <option value="Jain">Jain</option>
+            <option value="Zoroastrian">Zoroastrian (Parsis)</option>
+            <option value="Jewish">Jewish</option>
+            <option value="Bahá'í">Bahá'í</option>
+            <option value="Other">Other</option>
+        </select>
+        <select id="filters" class="button" [(ngModel)]="filter.caste" (click)="fetchUser()">
+            <option selected disabled value="">Select Caste</option>
+            <option value="General">General</option>
+            <option value="OBC">OBC (Other Backward Class)</option>
+            <option value="SC">SC (Scheduled Caste)</option>
+            <option value="ST">ST (Scheduled Tribe)</option>
+            <option value="EWS">EWS (Economically Weaker Sections)</option>
+            <option value="Vokkaliga">Vokkaliga</option>
+            <option value="Brahmin">Brahmin</option>
+            <option value="Kshatriya">Kshatriya</option>
+            <option value="Vaishya">Vaishya</option>
+            <option value="Jat">Jat</option>
+            <option value="Maratha">Maratha</option>
+            <option value="Ezhava">Ezhava</option>
+            <option value="Nair">Nair</option>
+            <option value="Mali">Mali</option>
+            <option value="Other">Other</option>
+        </select>
+        <select id="filters" class="button" [(ngModel)]="filter.district" (click)="fetchUser()">
+            <option value="" disabled selected>Select a district</option>
+            <option *ngFor="let district of keralaDistricts" [value]="district">
+              {{ district }}
+            </option>
+        </select>
+        <div class="btn-success" id="button-1" (click)="exportToExcel()">
+            Download
+        </div>
+    </div>
+    <div class="grid">
+        <div class="profiles">
+            <div  class="profile-card" *ngFor="let item of users; let i=index" >
+              <!-- Profile Card -->
+              <div class="profile-image-container">
+                <img src="http://localhost:3000/images/{{item.profile_pic}}" class="profile-image">
+              </div>
+              <div class="profile-details">
+                <h3 class="profile-name">{{ item.first_name}} {{item.last_name}}</h3>
+                <p class="profile-gender"></p>
+              </div>
+            </div>
+          </div>
+    </div>
+
+</div>

@@ -19,7 +19,6 @@ router.get('/', (req, res, next) => {
     try {
         const query = 'SELECT * FROM tbllogin WHERE username = ?';
 
-        
         db.query(query, [username], (err, result) => {
             if (err) {
                 console.error(err);

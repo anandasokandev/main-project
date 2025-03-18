@@ -1,0 +1,51 @@
+<div class="container">
+    <!-- Sidebar with filters -->
+    <div class="sidebar">
+      <h2>Filters</h2>
+      
+      <div>
+        <input [(ngModel)]="filteredProfiles.searchQuery" (input)="applyFilters()" placeholder="Search by name" type="text" class="filter-input">
+      </div>
+      
+      <div>
+        <select [(ngModel)]="filteredProfiles.genderFilter" (change)="applyFilters()" class="filter-select">
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+  
+      <div>
+        <label>Start Date</label>
+        <input [(ngModel)]="filteredProfiles.startDate" (change)="applyFilters()" type="date" class="filter-date">
+      </div>
+  
+      <div>
+        <label>End Date</label>
+        <input [(ngModel)]="filteredProfiles.endDate" (change)="applyFilters()" type="date" class="filter-date">
+      </div>
+    </div>
+  
+    <!-- No Results Found -->
+    <div class="no-result-container" *ngIf="noResult">
+      <div class="no-result-content">
+        <h1 class="no-result-title">No Results Found</h1>
+        <p class="no-result-message">Sorry, we couldn't find any results matching your search.</p>
+      </div>
+    </div>
+    
+    <!-- Profiles Section -->
+    <div class="profiles">
+      <div *ngFor="let item of userProfile" class="profile-card" (click)="viewProfile(item.login_id)">
+        <!-- Profile Card -->
+        <div class="profile-image-container">
+          <img src="http://localhost:3000/images/{{item.profile_pic}}" alt="Profile Image" class="profile-image">
+        </div>
+        <div class="profile-details">
+          <h3 class="profile-name">{{item.first_name}} {{item.last_name}}</h3>
+          <p class="profile-gender">Gender: {{item.gender}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

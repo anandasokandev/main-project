@@ -1,0 +1,53 @@
+<div class="form-body">
+    <div class="row">
+        <div class="form-holder">
+            <div class="form-content">
+                <div class="form-items" style="margin-top: 100px;">
+                    <h3>Set Job Constraints</h3>
+                    <div class="form-button1">
+                        <button class="btn btn-primary" routerLink="/admin/career/viewjobconstraints">View Job Constraints</button>
+                    </div>
+                    <p>--------------</p>
+                    <form class="requires-validation" [formGroup]="jobForm">
+
+                        <div class="input-group">
+                            <label for="position">Job Category</label>
+                            <select class="form-select" id="position" (change)="getJob()" formControlName="jobcategory" style="color: black;" required >
+                                  <option selected disabled value="">Select Job Category</option>
+                                  <option *ngFor="let item of jobcategory" value="{{item.jobcat_id}}">{{item.jobcat_name}}</option>
+                            </select> 
+                        </div>
+
+                        <div class="input-group">
+                            <label for="position">Job</label>
+                            <select class="form-select" id="position" formControlName="job" style="color: black;" required >
+                                  <option selected disabled value="">Select Job</option>
+                                  <option *ngFor="let item of job" value="{{item.job_id}}">{{item.job_name}}</option>
+                            </select> 
+                        </div>
+
+                        <div class="input-group">
+                            <label for="position">Disabiilty Category</label>
+                            <select class="form-select" id="position" (change)="getDisabilitySub()" formControlName="disabilitycategory" style="color: black;" required >
+                                  <option selected disabled value="">Select Disability Category</option>
+                                  <option *ngFor="let item of disabilityCategory" value="{{item.id}}">{{item.disability_category}}</option>
+                            </select> 
+                        </div>
+
+                        <div class="input-group">
+                            <label for="position">Disabiilty SubCategory</label>
+                            <select class="form-select" id="position" formControlName="disabilitysubcategory" style="color: black;" required >
+                                  <option selected disabled value="">Select Disability SubCategory</option>
+                                  <option *ngFor="let item of disabilitySubCategory" value="{{item.id}}">{{item.sub_category_name}}</option>
+                            </select> 
+                        </div>
+
+                        <div class="form-button1">
+                            <button class="btn-primary" (click)="setConstraints()">Submit</button>    
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

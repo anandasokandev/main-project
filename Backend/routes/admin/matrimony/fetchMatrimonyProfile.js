@@ -8,14 +8,15 @@ const validateAge = (age) => {
 };
 
 router.post('/', (req, res, next) => {
-  let { age, religion, gender, location } = req.body;
+  let { age, religion, gender, status_profile } = req.body;
   
   // Input validation
   if (age && !validateAge(age)) {
     return res.status(400).json({ error: 'Invalid age provided' });
   }
 
-  let query = `SELECT * FROM tbllogin l INNER JOIN tblprofile p ON l.login_id = p.login_id INNER JOIN tbluser u ON u.login_id = p.login_id WHERE 1=1 AND l.status = 'approved'`; 
+  let query = `SELECT * FROM tbllogin l INNER JOIN tblprofile p ON l.login_id = p.login_id 
+  INNER JOIN tbluser u ON u.login_id = p.login_id WHERE 1=1 AND l.status = 'approved'`; 
   let queryParams = [];
   
   
@@ -32,11 +33,6 @@ router.post('/', (req, res, next) => {
   if (gender) {
     query += ' AND gender = ?';
     queryParams.push(gender);
-  }
-
-  if (location) {
-    query += ' AND location = ?';
-    queryParams.push(location);
   }
 
   console.log('Generated Query:', query);  // Debugging: Log the final query

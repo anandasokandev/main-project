@@ -12,7 +12,11 @@ router.get('/', (req, res, next) => {
         return res.status(400).send({ 'message': 'Login ID is required' });
     }
 
-    const fetchUserQuery = 'SELECT * FROM tbluser WHERE login_id = ?';
+    const fetchUserQuery = `SELECT * FROM tbluser u  INNER JOIN 
+    tbllogin l on l.login_id = u.login_id INNER JOIN
+    disabilitysubcategories dsc ON dsc.id = u.disability_sub_category
+    INNER JOIN disabilitycategories dc ON dc.id = dsc.disability_category_id 
+    WHERE l.login_id = ?`;
 
     db.query(fetchUserQuery, [login_id], (err, result) => {
         if (err) {

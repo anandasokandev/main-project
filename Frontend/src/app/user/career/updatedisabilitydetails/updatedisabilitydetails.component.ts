@@ -12,6 +12,8 @@ export class UpdatedisabilitydetailsComponent {
   public subCategory: any[] = [];
   public login_id = localStorage.getItem('loginid');
   user: any[] = [];
+  isModalVisible = false;
+  modalStatus = '';
 
   constructor(
     private db: DatabaseService,
@@ -22,6 +24,7 @@ export class UpdatedisabilitydetailsComponent {
     disabilitycategory: [''],
     disabilitysubcategory: [''],
     percent: [''],
+    login_id: this.login_id
   });
 
   ngOnInit(): void {
@@ -78,5 +81,22 @@ export class UpdatedisabilitydetailsComponent {
   
   onSubmit(){
     console.log(this.disabilityForm.value);
+    this.db.updateDisability(this.disabilityForm.value).then((data: any)=>{
+      if(data.message === 'Success'){
+        this.openStatusModal('success');
+      }else{
+        this.openStatusModal('failed');
+      }
+    })
+  }
+
+  openStatusModal(status: string): void {
+    this.modalStatus = status;  // 'success' or 'failure'
+    this.isModalVisible = true; // Show the modal
+  }
+
+  // Close the modal
+  closeModal(): void {
+    this.isModalVisible = false;
   }
 }

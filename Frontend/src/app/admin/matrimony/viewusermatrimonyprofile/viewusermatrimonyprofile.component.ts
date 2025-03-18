@@ -67,8 +67,10 @@ export class ViewusermatrimonyprofileComponent {
     }
   
     disableProfile(login_id: string){
-      this.db.disableMatrimonyProfile(login_id).then((data:any)=>{
-        if(data.length > 0){
+      this.db.disableMatrimonyProfile({login_id}).then((data:any)=>{
+        console.log(data);
+        
+        if(data.message === 'Success'){
           alert('Profile disabled successfully');
         }else{
           alert(`Failed to disable profile`);

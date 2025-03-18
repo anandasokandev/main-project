@@ -340,4 +340,67 @@ export class DatabaseService {
   fetchPendingInterest(){
     return this.http.get(`http://localhost:3000/fetchpendinginterest`).toPromise();
   }
+
+  setConstraints(data: any){
+    return this.http.post('http://localhost:3000/setjobconstraints',data).toPromise();
+  }
+
+  fetchMatchingJob(data: any){
+    return this.http.get(`http://localhost:3000/findmatchingjob?disability_id=${data.disability_id}&jobcat_id=${data.jobcat_id}`).toPromise();
+  }
+
+  submitJobForm(data: any){
+    return this.http.post('http://localhost:3000/submitjobform',data).toPromise();
+  }
+
+  fetchSubmittedJob(filter: any){
+    return this.http.get(`http://localhost:3000/fetchsubmittedjob?login_id=${filter.login_id}&job_id=${filter.job_id}`).toPromise();
+  }
+
+  fetchSubmittedAnyJob(login_id: any){
+    return this.http.get(`http://localhost:3000/fetchsubmittedanyjob?login_id=${login_id}`).toPromise();
+  }
+  
+  fetchJobStatus(data: any){
+    return this.http.post('http://localhost:3000/fetchjobstatus',data).toPromise();
+  }
+  
+  updateDisability(data: any){
+    return this.http.put('http://localhost:3000/updatedisability',data).toPromise();
+  }
+
+  deleteJobApplication(jobform_id: any){
+    return this.http.delete(`http://localhost:3000/deletejobform?id=${jobform_id}`).toPromise();
+  }
+
+  fetchAdmissionStatus(data: any){
+    return this.http.post('http://localhost:3000/fetchadmissionstatus',data).toPromise();
+  }
+
+  deleteAdmissionForm(data: any){
+    return this.http.delete(`http://localhost:3000/deleteadmissionform?id=${data}`).toPromise();
+  }
+
+  fetchMatrimonyUserProfile(data: any){
+    return this.http.post('http://localhost:3000/fetchuserprofile',data).toPromise();
+  }
+  fetchCareerUsers(data: any){
+    return this.http.post('http://localhost:3000/fetchcareerusers',data).toPromise();
+  }
+
+  disableUser(data: any){
+    return this.http.put('http://localhost:3000/disableuser',data).toPromise();
+  }
+
+  enableUser(data: any){
+    return this.http.put('http://localhost:3000/enableuser',data).toPromise();
+  }
+
+  fetchSpecificJobStatus(data:any){
+    return this.http.get(`http://localhost:3000/fetchspecificjobstatus?login_id=${data}`).toPromise();
+  }
+
+  fetchMatrimonyReport(data: any){
+    return this.http.post(`http://localhost:3000/fetchmatrimonyreport`,data).toPromise();
+  }
 }

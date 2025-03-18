@@ -86,6 +86,22 @@ var declineInterest = require('./routes/user/matrimony/updateInterestToDeclined'
 var fetchAcceptedInterest = require('./routes/admin/matrimony/fetchAcceptedInterest');
 var fetchDeclinedInterest = require('./routes/admin/matrimony/fetchDeclinedInterest');
 var fetchPendingInterest = require('./routes/admin/matrimony/fetchPendingInterest');
+var setJobConstraints = require('./routes/admin/career/setJobConstraints');
+var findMatchingJob = require('./routes/user/career/findMatchingJob');
+var submitjobform = require('./routes/user/career/submitJobApplication');
+var fetchSubmittedJob = require('./routes/user/career/fetchSubmittedJob');
+var fetchSubmittedAnyJob = require('./routes/user/career/fetchSubmittedAnyJob');
+var fetchJobStatus = require('./routes/user/career/fetchJobStatus');
+var updateDisability = require('./routes/user/career/updateDisabilitydetails');
+var deleteJobForm = require('./routes/user/career/deleteJobForm');
+var fetchAdmissionStatus = require('./routes/user/education/admission/fetchAdmissionStatus');
+var deleteAdmissionForm = require('./routes/user/education/admission/deleteAdmissionForm');
+var fetchUserProfile = require('./routes/admin/matrimony/fetchUserProfile');
+var fetchCareerUsers = require('./routes/admin/career/fetchCareerUsers');
+var disableUser = require('./routes/admin/career/disableUser');
+var enableUser = require('./routes/admin/career/enableUser');
+var fetchUserSpecificJobStatus = require('./routes/admin/career/fetchUserSpecificJobStatus')
+var fetchMatrimonyReport = require('./routes/admin/matrimony/Reports/fetchMatrimonyProfile');
 
 var app = express();
 
@@ -180,6 +196,22 @@ app.use('/acceptinterest',acceptInterest);
 app.use('/fetchpendinginterest',fetchPendingInterest);
 app.use('/fetchacceptedinterest',fetchAcceptedInterest)
 app.use('/fetchdeclinedinterest',fetchDeclinedInterest);
+app.use('/setjobconstraints',setJobConstraints); 
+app.use('/findmatchingjob',findMatchingJob);
+app.use('/submitjobform',submitjobform);
+app.use('/fetchsubmittedjob',fetchSubmittedJob);
+app.use('/fetchsubmittedanyjob',fetchSubmittedAnyJob);
+app.use('/fetchjobstatus',fetchJobStatus);
+app.use('/updatedisability',updateDisability);
+app.use('/deletejobform',deleteJobForm);
+app.use('/fetchadmissionstatus',fetchAdmissionStatus);
+app.use('/deleteadmissionform',deleteAdmissionForm);
+app.use('/fetchuserprofile',fetchUserProfile);
+app.use('/fetchcareerusers',fetchCareerUsers);
+app.use('/disableuser',disableUser);
+app.use('/enableuser',enableUser);
+app.use('/fetchspecificjobstatus',fetchUserSpecificJobStatus);
+app.use('/fetchmatrimonyreport',fetchMatrimonyReport);
 
 //catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -160,7 +160,7 @@ export class FindmatchingprofileComponent {
       if(data.message === 'Failed'){
         alert(`No results found`);
       }else{
-        alert(`${data.length} results found`);
+        localStorage.setItem('matrimonyUserData', JSON.stringify(data));
         this.router.navigate(['/user/matrimony/matrimonyusers']);
       }
     });

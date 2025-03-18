@@ -17,47 +17,53 @@
             <li><a routerLink="/admin/matrimony/viewmatrimonyprofiles">View Matrimony Profiles</a></li>
             <li><a routerLink="/admin/matrimony/viewinterestmanagement">Interest Management View</a></li>
             <li><a routerLink="/admin/matrimony/viewuserprofile">Manage User Profiles</a></li>
-            <li class="dropdown">
-              <a (click)="toggleDropdown($event)">
-                <span>Deep Dropdown</span>
-                <i class="bi bi-chevron-down toggle-dropdown"></i>
-              </a>
-              <ul>
-                <li><a>Deep Dropdown 1</a></li>
-                <li><a>Deep Dropdown 2</a></li>
-                <li><a>Deep Dropdown 3</a></li>
-                <li><a>Deep Dropdown 4</a></li>
-                <li><a>Deep Dropdown 5</a></li>
-              </ul>
-            </li>
-            <li><a>Dropdown 4</a></li>
           </ul>
         </li>
-        <li><a (click)="closeMobileNavOnLinkClick()">Features</a></li>
-        <li><a href="#featured-services" (click)="closeMobileNavOnLinkClick()">Services</a></li>
         <li class="dropdown">
           <a (click)="toggleDropdown($event)">
-            <span>Dropdown</span>
+            <span>Career</span>
             <i class="bi bi-chevron-down toggle-dropdown"></i>
           </a>
           <ul>
-            <li><a href="#">Dropdown 1</a></li>
+            <li><a routerLink="/admin/career/viewuserprofile">View Users</a></li>
+          </ul>
+        </li>
+        <li><a (click)="closeMobileNavOnLinkClick()">Services</a></li>
+        <li class="dropdown">
+          <a (click)="toggleDropdown($event)">
+            <span>Reports</span>
+            <i class="bi bi-chevron-down toggle-dropdown"></i>
+          </a>
+          <ul>
             <li class="dropdown">
               <a (click)="toggleDropdown($event)">
-                <span>Deep Dropdown</span>
+                <span>Matrimony</span>
                 <i class="bi bi-chevron-down toggle-dropdown"></i>
               </a>
               <ul>
-                <li><a>Deep Dropdown 1</a></li>
-                <li><a>Deep Dropdown 2</a></li>
-                <li><a>Deep Dropdown 3</a></li>
-                <li><a>Deep Dropdown 4</a></li>
-                <li><a>Deep Dropdown 5</a></li>
+                <li routerLink="/admin/matrimony/reports/view-users"><a>User Profiles</a></li>
               </ul>
             </li>
-            <li><a>Dropdown 2</a></li>
-            <li><a>Dropdown 3</a></li>
-            <li><a>Dropdown 4</a></li>
+            <li class="dropdown">
+              <a (click)="toggleDropdown($event)">
+                <span>Education</span>
+                <i class="bi bi-chevron-down toggle-dropdown"></i>
+              </a>
+              <ul>
+                <li><a>User Profile</a></li>
+                <li><a>Admission Application</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a (click)="toggleDropdown($event)">
+                <span>Career</span>
+                <i class="bi bi-chevron-down toggle-dropdown"></i>
+              </a>
+              <ul>
+                <li><a>User Profile</a></li>
+                <li><a>Job Application</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
         <li><a (click)="closeMobileNavOnLinkClick()">Logout</a></li>

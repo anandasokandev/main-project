@@ -1,0 +1,64 @@
+<body>
+
+    <div class="dashboard-container">
+        <h1 class="dashboard-title">Job Status View</h1>
+
+        <div class="dashboard-content">
+            <form [formGroup]="jobForm" class="filter-form">
+                <div class="sidebar">
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select id="status" (change)="getAction()" formControlName="status">
+                            <option value="">Select Status</option>
+                            <option value="Submitted">Submitted</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="startDate">Start Date</label>
+                        <input type="date" (change)="getAction()" id="startDate" formControlName="startdate">
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">End Date</label>
+                        <input type="date" (change)="getAction()" id="endDate" formControlName="enddate">
+                    </div>
+                </div>
+            </form>
+
+            <div class="main-content" *ngIf="noResult">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Job Name</th>
+                            <th>Status</th>
+                            <th>Submission Date</th>
+                            <th>Review Date</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of jobData; let i = index">
+                            <td>{{ i + 1 }}</td>
+                            <td>{{ item.job_name }}</td>
+                            <td>{{ item.form_status }}</td>
+                            <td>{{ item.submission_date | date }}</td>
+                            <td *ngIf="item.review_date === null ">Not Reviewed</td>
+                            <td *ngIf="item.review_date != null">{{ item.review_date}}</td>
+                            <td><button 
+                            [disabled]="item.form_status === 'Rejected'" (click)="deleteJobForm(item)">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="no-results-container" *ngIf="!noResult">
+                <h2>No Results Found</h2>
+                <p>We couldn't find any results matching your search criteria.</p>
+                <button class="btn btn-primary">Search other result</button>
+            </div>
+        </div>
+    </div>
+
+</body>

@@ -30,7 +30,8 @@ export class ReceivedallinterestComponent {
     this.router.navigate(['/user/matrimony/individualprofile'], {queryParams: {id: login_id}})
   }
 
-  isModalOpen: boolean = false; // Controls visibility of the modal
+  isModalOpen: boolean = false; 
+  isModalOpen1: boolean = false// Controls visibility of the modal
   
      // Open the modal
      openModal(first_name: string,last_name: string, login_id: string, interest_id : string): void {
@@ -39,10 +40,15 @@ export class ReceivedallinterestComponent {
        this.login_id = login_id;
        this.interest_id = interest_id;
      }
+
+     openModalMessage(data: any){
+      this.isModalOpen1 = true
+     }
    
      // Close the modal
      closeModal(): void {
        this.isModalOpen = false;
+       this.isModalOpen1 = false
      }
 
      sendResponse(isAccepted: boolean,) {

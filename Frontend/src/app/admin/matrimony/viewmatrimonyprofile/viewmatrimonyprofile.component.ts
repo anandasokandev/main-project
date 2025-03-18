@@ -14,7 +14,7 @@ export class ViewmatrimonyprofileComponent {
   age: string = '';
   gender: string = '';
   religion: string = '';
-  location: string = '';
+  status: string = '';
   user: any[]=[]
   
 
@@ -26,7 +26,7 @@ export class ViewmatrimonyprofileComponent {
       age: this.age,
       gender: this.gender,
       religion: this.religion,
-      location: this.location
+      status: this.status
     };
 
     console.log(profileParams);

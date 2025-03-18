@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body *ngIf="!profile">
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Job Details</h1>
+    </div>
+
+    <!-- Photo Grid -->
+    <!-- Row 1 -->
+    <div class="card-deck">
+        <div class="card">
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-success"><i class="fa fa-briefcase"
+                            style="font-size:20px;"></i> Role: {{job[0].job_name}}</li>
+                    <li class="list-group-item list-group-item-success"><i class="fa fa-user"
+                            style="font-size:20px;"></i> Joining Date: {{job[0].review_date  | date}}</li>
+                </ul>
+
+            </div>
+            <div class="card-footer">
+                <button type="button" class="btn" id="left-panel-link">PIP</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<head>
+ 
+  
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Arvo'>
+    
+  </head>
+  
+  <body *ngIf="profile">
+  
+    <section class="page_404">
+      <div class="container">
+          <div class="row">	
+          <div class="col-sm-12 ">
+          <div class="col-sm-10 col-sm-offset-1  text-center">
+          <div class="four_zero_four_bg">
+              <h1 class="text-center ">404</h1>
+          
+          
+          </div>
+          
+          <div class="contant_box_404">
+          <h3 class="h2">
+          Look like you're lost
+          </h3>
+          
+          <p>the page you are looking for not avaible!</p>
+          
+          <a href="https://instagram.com/abol.codes" class="link_404">Go to Home</a>
+      </div>
+          </div>
+          </div>
+          </div>
+      </div>
+  </section>
+  
+  

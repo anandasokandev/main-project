@@ -9,28 +9,37 @@
           </li>
           <li><i class="bx bx-chevron-right"></i></li>
           <li>
-            <a class="active" href="#">Home</a>
+            <a class="active" routerLink="/user/dashboard">Home</a>
           </li>
         </ul>
       </div>
     </div>
 
     <ul class="box-info">
-      <a routerLink="/user/education/disability">
+      <a routerLink="/user/education/updatedisability">
         <li>
           <i class="bx bxs-calendar-check"></i>
           <span class="text">
-            <h3>Disability</h3>
+            <h3>Change Disability</h3>
             <p>Category</p>
           </span>
         </li>
       </a>
-      <a routerLink="/user/education/courseselection">
+      <a routerLink="/user/education/courseselection" *ngIf="educationApplication">
         <li>
           <i class="bx bxs-group"></i>
           <span class="text">
             <h3>Find Your</h3>
             <p>Course</p>
+          </span>
+        </li>
+      </a>
+      <a routerLink="/user/education/viewadmissionstatus" *ngIf="!educationApplication">
+        <li>
+          <i class="bx bxs-group"></i>
+          <span class="text">
+            <h3>View Admission</h3>
+            <p>Status</p>
           </span>
         </li>
       </a>
@@ -71,6 +80,17 @@
           </span>
         </li>
       </a>
+
+      <a routerLink="/user/career/jobstatusview" *ngIf="jobStatus">
+        <li>
+          <i class="bx bxs-group"></i>
+          <span class="text">
+            <h3>View</h3>
+            <p>Job Status</p>
+          </span>
+        </li>
+      </a>
+
     </ul>
   </main>
   <main *ngIf="userState === 'Matrimony'">

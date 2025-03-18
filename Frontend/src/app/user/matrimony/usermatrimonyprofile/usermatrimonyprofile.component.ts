@@ -22,8 +22,8 @@ export class UsermatrimonyprofileComponent implements OnInit {
 
   ngOnInit(): void {
     // Retrieve stored data from localStorage
+
     const storedData = localStorage.getItem('matrimonyUserData');
-  
     if (storedData) {
       this.details = JSON.parse(storedData);
       console.log(this.details);

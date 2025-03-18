@@ -9,11 +9,13 @@
 	left: 60px;
 }
 
-
+a{
+	cursor: pointer;
+}
 /* NAVBAR */
 #content nav {
 	height: 56px;
-	background: var(--light);
+	background: #ccc8c8;
 	padding: 0 24px;
 	display: flex;
 	align-items: center;

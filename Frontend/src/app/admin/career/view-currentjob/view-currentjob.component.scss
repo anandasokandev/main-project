@@ -1,0 +1,81 @@
+*{
+    font-size: 20px;
+}
+  .header {
+    text-align: center;
+    padding: 20px;
+    font-size:20px;
+  }
+  
+  /* Responsive layout - makes a two column-layout instead of four columns */
+  @media (max-width: 800px) {
+    .column {
+      flex: 46%;
+      max-width: 46%;
+    }
+  }
+  
+  .card {
+    opacity: 0.8;
+    filter: alpha(opacity=60);
+  }
+  
+  .modal-header {
+    background-image: linear-gradient(#7FDBFF,white);
+  }
+  .modal-footer {
+    background-image: linear-gradient(white,#7FDBFF);
+  }
+  #left-panel-link {
+    position: relative;
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  #right-panel-link {
+    position: absolute;
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .sep {
+    height: 25px;
+  }
+
+  
+.page_404{ padding:40px 0; background:#fff; font-family: 'Arvo', serif;
+}
+
+.page_404  img{ width:100%;}
+
+.four_zero_four_bg{
+ 
+ background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+    height: 400px;
+    background-position: center;
+ }
+ 
+ 
+ .four_zero_four_bg h1{
+ font-size:80px;
+ }
+ 
+  .four_zero_four_bg h3{
+			 font-size:80px;
+			 }
+			 
+			 .link_404{			 
+	color: #fff!important;
+    padding: 10px 20px;
+    background: #39ac31;
+    margin: 20px 0;
+    display: inline-block;}
+	.contant_box_404{ margin-top:-50px;}

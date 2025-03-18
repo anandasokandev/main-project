@@ -10,6 +10,7 @@
         <div class="button-wrapper">
 
           <button (click)="viewProfile(data.login_id)" class="send-message">View Profile</button>
+          <button (click)="openModalMessage(data.login_id)" class="send-message">View Message</button>
           <button (click)="openModal(data.first_name,data.last_name,data.login_id,data.interest_id)" class="send-message">Respond</button>
         </div>
       </div>
@@ -25,6 +26,24 @@
     <!-- Title and description -->
     <h4 class="modal-title"> Interest Action of {{ name }}</h4>
     <p class="modal-description">Please select whether you would like to accept or decline the proposal.</p>
+
+    <!-- Action Buttons: Accept or Decline -->
+    <div class="modal-actions">
+      <button class="accept-button" (click)="sendResponse(true)">Accept</button>
+      <button class="decline-button" (click)="sendResponse(false)">Decline</button>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="isModalOpen1" class="modal-backdrop" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <!-- Close icon at the top-right -->
+    <span class="close-icon" (click)="closeModal()">×</span>
+
+    <!-- Title and description -->
+    <h4 class="modal-title">Message from {{ name }}</h4>
+    <p class="modal-description">{{ details[0].message }}</p>
 
     <!-- Action Buttons: Accept or Decline -->
     <div class="modal-actions">

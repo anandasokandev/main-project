@@ -11,6 +11,9 @@ export class UserDashboardComponent {
   public userState: string = '';
   public formState: string = '';
   profile: boolean = false;
+  login_id = localStorage.getItem('loginid');
+  jobStatus: boolean = false;
+  educationApplication: boolean = false;
 
   constructor(private db: DatabaseService, private router: Router) {}
 
@@ -43,10 +46,20 @@ export class UserDashboardComponent {
 
 
     this.db.fetchAdmission(login_id).then((data: any) => {
-      if (data.message === 'Form Already Submitted') {
-        this.formState = data.message;
+      console.log(data);
+      
+      if (data.message === 'Form not submitted yet') {
+        this.educationApplication = true
+      }else{
+        this.educationApplication = false
       }
     });
+
+    this.db.fetchSubmittedAnyJob(this.login_id).then((data: any)=>{
+      if(data.message === 'Success'){
+        this.jobStatus = !this.jobStatus;
+      }
+    })
     
   }
 }

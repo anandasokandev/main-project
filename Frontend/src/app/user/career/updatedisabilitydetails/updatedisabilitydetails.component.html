@@ -1,30 +1,32 @@
 <section id="content">
-    <body>
-      <form [formGroup]="disabilityForm">
-        <!-- Disability Dropdown -->
-        <label>Disability Category:</label>
-        <select required formControlName="disabilitycategory" (change)="fetchSubCategoryClick()">
-          <option value="" disabled>--Select--</option>
-          <option *ngFor="let item of disabilityCategory" value="{{item.id}}">{{item.disability_category}}</option>
-        </select>
-  
-        <label>Disability Sub Category:</label>
-        <select formControlName="disabilitysubcategory" required>
-          <option>--Select--</option>
-          <option *ngFor="let item of subCategory" value="{{item.id}}" >{{item.sub_category_name}}</option>
-        </select>
-  
-        <label for="username">Enter disability percent:</label>
-        <input
-          type="number"
-          placeholder="Disability Percent"
-          formControlName="percent"
-          required
-        />
-  
-        <!-- Submit Button -->
-        <button (click)="onSubmit()" type="submit">Submit</button>
-      </form>
-    </body>
-  </section>
-  
+
+  <body>
+    <form [formGroup]="disabilityForm">
+      <!-- Disability Dropdown -->
+      <label>Disability Category:</label>
+      <select required formControlName="disabilitycategory" (change)="fetchSubCategoryClick()">
+        <option value="" disabled>--Select--</option>
+        <option *ngFor="let item of disabilityCategory" value="{{item.id}}">{{item.disability_category}}</option>
+      </select>
+
+      <label>Disability Sub Category:</label>
+      <select formControlName="disabilitysubcategory" required>
+        <option>--Select--</option>
+        <option *ngFor="let item of subCategory" value="{{item.id}}">{{item.sub_category_name}}</option>
+      </select>
+
+      <label for="username">Enter disability percent:</label>
+      <input type="number" placeholder="Disability Percent" formControlName="percent" required />
+
+      <!-- Submit Button -->
+      <button (click)="onSubmit()" type="submit">Submit</button>
+    </form>
+  </body>
+</section>
+
+<div *ngIf="isModalVisible" class="modal-overlay">
+  <div class="modal-content">
+    <h2>{{ modalStatus === 'success' ? 'Updation Success' : 'Updation Failure' }}</h2>
+    <button (click)="closeModal()">Close</button>
+  </div>
+</div>

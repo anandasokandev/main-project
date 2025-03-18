@@ -1,0 +1,50 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+
+<hr>
+<div id="container" class="container bootstrap snippet">
+    <div class="row">
+        <div class="col-sm-10">
+            <h1>{{user[0].first_name}} {{ user[0].last_name }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3"><!--left col-->
+            <div class="text-center">
+                <img style="width:300px;height:250px" src="http://localhost:3000/images/{{user[0].profile_pic}}"
+                    class="avatar img-circle img-thumbnail" alt="avatar">
+            </div><br>
+
+        </div><!--/col-3-->
+        <div class="col-sm-9">
+            <ul class="nav nav-tabs">
+                <li class="active"><a  (click)="careerhome(user[0].login_id)" data-toggle="tab">Home</a></li>
+                <li><a (click)="viewCurrentJob(user[0].login_id)" data-toggle="tab">Job</a></li>
+                <li><a (click)="viewDisability(user[0].login_id)" data-toggle="tab">Disability</a></li>
+            </ul>
+
+
+            <div class="tab-content">
+               <router-outlet></router-outlet>
+            </div>
+        </div>
+
+    </div>
+</div>

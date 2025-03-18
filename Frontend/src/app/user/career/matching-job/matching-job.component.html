@@ -1,75 +1,42 @@
-<div class="job-details-container">
-    <!-- Job Title Section -->
-    <div class="job-title">
-      <h1>{{ jobDetails.jobTitle }}</h1>
-    </div>
-  
-    <!-- Job Description Section -->
-    <div class="job-description">
-      <h2>Job Description</h2>
-      <p>{{ jobDetails.jobDescription }}</p>
-    </div>
-  
-    <!-- Job Qualifications Section -->
-    <div class="job-qualifications">
-      <h2>Qualifications</h2>
-      <ul>
-        <li *ngFor="let qualification of jobDetails.qualifications">{{ qualification }}</li>
-      </ul>
-    </div>
-  
-    <!-- Job Salary Section -->
-    <div class="job-salary">
-      <h2>Salary</h2>
-      <p>{{ jobDetails.salary }}</p>
-    </div>
-  
-    <!-- Job Location Section -->
-    <div class="job-location">
-      <h2>Location</h2>
-      <p>{{ jobDetails.location }}</p>
-    </div>
-  
-    <!-- Apply Button Section -->
-    <div class="apply-section">
-      <button (click)="applyForJob()">Apply Now</button>
-    </div>
+<div class="job-details-container" *ngFor="let item of jobData">
+  <!-- Job Title Section -->
+  <div class="job-title">
+    <h1>Job Name: {{item.job_name}}</h1>
   </div>
-  <div class="job-details-container">
-    <!-- Job Title Section -->
-    <div class="job-title">
-      <h1>{{ jobDetails.jobTitle }}</h1>
-    </div>
-  
-    <!-- Job Description Section -->
-    <div class="job-description">
-      <h2>Job Description</h2>
-      <p>{{ jobDetails.jobDescription }}</p>
-    </div>
-  
-    <!-- Job Qualifications Section -->
-    <div class="job-qualifications">
-      <h2>Qualifications</h2>
-      <ul>
-        <li *ngFor="let qualification of jobDetails.qualifications">{{ qualification }}</li>
-      </ul>
-    </div>
-  
-    <!-- Job Salary Section -->
-    <div class="job-salary">
-      <h2>Salary</h2>
-      <p>{{ jobDetails.salary }}</p>
-    </div>
-  
-    <!-- Job Location Section -->
-    <div class="job-location">
-      <h2>Location</h2>
-      <p>{{ jobDetails.location }}</p>
-    </div>
-  
-    <!-- Apply Button Section -->
-    <div class="apply-section">
-      <button (click)="applyForJob()">Apply Now</button>
-    </div>
+
+  <!-- Job Description Section -->
+  <div class="job-description">
+    <h2>Job Description</h2>
+    <p>{{item.description}}</p>
   </div>
-  
+
+  <!-- Job Qualifications Section -->
+  <div class="job-qualificaton">
+    <h2>Job Qualification</h2>
+    <p>{{item.qualification}}</p>
+  </div>
+
+  <!-- Job Salary Section -->
+  <div class="job-salary">
+    <h2>Salary</h2>
+    <p>As per industry standards</p>
+  </div>
+
+  <!-- Job Location Section -->
+  <div class="job-location">
+    <h2>Location</h2>
+    <p>Vazhithala</p>
+  </div>
+
+  <!-- Apply Button Section -->
+  <div class="apply-section">
+    <button (click)="submitJob(item)">Apply Now</button>
+  </div>
+</div>
+
+<div *ngIf="isModalVisible" class="modal-overlay">
+  <div class="modal-content">
+    <h2>{{ modalMessage }}</h2>
+    <button (click)="closeModal()">Close</button>
+  </div>
+</div>

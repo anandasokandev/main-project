@@ -403,4 +403,19 @@ export class DatabaseService {
   fetchMatrimonyReport(data: any){
     return this.http.post(`http://localhost:3000/fetchmatrimonyreport`,data).toPromise();
   }
+  admissionReports(data:any){
+    return this.http.post(`http://localhost:3000/admissionreport`,data).toPromise();
+  }
+
+  fetchJobApplicationReports(data: any){
+    return this.http.post(`http://localhost:3000/jobapplicationreport`,data).toPromise();
+  }
+
+  fetchJobOnly(){
+    return this.http.get(`http://localhost:3000/fetchjobonly`).toPromise();
+  }
+
+  fetchAdmissionUsers(data: any){
+    return this.http.post(`http://localhost:3000/fetchadmissionusers`,data).toPromise();
+  }
 }

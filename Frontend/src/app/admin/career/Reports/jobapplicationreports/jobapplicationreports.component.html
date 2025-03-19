@@ -1,0 +1,100 @@
+<div class="container">
+    <h1>Job Application</h1>
+    <div class="button-group filters-button-group">
+        <!-- Course Filter -->
+        <select class="button" [(ngModel)]="filter.job" (change)="fetchUser()">
+            <option value="" disabled>Select Course</option>
+            <option *ngFor="let item of job" value="{{item.job_id}}">{{item.job_name}}</option>
+            <!-- Add more courses dynamically if needed -->
+        </select>
+
+        <!-- From Date Filter -->
+        <div class="date-filter">
+            <label for="startDate">From Date:</label>
+            <input type="date" id="startDate" class="button" [(ngModel)]="filter.startDate" (change)="fetchUser()">
+        </div>
+
+        <!-- To Date Filter -->
+        <div class="date-filter">
+            <label for="endDate">To Date:</label>
+            <input type="date" id="endDate" class="button" [(ngModel)]="filter.endDate" (change)="fetchUser()">
+        </div>
+
+        <!-- Status Filter -->
+        <select class="button" [(ngModel)]="filter.status" (change)="fetchUser()">
+            <option value="" disabled>Select Status</option>
+            <option value="Admitted">Approved</option>
+            <option value="Submitted">Submitted</option>
+            <option value="Rejected">Rejected</option>
+            <!-- Add more status options if needed -->
+        </select>
+
+        <!-- Status Filter -->
+        <select class="button" [(ngModel)]="filter.disabilityCategory" (change)="fetchSubDisability()">
+            <option value="" disabled>Select Disability Category</option>
+            <option *ngFor="let item of disabilityCategory" value="{{item.id}}">{{item.disability_category}}</option>
+            <!-- Add more status options if needed -->
+        </select>
+
+        <select class="button" [(ngModel)]="filter.disabilitySubCategory" (change)="fetchUser()">
+            <option value="" disabled>Select Disability SubCategory</option>
+            <option *ngFor="let item of subcategory" value="{{item.id}}">{{item.sub_category_name}}</option>
+            <!-- Add more status options if needed -->
+        </select>
+
+        <div class="btn-success" id="button-1" (click)="exportToExcel()">
+            Download
+        </div>
+    </div>
+
+
+    <div class="grid">
+      
+        <div class="container-table" #table #TABLE>
+            <h3 *ngIf="user.length > 0">No of users: {{user.length}}</h3>
+
+            <table class="responsive-table" >
+                
+                <thead class="responsive-table__head">
+                    <tr class="responsive-table__row">
+                        <th class="responsive-table__head__title responsive-table__head__title--name">Name
+                            <svg version="1.1" class="up-arrow" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+                                style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                <path
+                                    d="M374.176,110.386l-104-104.504c-0.006-0.006-0.013-0.011-0.019-0.018c-7.818-7.832-20.522-7.807-28.314,0.002c-0.006,0.006-0.013,0.011-0.019,0.018l-104,104.504c-7.791,7.829-7.762,20.493,0.068,28.285    c7.829,7.792,20.492,7.762,28.284-0.067L236,68.442V492c0,11.046,8.954,20,20,20c11.046,0,20-8.954,20-20V68.442l69.824,70.162c7.792,7.829,20.455,7.859,28.284,0.067C381.939,130.878,381.966,118.214,374.176,110.386z" />
+                            </svg>
+                        </th>
+                        <th class="responsive-table__head__title responsive-table__head__title--status">Gender</th>
+                        <th class="responsive-table__head__title responsive-table__head__title--types">Job Name</th>
+                        <th class="responsive-table__head__title responsive-table__head__title--update">Submission Date
+                        </th>
+                        <th class="responsive-table__head__title responsive-table__head__title--country">Admission
+                            Status</th>
+                    </tr>
+                </thead>
+                <!-- Responsive Table Body Section -->
+                <tbody class="responsive-table__body">
+                    <tr class="responsive-table__row" *ngFor="let item of user">
+                        <td class="responsive-table__body__text responsive-table__body__text--name">
+                            <img style="width:100px;height:100px"
+                                src="http://localhost:3000/images/{{item.profile_pic}}">
+                                {{item.first_name}} {{item.last_name}}
+                        </td>
+                        <!-- <span class="status-indicator status-indicator--active"></span> -->
+                        <td class="responsive-table__body__text responsive-table__body__text--status">
+                            {{item.gender}}
+                       </td>
+                        <td class="responsive-table__body__text responsive-table__body__text--types">
+                        {{item.job_name}}</td>
+                        <td class="responsive-table__body__text responsive-table__body__text--update">
+                         {{item.submission_date | date}}   </td>
+                        <td class="responsive-table__body__text responsive-table__body__text--country">
+                         {{item.form_status}}   </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

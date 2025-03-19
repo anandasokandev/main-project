@@ -361,3 +361,34 @@ body {
 		background: $new-color;
 	}
 }
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .button {
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+  
+  .date-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .date-filter label {
+    font-size: 14px;
+  }
+  
+  .button:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  

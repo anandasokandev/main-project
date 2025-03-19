@@ -64,6 +64,10 @@ import { ViewCareerhomeComponent } from './admin/career/view-careerhome/view-car
 import { ViewDisabilityComponent } from './admin/career/view-disability/view-disability.component';
 import { ViewCurrentjobComponent } from './admin/career/view-currentjob/view-currentjob.component';
 import { MatrimonyUsersComponent } from './admin/matrimony/Reports/matrimony-users/matrimony-users.component';
+import { ViewadmissionDetailsComponent } from './admin/education/Reports/viewadmission-details/viewadmission-details.component';
+import { JobapplicationreportsComponent } from './admin/career/Reports/jobapplicationreports/jobapplicationreports.component';
+import { VieweducationusersComponent } from './admin/education/vieweducationusers/vieweducationusers.component';
+import { ViewjobapplicationComponent } from './admin/career/viewjobapplication/viewjobapplication.component';
 
 const routes: Routes = [
   {
@@ -342,6 +346,19 @@ const routes: Routes = [
             path: 'editcourse',
             component: EditcourseComponent,
           },
+          {
+            path: 'viewusers',
+            component: VieweducationusersComponent
+          },
+          {
+            path: 'reports',
+            children:[
+              {
+                path: 'admission',
+                component: ViewadmissionDetailsComponent
+              }
+            ]
+          }
         ],
       },
       {
@@ -378,6 +395,19 @@ const routes: Routes = [
           {
             path: 'viewuserprofile',
             component: ViewcareeruserprofileComponent
+          },
+          {
+            path: 'viewjobapplication',
+            component: ViewjobapplicationComponent
+          },
+          {
+            path: 'reports',
+            children:[
+              {
+                path: 'jobapplication',
+                component: JobapplicationreportsComponent
+              }
+            ]
           },
           {
             path: 'view-careeruser',

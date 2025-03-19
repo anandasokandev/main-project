@@ -102,6 +102,10 @@ var disableUser = require('./routes/admin/career/disableUser');
 var enableUser = require('./routes/admin/career/enableUser');
 var fetchUserSpecificJobStatus = require('./routes/admin/career/fetchUserSpecificJobStatus')
 var fetchMatrimonyReport = require('./routes/admin/matrimony/Reports/fetchMatrimonyProfile');
+var admissionReports = require('./routes/admin/admission/Reports/admissionReport');
+var jobApplicationReport = require('./routes/admin/career/Reports/fetchJobApplications');
+var fetchJobOnly = require('./routes/admin/career/fetchJobOnly');
+var fetchAdmissionUsers = require('./routes/admin/admission/fetchAdmissionUsers');
 
 var app = express();
 
@@ -212,6 +216,10 @@ app.use('/disableuser',disableUser);
 app.use('/enableuser',enableUser);
 app.use('/fetchspecificjobstatus',fetchUserSpecificJobStatus);
 app.use('/fetchmatrimonyreport',fetchMatrimonyReport);
+app.use('/admissionreport',admissionReports);
+app.use('/jobapplicationreport',jobApplicationReport);
+app.use('/fetchjobonly',fetchJobOnly);
+app.use('/fetchadmissionusers',fetchAdmissionUsers)
 
 //catch 404 and forward to error handler
 app.use(function(req, res, next) {

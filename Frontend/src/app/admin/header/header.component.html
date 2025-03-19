@@ -10,6 +10,34 @@
         <li><a href="#" class="active" (click)="closeMobileNavOnLinkClick()">Home</a></li>
         <li class="dropdown">
           <a (click)="toggleDropdown($event)">
+            <span>Controls</span>
+            <i class="bi bi-chevron-down toggle-dropdown"></i>
+          </a>
+          <ul>
+            <li class="dropdown">
+              <a (click)="toggleDropdown($event)">
+                <span>Education</span>
+                <i class="bi bi-chevron-down toggle-dropdown"></i>
+              </a>
+              <ul>
+                <li routerLink="/admin/education/department"><a>Department</a></li>
+                <li routerLink="/admin/education/viewcourse"><a>Course</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a (click)="toggleDropdown($event)">
+                <span>Career</span>
+                <i class="bi bi-chevron-down toggle-dropdown"></i>
+              </a>
+              <ul>
+                <li routerLink="/admin/career/viewjobcategory"><a>Job Category</a></li>
+                <li routerLink="/admin/career/viewjob"><a>Job</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a (click)="toggleDropdown($event)">
             <span>Matrimony</span>
             <i class="bi bi-chevron-down toggle-dropdown"></i>
           </a>
@@ -26,9 +54,19 @@
           </a>
           <ul>
             <li><a routerLink="/admin/career/viewuserprofile">View Users</a></li>
+            <li><a routerLink="/admin/career/viewjobapplication">Job Application</a></li>
           </ul>
         </li>
-        <li><a (click)="closeMobileNavOnLinkClick()">Services</a></li>
+        <li class="dropdown">
+          <a (click)="toggleDropdown($event)">
+            <span>Education</span>
+            <i class="bi bi-chevron-down toggle-dropdown"></i>
+          </a>
+          <ul>
+            <li><a routerLink="/admin/education/viewusers">View Users</a></li>
+            <li><a routerLink="/admin/education/admission">Admission</a></li>
+          </ul>
+        </li>
         <li class="dropdown">
           <a (click)="toggleDropdown($event)">
             <span>Reports</span>
@@ -51,7 +89,7 @@
               </a>
               <ul>
                 <li><a>User Profile</a></li>
-                <li><a>Admission Application</a></li>
+                <li routerLink="/admin/education/reports/admission"><a>Admission Application</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -61,7 +99,7 @@
               </a>
               <ul>
                 <li><a>User Profile</a></li>
-                <li><a>Job Application</a></li>
+                <li routerLink="/admin/career/reports/jobapplication"><a>Job Application</a></li>
               </ul>
             </li>
           </ul>

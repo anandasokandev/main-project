@@ -1,0 +1,21 @@
+<section class="center">
+    <div class="table__wrapper">
+      <h1>Contact Request's</h1>
+      <table class="table" summary="This is a summary of your rad table contents.">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let item of user; let i = index">
+          <tr>
+            <td data-header=""><p>{{ i+ 1}}</p></td>
+            <td data-header=""><p>{{item.first_name}} {{item.last_name}}</p></td>
+            <td (click)="requestContact(item.request_id)" data-header=""><p><button>Accept</button></p></td>
+         </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>

@@ -13,6 +13,7 @@ export class LoginComponent {
   public fetchUserDetails: any = null;
   public login_id: any = '';
   public fetchUserCat: any = null;
+  savestatus = false
 
   constructor(
     private db: DatabaseService,

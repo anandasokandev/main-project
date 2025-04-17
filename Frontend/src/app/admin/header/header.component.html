@@ -7,7 +7,7 @@
 
     <nav id="navmenu" class="navmenu">
       <ul>
-        <li><a href="#" class="active" (click)="closeMobileNavOnLinkClick()">Home</a></li>
+        <li><a routerLink="/admin/dashboard" class="active" (click)="closeMobileNavOnLinkClick()">Home</a></li>
         <li class="dropdown">
           <a (click)="toggleDropdown($event)">
             <span>Controls</span>
@@ -104,7 +104,7 @@
             </li>
           </ul>
         </li>
-        <li><a (click)="closeMobileNavOnLinkClick()">Logout</a></li>
+        <li><a (click)="logout()">Logout</a></li>
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list" (click)="toggleMobileNav()"></i>
     </nav>

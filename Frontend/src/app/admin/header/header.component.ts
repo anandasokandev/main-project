@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DatabaseService } from 'src/app/database.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ export class HeaderComponent implements OnInit {
 
   public login_id: any = ''
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private db: DatabaseService) { }
 
   ngOnInit(): void {
     this.login_id = localStorage.getItem('loginid');
@@ -70,5 +71,9 @@ export class HeaderComponent implements OnInit {
       mobileNavToggleBtn.classList.remove('bi-x');
       mobileNavToggleBtn.classList.add('bi-list');
     }
+  }
+
+  logout(){
+    this.db.logout();
   }
 }

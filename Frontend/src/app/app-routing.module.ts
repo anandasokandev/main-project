@@ -68,6 +68,8 @@ import { ViewadmissionDetailsComponent } from './admin/education/Reports/viewadm
 import { JobapplicationreportsComponent } from './admin/career/Reports/jobapplicationreports/jobapplicationreports.component';
 import { VieweducationusersComponent } from './admin/education/vieweducationusers/vieweducationusers.component';
 import { ViewjobapplicationComponent } from './admin/career/viewjobapplication/viewjobapplication.component';
+import { ViewcontactrequestComponent } from './user/matrimony/viewcontactrequest/viewcontactrequest.component';
+import { ChangepasswordComponent } from './user/matrimony/changepassword/changepassword.component';
 
 const routes: Routes = [
   {
@@ -149,12 +151,20 @@ const routes: Routes = [
             component: ViewEditprofileComponent
           },
           {
+            path: 'changepassword',
+            component: ChangepasswordComponent
+          },
+          {
             path: 'createprofile',
             component: CreateprofilematrimonyComponent,
           },
           {
             path: 'uploadimages',
             component: UploadimagesComponent,
+          },
+          {
+            path: 'viewprofile',
+            component: ViewEditprofileComponent
           },
           {
             path: 'editprofile',
@@ -179,6 +189,10 @@ const routes: Routes = [
           {
             path: 'biodetails',
             component: BiodetailsComponent,
+          },
+          {
+            path: 'viewcontactrequest',
+            component: ViewcontactrequestComponent
           },
           {
             path: 'setpreference',

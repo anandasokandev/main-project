@@ -19,7 +19,6 @@ export class ViewjobapplicationComponent {
       job: '',
       endDate: '',
       startDate: '',
-      status: '',
       disabilityCategory: '',
       disabilitySubCategory: '',
     };
@@ -53,13 +52,23 @@ export class ViewjobapplicationComponent {
     fetchUser(){
       console.log(this.filter);
       
-      this.db.fetchJobApplicationReports(this.filter).then((data:any)=>{
+      this.db.fetchPendingJobApplication(this.filter).then((data:any)=>{
         console.log(data);
         
         if(data.message === 'Records retrieved successfully'){
           this.user = data.data;
         }else{
           this.user = []
+        }
+      })
+    }
+    approveUser(id: any){
+      this.db.approvedJobForm({id}).then((data:any)=>{
+        if(data.message === 'Success'){
+          alert('User approved successfully');
+        }
+        else{
+          alert('Failed');
         }
       })
     }

@@ -12,6 +12,7 @@ export class SignupComponent {
   public fetchUser = '';
   public user = 'Enter Username to check';
   public userAvailability = '';
+  savestatus = false
 
   registerForm = this.fb.group({
     username: ['', [Validators.required, Validators.minLength(3)]], 

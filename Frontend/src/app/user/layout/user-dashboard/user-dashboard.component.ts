@@ -46,8 +46,6 @@ export class UserDashboardComponent {
 
 
     this.db.fetchAdmission(login_id).then((data: any) => {
-      console.log(data);
-      
       if (data.message === 'Form not submitted yet') {
         this.educationApplication = true
       }else{

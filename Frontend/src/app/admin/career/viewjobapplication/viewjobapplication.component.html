@@ -20,16 +20,7 @@
             <input type="date" id="endDate" class="button" [(ngModel)]="filter.endDate" (change)="fetchUser()">
         </div>
 
-        <!-- Status Filter -->
-        <select class="button" [(ngModel)]="filter.status" (change)="fetchUser()">
-            <option value="" disabled>Select Status</option>
-            <option value="Admitted">Approved</option>
-            <option value="Submitted">Submitted</option>
-            <option value="Rejected">Rejected</option>
-            <!-- Add more status options if needed -->
-        </select>
-
-        <!-- Status Filter -->
+       <!-- Status Filter -->
         <select class="button" [(ngModel)]="filter.disabilityCategory" (change)="fetchSubDisability()">
             <option value="" disabled>Select Disability Category</option>
             <option *ngFor="let item of disabilityCategory" value="{{item.id}}">{{item.disability_category}}</option>
@@ -85,7 +76,7 @@
                         {{item.job_name}}</td>
                         <td class="responsive-table__body__text responsive-table__body__text--update">
                          {{item.submission_date | date}}   </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--country">
+                        <td (click)="approveUser(item.jobform_id)" class="responsive-table__body__text responsive-table__body__text--country">
                          {{item.form_status}}   </td>
                     </tr>
                 </tbody>

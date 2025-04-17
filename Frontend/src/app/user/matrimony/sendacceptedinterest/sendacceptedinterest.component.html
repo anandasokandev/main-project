@@ -11,9 +11,28 @@
                 <div class="button-wrapper">
 
                     <button (click)="viewProfile(data.interest_loginid)" class="send-message">View Profile</button>
+                    <button *ngIf="!loading" (click)="requestContact(data.login_id,data.interest_loginid)" class="send-message">Request Contact</button>
+                    <button *ngIf="loading" (click)="viewContactDetails(data.interest_loginid)" class="send-message">View Contact</button>
                     <button (click)="deleteInterest(data.login_id,data.interest_loginid)" class="send-message">Delete Interest</button>
                 </div>
             </div>
         </a>
+        
     </div>
 </div>
+
+
+<div *ngIf="isModalOpen" class="modal-backdrop" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <!-- Close icon at the top-right -->
+      <span class="close-icon" (click)="closeModal()">×</span>
+  
+      <h4 class="modal-title">User Contact Details of {{userDetails[0].first_name}}</h4>
+        <p>Name: {{userDetails[0].first_name}} {{userDetails[0].last_name}}</p>
+        <p>District: {{userDetails[0].district}}</p>
+        <p>Location: {{userDetails[0].location}}</p>
+        <p>Pincode: {{userDetails[0].pincode}}</p>
+        <p>Email: {{userDetails[0].email}}</p>
+        <p>Phone: {{userDetails[0].phone}}</p>
+    </div>
+  </div>

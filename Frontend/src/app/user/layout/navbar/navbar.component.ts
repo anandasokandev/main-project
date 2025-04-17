@@ -63,11 +63,10 @@ export class NavbarComponent implements OnInit {
       }
     });
 
-    this.db.fetchPreference(this.login_id).then((data: any)=>{
-      if(data.length > 0){
+  }
 
-      }
-    })
+  viewPreference(){
+    
   }
 
   viewProfile(){

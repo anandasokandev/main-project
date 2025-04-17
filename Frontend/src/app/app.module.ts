@@ -74,6 +74,8 @@ import { ViewadmissionDetailsComponent } from './admin/education/Reports/viewadm
 import { JobapplicationreportsComponent } from './admin/career/Reports/jobapplicationreports/jobapplicationreports.component';
 import { VieweducationusersComponent } from './admin/education/vieweducationusers/vieweducationusers.component';
 import { ViewjobapplicationComponent } from './admin/career/viewjobapplication/viewjobapplication.component';
+import { ViewcontactrequestComponent } from './user/matrimony/viewcontactrequest/viewcontactrequest.component';
+import { ChangepasswordComponent } from './user/matrimony/changepassword/changepassword.component';
 
 @NgModule({
   declarations: [
@@ -146,7 +148,9 @@ import { ViewjobapplicationComponent } from './admin/career/viewjobapplication/v
     ViewadmissionDetailsComponent,
     JobapplicationreportsComponent,
     VieweducationusersComponent,
-    ViewjobapplicationComponent
+    ViewjobapplicationComponent,
+    ViewcontactrequestComponent,
+    ChangepasswordComponent
   ],
   imports: [
     BrowserModule,

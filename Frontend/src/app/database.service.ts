@@ -242,7 +242,7 @@ export class DatabaseService {
   logout(){
     localStorage.removeItem('loginid');
     localStorage.clear();
-    this.router.navigate(['/guest/login']);
+    this.router.navigate(['/']);
   }
 
   fetchReceivedInterest(login_id: any){
@@ -418,4 +418,30 @@ export class DatabaseService {
   fetchAdmissionUsers(data: any){
     return this.http.post(`http://localhost:3000/fetchadmissionusers`,data).toPromise();
   }
+
+  approvedJobForm(data: any){
+    return this.http.put(`http://localhost:3000/approvejobform`,data).toPromise();
+  }
+
+  fetchPendingJobApplication(data:any){
+    return this.http.post(`http://localhost:3000/fetchpendingjobapplication`,data).toPromise();
+  }
+
+  fetchRequestContact(from_loginid: any,to_loginid: any){
+    return this.http.get(`http://localhost:3000/fetchrequestcontact?login_id=${from_loginid}&interest_loginid=${to_loginid}`).toPromise();
+  }
+
+  requestContact(data: {login_id: any,interest_loginid: any}){
+    return this.http.post(`http://localhost:3000/requestcontact`,data).toPromise();
+  }
+
+  fetchRequestContactAll(login_id: any){
+    return this.http.get(`http://localhost:3000/fetchrequestcontactall?login_id=${login_id}`).toPromise();
+  }
+
+  acceptContactRequest(data: any){
+    return this.http.put(`http://localhost:3000/acceptcontactrequest`,data).toPromise();
+  }
 }
+
+

@@ -106,7 +106,15 @@ var admissionReports = require('./routes/admin/admission/Reports/admissionReport
 var jobApplicationReport = require('./routes/admin/career/Reports/fetchJobApplications');
 var fetchJobOnly = require('./routes/admin/career/fetchJobOnly');
 var fetchAdmissionUsers = require('./routes/admin/admission/fetchAdmissionUsers');
-
+var approvedJobForm = require('./routes/admin/career/approveJobForm');
+var fetchPendingJobApplication = require('./routes/admin/career/fetchPendingJobApplication');
+var requestContact = require('./routes/user/matrimony/requestContact');
+var fetchrequestcontact = require('./routes/user/matrimony/fetchRequestContact');
+var fetchRequestContactAll = require('./routes/user/matrimony/fetchRequestContactAll');
+var acceptContactRequest = require('./routes/user/matrimony/acceptContactRequest');
+var fetchMatrimonyCount = require('./routes/admin/fetchMatrimonyUserCount');
+var fetchEducationCount = require('./routes/admin/fetchEducationUserCount');
+var fetchCareerCount = require('./routes/admin/fetchCareerUserCount');
 var app = express();
 
 
@@ -220,6 +228,15 @@ app.use('/admissionreport',admissionReports);
 app.use('/jobapplicationreport',jobApplicationReport);
 app.use('/fetchjobonly',fetchJobOnly);
 app.use('/fetchadmissionusers',fetchAdmissionUsers)
+app.use('/approvejobform',approvedJobForm);
+app.use('/fetchpendingjobapplication',fetchPendingJobApplication);
+app.use('/fetchrequestcontact',fetchrequestcontact),
+app.use('/requestcontact',requestContact);
+app.use('/fetchrequestcontactall',fetchRequestContactAll);
+app.use('/acceptcontactrequest',acceptContactRequest);
+app.use('/fetchmatrimonynumber',fetchMatrimonyCount);
+app.use('/fetcheducationnumber',fetchEducationCount)
+app.use('/fetchcareernumber',fetchCareerCount)
 
 //catch 404 and forward to error handler
 app.use(function(req, res, next) {

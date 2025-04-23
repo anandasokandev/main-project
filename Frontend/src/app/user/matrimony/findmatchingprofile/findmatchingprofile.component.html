@@ -4,7 +4,7 @@
     <div class="set-preferences-container"> 
       <button type="button" *ngIf="preferenceSet" routerLink="/user/matrimony/setpreference">Set Default Preferences</button> 
         <button type="button" *ngIf="!preferenceSet" (click)="findDefaultPartner()">Find with Default Preferences</button> </div>
-    <h2>Set Your Preference</h2>
+    <h2>Find your partner</h2>
     <form class="search-form" (ngSubmit)="onSearch()">
       <div class="search-fields">
         <!-- Age Range -->

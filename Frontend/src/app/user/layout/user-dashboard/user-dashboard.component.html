@@ -43,6 +43,15 @@
           </span>
         </li>
       </a>
+      <a routerLink="/user/education/mycourse" *ngIf="!educationApplication">
+        <li>
+          <i class="bx bxs-group"></i>
+          <span class="text">
+            <h3>View My</h3>
+            <p>Course Details</p>
+          </span>
+        </li>
+      </a>
     </ul>
   </main>
   <main *ngIf="userState === 'Career'">

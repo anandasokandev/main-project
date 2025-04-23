@@ -1,33 +1,32 @@
 <div class="container">
-    <h2>View Course</h2>
-    <ul class="responsive-table">
-      <div class="form-button1">
-        <button class="btn btn-primary" routerLink="/admin/education/createcourse">Add course</button>
-        <!-- Dropdown below the Add course button -->
-        <form [formGroup]="departmentForm">
-          <select class="form-control" formControlName="department" (change)="viewByDepartment()">
-            <option value="Select Department" disabled>Select Department</option>
-            <option *ngFor="let item of dept" value="{{item.dept_id}}">{{item.dept_name}}</option>
-          </select>
-        </form>
+  <h2>View Course</h2>
+  <ul class="responsive-table">
+    <div class="form-button1">
+      <button class="btn btn-primary" routerLink="/admin/education/createcourse">Add course</button>
+      <!-- Dropdown below the Add course button -->
+      <form [formGroup]="departmentForm">
+        <select class="form-control" formControlName="department" (change)="viewByDepartment()">
+          <option value="Select Department" disabled>Select Department</option>
+          <option *ngFor="let item of dept" value="{{item.dept_id}}">{{item.dept_name}}</option>
+        </select>
+      </form>
+    </div>
+    <li class="table-header" *ngIf="loadResult">
+      <div class="col col-1">Id</div>
+      <div class="col col-2">Course Code</div>
+      <div class="col col-4">Course Name</div>
+      <div class="col col-4">Course Duration</div>
+      <div class="col col-5">Actions</div>
+    </li>
+    <li class="table-row" *ngFor="let item of course; let i = index">
+      <div class="col col-1">{{i + 1}}</div>
+      <div class="col col-2">{{ item.course_code }}</div>
+      <div class="col col-4">{{ item.course_name }}</div>
+      <div class="col col-4">{{ item.duration }}</div>
+      <div class="col col-5">
+        <button (click)="editCourse(item.course_id)" class="btn edit-btn">Edit</button>
+        <button (click)="deleteCourse(item.course_id)" class="btn delete-btn">Delete</button>
       </div>
-      <li class="table-header" *ngIf="loadResult">
-        <div class="col col-1">Id</div>
-        <div class="col col-2">Course Code</div>
-        <div class="col col-4">Course Name</div>
-        <div class="col col-4">Course Duration</div>
-        <div class="col col-5">Actions</div>
-      </li>
-      <li class="table-row" *ngFor="let item of course; let i = index">
-        <div class="col col-1">{{i + 1}}</div>
-        <div class="col col-2">{{ item.course_code }}</div>
-        <div class="col col-4">{{ item.course_name }}</div>
-        <div class="col col-4">{{ item.duration }}</div>
-        <div class="col col-5">
-          <button (click)="editCourse(item.course_id)" class="btn edit-btn">Edit</button>
-          <button (click)="deleteCourse(item.course_id)" class="btn delete-btn">Delete</button>
-        </div>
-      </li>
-    </ul>
-  </div>
-  
+    </li>
+  </ul>
+</div>

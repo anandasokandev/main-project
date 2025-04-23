@@ -19,6 +19,7 @@ $button-full-width: 100%;  // Full width for mobile buttons
   max-width: 1200px;
   margin: 20px auto;
   padding: 20px;
+  margin-top: 100px;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
@@ -199,3 +200,5 @@ $button-full-width: 100%;  // Full width for mobile buttons
     padding: 12px;  // Adjust padding for smaller screens
   }
 }
+
+

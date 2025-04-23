@@ -11,7 +11,7 @@
                         <select id="status" (change)="getAction()" formControlName="status">
                             <option value="">Select Status</option>
                             <option value="Submitted">Submitted</option>
-                            <option value="Approved">Approved</option>
+                            <option value="Admitted">Admitted</option>
                             <option value="Rejected">Rejected</option>
                         </select>
                     </div>
@@ -43,9 +43,9 @@
                             <td>{{ i + 1 }}</td>
                             <td>{{ item.course_name }}</td>
                             <td>{{ item.form_status }}</td>
-                            <td>{{ item.submission_date | date }}</td>
+                            <td>{{ item.submission_date | date:'dd-MM-yyyy'  }}</td>
                             <td *ngIf="item.review_date === null ">Not Reviewed</td>
-                            <td *ngIf="item.review_date != null">{{ item.review_date}}</td>
+                            <td *ngIf="item.review_date != null">{{ item.review_date | date:'dd-MM-yyyy' }}</td>
                             <td><button 
                             [disabled]="item.form_status === 'Rejected'" (click)="deleteApplicationForm(item.admission_id)">Delete</button></td>
                         </tr>

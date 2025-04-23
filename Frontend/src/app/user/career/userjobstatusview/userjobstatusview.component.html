@@ -34,7 +34,6 @@
                             <th>Job Name</th>
                             <th>Status</th>
                             <th>Submission Date</th>
-                            <th>Review Date</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -44,8 +43,8 @@
                             <td>{{ item.job_name }}</td>
                             <td>{{ item.form_status }}</td>
                             <td>{{ item.submission_date | date }}</td>
-                            <td *ngIf="item.review_date === null ">Not Reviewed</td>
-                            <td *ngIf="item.review_date != null">{{ item.review_date}}</td>
+                            <!-- <td *ngIf="item.review_date === null ">Not Reviewed</td>
+                            <td *ngIf="item.review_date != null">{{ item.review_date}}</td> -->
                             <td><button 
                             [disabled]="item.form_status === 'Rejected'" (click)="deleteJobForm(item)">Delete</button></td>
                         </tr>

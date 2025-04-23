@@ -115,6 +115,9 @@ var acceptContactRequest = require('./routes/user/matrimony/acceptContactRequest
 var fetchMatrimonyCount = require('./routes/admin/fetchMatrimonyUserCount');
 var fetchEducationCount = require('./routes/admin/fetchEducationUserCount');
 var fetchCareerCount = require('./routes/admin/fetchCareerUserCount');
+var updatePassword = require('./routes/user/matrimony/updatePassword');
+var fetchUserByUsername = require('./routes/fetchDetailsByUsername');
+const updateUserPassword = require('./routes/updatePassword');
 var app = express();
 
 
@@ -237,6 +240,9 @@ app.use('/acceptcontactrequest',acceptContactRequest);
 app.use('/fetchmatrimonynumber',fetchMatrimonyCount);
 app.use('/fetcheducationnumber',fetchEducationCount)
 app.use('/fetchcareernumber',fetchCareerCount)
+app.use('/updatepassword',updatePassword);
+app.use('/fetchuserbyusername',fetchUserByUsername)
+app.use('/updateuserpassword',updateUserPassword)
 
 //catch 404 and forward to error handler
 app.use(function(req, res, next) {

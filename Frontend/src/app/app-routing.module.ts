@@ -70,6 +70,8 @@ import { VieweducationusersComponent } from './admin/education/vieweducationuser
 import { ViewjobapplicationComponent } from './admin/career/viewjobapplication/viewjobapplication.component';
 import { ViewcontactrequestComponent } from './user/matrimony/viewcontactrequest/viewcontactrequest.component';
 import { ChangepasswordComponent } from './user/matrimony/changepassword/changepassword.component';
+import { ForgotPasswordComponent } from './guest/authentication/forgot-password/forgot-password.component';
+import { MycourseComponent } from './user/education/mycourse/mycourse.component';
 
 const routes: Routes = [
   {
@@ -88,6 +90,10 @@ const routes: Routes = [
         path: 'signup',
         component: SignupComponent,
       },
+      {
+        path: 'forgotpassword',
+        component: ForgotPasswordComponent
+      }
     ],
   },
   {
@@ -140,6 +146,10 @@ const routes: Routes = [
           {
             path: 'viewprofile',
             component: ViewEditprofileComponent
+          },
+          {
+            path: 'mycourse',
+            component: MycourseComponent
           }
         ],
       },

@@ -9,12 +9,13 @@ import { DatabaseService } from 'src/app/database.service';
   styleUrls: ['./viewcourse.component.scss'],
 })
 export class ViewcourseComponent {
+
+ 
   constructor(
     private db: DatabaseService,
     private fb: FormBuilder,
     private router: Router
   ) {}
-
 
   public course: any[] = [];
   public dept: any[] = [];
@@ -34,6 +35,8 @@ export class ViewcourseComponent {
   };
 
   ngOnInit(): void {
+    this.fetchDept();
+    this.fetchDept();
     this.fetchDept();
   }
 
@@ -68,4 +71,6 @@ export class ViewcourseComponent {
   editCourse(course_id: string){
     this.router.navigate(['/admin/education/editcourse'], { queryParams: { course_id: course_id }})
   }
+
+ 
 }

@@ -442,6 +442,30 @@ export class DatabaseService {
   acceptContactRequest(data: any){
     return this.http.put(`http://localhost:3000/acceptcontactrequest`,data).toPromise();
   }
+
+  matrimonyCount(){
+    return this.http.get<any>('http://localhost:3000/fetchmatrimonynumber').toPromise();
+  }
+
+  careerCount(){
+    return this.http.get<any>('http://localhost:3000/fetchcareernumber').toPromise();
+  }
+
+  educationCount(){
+    return this.http.get<any>('http://localhost:3000/fetcheducationnumber').toPromise();
+  }
+
+  updatePassword(data:{ newpassword , login_id}) {
+    return this.http.post<any>(`http://localhost:3000/updatepassword`,data).toPromise();
+  }
+
+  fetchUserByUsername(username: any){
+    return this.http.get<any>(`http://localhost:3000/fetchuserbyusername?username=${username}`).toPromise();
+  }
+
+  updateUserPassword(data: {newpassword ,username}){
+    return this.http.post<any>(`http://localhost:3000/updateuserpassword`,data).toPromise();
+  }
 }
 
 

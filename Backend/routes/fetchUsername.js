@@ -25,7 +25,6 @@ router.get('/', (req, res, next) => {
                 return res.status(500).send({ error: 'Database query failed', details: err });
             }
 
-            
             if (result.length > 0) {
                 return res.json({ message: 'Username already exists' }); 
             }

@@ -38,10 +38,6 @@
               <input type="text" class="form-control" [(ngModel)]="filter.email" [readonly]="!isEditable" />
             </div>
             <div class="col-md-12">
-              <label class="labels">Address</label>
-              <input type="text" class="form-control" [(ngModel)]="filter.address" [readonly]="!isEditable" />
-            </div>
-            <div class="col-md-12">
               <label class="labels">Pincode</label>
               <input type="text" class="form-control" (change)="fetchPincode()" [(ngModel)]="filter.pincode" [readonly]="!isEditable" />
             </div>

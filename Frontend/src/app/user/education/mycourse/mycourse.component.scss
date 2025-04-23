@@ -1,0 +1,26 @@
+.id-card-page {
+    margin-top: 100px;
+    .id-card {
+      background-color: #f8f9fa;
+      .student-img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border: 3px solid #dee2e6;
+      }
+    }
+  
+    .course-detail {
+      background-color: #ffffff;
+      h4 {
+        color: #343a40;
+        font-weight: 600;
+      }
+  
+      p {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+    }
+  }
+  

@@ -22,9 +22,21 @@ export class LoginComponent {
   ) {}
 
   loginForm = this.fb.group({
-    username: ['', Validators.required],
-    password: ['', [Validators.required]],
+    username: [
+      '',
+      [
+        Validators.required
+      ],
+    ],
+    password: [
+      '',
+      [
+        Validators.required,
+        Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{5,}$/)
+      ],
+    ],
   });
+  
 
   // The async onSubmit method to handle form submission
   async onSubmit() {

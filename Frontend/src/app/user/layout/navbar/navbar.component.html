@@ -32,7 +32,7 @@
               <li><a routerLink="/user/matrimony/editprofileimages"></a></li>
               <li routerLink="/user/matrimony/viewprofile"><a>Edit User Profile</a></li>
               <li routerLink="/user/matrimony/changepassword"><a>Edit/Change Password</a></li>
-              <li class="dropdown">
+              <!-- <li class="dropdown">
                 <a (click)="toggleDropdown($event)">
                   <span>Edit Matrimony Profile</span>
                   <i class="bi bi-chevron-down toggle-dropdown"></i>
@@ -44,7 +44,7 @@
                   <li><a routerLink="/user/matrimony/editfamilydetails">Edit Family Details</a></li>
                   <li><a routerLink="/user/matrimony/deleteprofile">Delete Profile</a></li>
                 </ul>
-              </li>
+              </li> -->
             </ul>
           </li>
           <li><a (click)="logout()">Logout</a></li>
@@ -69,30 +69,15 @@
           <li><a routerLink="/user/dashboard" class="active" (click)="closeMobileNavOnLinkClick()">Home</a></li>
           <li class="dropdown">
             <a (click)="toggleDropdown($event)">
-              <span>Matrimony</span>
+              <span>Education</span>
               <i class="bi bi-chevron-down toggle-dropdown"></i>
             </a>
             <ul>
               <li><a routerLink="/user/education/viewprofile">View user profile</a></li>
-              <li class="dropdown">
-                <a (click)="toggleDropdown($event)">
-                  <span>Deep Dropdown</span>
-                  <i class="bi bi-chevron-down toggle-dropdown"></i>
-                </a>
-                <ul>
-                  <li><a>Deep Dropdown 1</a></li>
-                  <li><a>Deep Dropdown 2</a></li>
-                  <li><a>Deep Dropdown 3</a></li>
-                  <li><a>Deep Dropdown 4</a></li>
-                  <li><a>Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a>Dropdown 2</a></li>
-              <li><a>Dropdown 3</a></li>
-              <li><a>Dropdown 4</a></li>
+              <li><a routerLink="/user/education/updatedisability">Change Disability</a></li>
+              <li><a routerLink="/user/education/viewadmissionstatus">View Admission Status</a></li>
             </ul>
           </li>
-          <li><a (click)="closeMobileNavOnLinkClick()">Features</a></li>
           <li><a (click)="logout()">Logout</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list" (click)="toggleMobileNav()"></i>
@@ -119,26 +104,10 @@
             </a>
             <ul>
               <li><a routerLink="/user/career/viewprofile">View User Profile</a></li>
-              <!-- <li class="dropdown">
-                <a (click)="toggleDropdown($event)">
-                  <span>Deep Dropdown</span>
-                  <i class="bi bi-chevron-down toggle-dropdown"></i>
-                </a>
-                <ul>
-                  <li><a>Deep Dropdown 1</a></li>
-                  <li><a>Deep Dropdown 2</a></li>
-                  <li><a>Deep Dropdown 3</a></li>
-                  <li><a>Deep Dropdown 4</a></li>
-                  <li><a>Deep Dropdown 5</a></li>
-                </ul>
-              </li> -->
-              <li><a>Find Job</a></li>
-              <li><a>Dropdown 3</a></li>
-              <li><a>Dropdown 4</a></li>
+              <li><a routerLink="/user/career/findjob">Find Job</a></li>
+              <li><a routerLink="/user/career/jobstatusview">View Job Status</a></li>
             </ul>
           </li>
-          <li><a (click)="closeMobileNavOnLinkClick()">Features</a></li>
-          <li><a (click)="closeMobileNavOnLinkClick()">Services</a></li>
           <li><a (click)="logout()">Logout</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list" (click)="toggleMobileNav()"></i>

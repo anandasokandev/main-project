@@ -1,0 +1,28 @@
+<div class="id-card-page container">
+    <div class="row g-4">
+  
+      <!-- Left Column -->
+      <div class="col-lg-4 col-md-5 col-12">
+        <div class="card id-card text-center shadow-sm">
+          <div class="card-body">
+            <img src="http://localhost:3000/images/{{userData.profile_pic}}" alt="Student" class="rounded-circle mb-3 student-img">
+            <h5 class="card-title">{{ userData.first_name }}{{ userData.last_name }}</h5>
+            <p class="card-text"><strong>DOB:</strong> {{userData.dob | date:'dd-MM-yyyy' }}</p>
+            <p class="card-text"><strong>Course:</strong> {{ student.course }}</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Right Column -->
+      <div class="col-lg-8 col-md-7 col-12">
+        <div class="card course-detail shadow-sm">
+          <div class="card-body">
+            <h4 class="card-title">My Course Details: {{student.course}}</h4>
+            <p class="card-text text-muted">{{ student.courseDetails }}</p>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  
